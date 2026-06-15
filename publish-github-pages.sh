@@ -24,13 +24,13 @@ else
 fi
 
 if gh api "repos/$repo_full_name/pages" >/dev/null 2>&1; then
-  gh api -X PUT "repos/$repo_full_name/pages" \
-    -f source.branch="$branch_name" \
-    -f source.path="/"
+  gh api -X PUT "repos/$repo_full_name/pages" --input - <<JSON
+{"build_type":"legacy","source":{"branch":"$branch_name","path":"/"}}
+JSON
 else
-  gh api -X POST "repos/$repo_full_name/pages" \
-    -f source.branch="$branch_name" \
-    -f source.path="/"
+  gh api -X POST "repos/$repo_full_name/pages" --input - <<JSON
+{"build_type":"legacy","source":{"branch":"$branch_name","path":"/"}}
+JSON
 fi
 
 echo "GitHub Pages requested for https://$owner.github.io/$repo_name/"
