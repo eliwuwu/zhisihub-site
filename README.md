@@ -1,6 +1,6 @@
-# 织思 Hub 官网
+# White Matter 白质工作室官网
 
-织思 Hub 是面向长期项目、资料整理和 AI 协作的思考中枢。
+White Matter 白质工作室面向 AI 时代提供认知能力训练、人机协作课程、青少年 AI 训练营与织思可视化建模工具。
 
 ## 本地预览
 
@@ -12,11 +12,12 @@ python3 -m http.server 4173
 
 ## 文件结构
 
-- `index.html`：首页
-- `styles.css`：样式
-- `script.js`：演示切换与内测表单本地反馈
+- `index.html`：官网首页
+- `styles.css`：页面样式
+- `script.js`：合作意向表单本地反馈
 - `privacy.html`：隐私政策
 - `terms.html`：服务条款
+- `assets/`：White Matter 视觉素材与合作资料预览图
 - `robots.txt` / `sitemap.xml`：搜索引擎基础文件
 
 ## 部署

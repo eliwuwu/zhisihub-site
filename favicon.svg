@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#17211d"/>
-  <text x="32" y="40" fill="#fbfaf5" font-size="28" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">织</text>
+  <rect width="64" height="64" rx="12" fill="#102235"/>
+  <circle cx="46" cy="17" r="4" fill="#21b8c9"/>
+  <circle cx="18" cy="47" r="4" fill="#32a973"/>
+  <path d="M18 47L31 30L46 17" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <text x="32" y="42" fill="#ffffff" font-size="26" font-family="Arial, sans-serif" font-weight="700" text-anchor="middle">白</text>
 </svg>

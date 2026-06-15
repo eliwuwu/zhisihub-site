@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zhisihub.com/sitemap.xml
+Sitemap: https://eliwuwu.github.io/zhisihub-site/sitemap.xml
