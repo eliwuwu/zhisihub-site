@@ -17,8 +17,8 @@ python3 -m http.server 4173
 - `script.js`：演示切换与内测表单本地反馈
 - `privacy.html`：隐私政策
 - `terms.html`：服务条款
-- `CNAME`：GitHub Pages 自定义域名 `zhisihub.com`
+- `robots.txt` / `sitemap.xml`：搜索引擎基础文件
 
 ## 部署
 
-当前适合部署到 GitHub Pages 或其他静态托管平台。正式绑定大陆服务器前，需要完成 ICP 备案。
+当前适合先部署到 GitHub Pages 或其他静态托管平台。`zhisihub.com` 等 DNS 解析确认后再绑定自定义域名；正式绑定大陆服务器前，需要完成 ICP 备案。
