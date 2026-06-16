@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="White Matter 白质工作室是面向 AI 时代的认知能力与人机协作社区，连接课程训练、织思工具、内容研究与真实交付。">
+    <meta name="description" content="White Matter 白质工作室，一个面向 AI 时代的认知连接社区。">
     <meta property="og:title" content="White Matter 白质工作室">
-    <meta property="og:description" content="一个面向 AI 时代的认知能力与人机协作社区。">
+    <meta property="og:description" content="认知连接。AI 协作。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zhisihub.com/">
-    <meta name="theme-color" content="#102235">
-    <title>White Matter 白质工作室 | AI 时代认知能力社区</title>
+    <meta name="theme-color" content="#071827">
+    <title>White Matter 白质工作室 | 认知连接社区</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./styles.css">
   </head>
@@ -23,13 +23,12 @@
         </span>
       </a>
       <nav class="nav-links" aria-label="页面导航">
-        <a href="#mission">使命愿景</a>
+        <a href="#mission">使命</a>
         <a href="#founders">发起人</a>
-        <button type="button" data-panel-target="work" data-scroll-target="#branches">我们做什么</button>
-        <button type="button" data-panel-target="courses" data-scroll-target="#branches">课程交付</button>
-        <button type="button" data-panel-target="zhisi" data-scroll-target="#branches">织思工具</button>
+        <button type="button" data-panel-target="work" data-scroll-target="#branches">分支</button>
+        <button type="button" data-panel-target="zhisi" data-scroll-target="#branches">织思</button>
       </nav>
-      <a class="nav-cta" href="#contact">加入合作</a>
+      <a class="nav-cta" href="#contact">加入</a>
     </header>
 
     <main>
@@ -38,31 +37,72 @@
           <img src="./assets/white-matter-network.png" alt="">
         </picture>
         <div class="hero-shade"></div>
+        <div class="neural-figure" aria-hidden="true">
+          <svg viewBox="0 0 760 620" role="img">
+            <defs>
+              <filter id="neuralGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" result="blur"></feGaussianBlur>
+                <feMerge>
+                  <feMergeNode in="blur"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+              <linearGradient id="fiberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#9fefff"></stop>
+                <stop offset="52%" stop-color="#21b8c9"></stop>
+                <stop offset="100%" stop-color="#3f70d7"></stop>
+              </linearGradient>
+            </defs>
+            <path class="brain-outline" d="M169 326c-30-32-43-76-31-119 12-41 43-72 81-88 14-48 58-80 111-82 38-2 72 12 96 36 34-6 70 2 98 24 34 27 51 66 46 106 35 19 58 54 59 95 1 49-29 93-73 111-12 52-60 91-116 91-36 0-68-15-91-38-31 17-70 18-102 1-32-17-53-47-58-82-7-5-14-10-20-17z"></path>
+            <path class="fiber fiber-a" d="M182 313c62-22 113-13 154 28 42 42 94 48 155 19 47-22 85-18 114 13"></path>
+            <path class="fiber fiber-b" d="M214 193c36 44 80 69 133 74 54 5 92 31 115 78"></path>
+            <path class="fiber fiber-c" d="M302 112c-12 61 2 110 42 147 40 38 54 85 41 142"></path>
+            <path class="fiber fiber-d" d="M504 128c-46 27-76 61-91 103-14 40-48 70-101 91"></path>
+            <path class="fiber fiber-e" d="M238 415c46-34 98-43 156-26 61 18 112 4 154-42"></path>
+            <g class="synapses" filter="url(#neuralGlow)">
+              <circle cx="214" cy="193" r="7"></circle>
+              <circle cx="302" cy="112" r="6"></circle>
+              <circle cx="347" cy="267" r="8"></circle>
+              <circle cx="385" cy="401" r="7"></circle>
+              <circle cx="462" cy="345" r="7"></circle>
+              <circle cx="504" cy="128" r="6"></circle>
+              <circle cx="548" cy="347" r="8"></circle>
+              <circle cx="238" cy="415" r="6"></circle>
+            </g>
+            <g class="neuron-cluster">
+              <path d="M118 504c36-36 74-46 113-31 26 10 50 6 73-12"></path>
+              <path d="M230 473l40-64"></path>
+              <path d="M230 473l-18 58"></path>
+              <path d="M230 473l66 28"></path>
+              <circle cx="230" cy="473" r="13"></circle>
+              <circle cx="118" cy="504" r="5"></circle>
+              <circle cx="270" cy="409" r="5"></circle>
+              <circle cx="212" cy="531" r="5"></circle>
+              <circle cx="296" cy="501" r="5"></circle>
+            </g>
+          </svg>
+        </div>
         <div class="hero-inner">
           <p class="eyebrow">White Matter Community</p>
-          <h1>为 AI 时代重新训练人的<br>理解、表达与协作能力。</h1>
-          <p class="hero-lead">
-            White Matter 是一个认知能力与人机协作社区。我们把课程、真实训练、织思工具和内容研究连接起来，让抽象思考变成可训练、可表达、可迁移的能力。
-          </p>
+          <h1>让思考<br>长出连接。</h1>
+          <p class="hero-lead">神经连接 · 认知连接 · AI 协作</p>
+          <p class="neural-note">白质：大脑连接通路的隐喻。</p>
           <div class="hero-actions" aria-label="主要入口">
-            <a class="primary-button" href="#branches">进入社区分支</a>
+            <a class="primary-button" href="#branches">进入分支</a>
             <a class="secondary-button" href="#founders">查看发起人</a>
           </div>
           <div class="mission-strip" aria-label="使命愿景">
             <article>
               <span>Mission</span>
-              <strong>重构认知环路效能</strong>
-              <p>帮助个体在复杂信息、AI 工具和真实任务中形成稳定判断。</p>
+              <strong>重构认知连接</strong>
             </article>
             <article>
               <span>Vision</span>
               <strong>成为认知底层架构服务商</strong>
-              <p>让学习、创作、协作和决策拥有可复盘的结构语言。</p>
             </article>
             <article>
               <span>Method</span>
-              <strong>课程训练 + 工具建模 + 社区共创</strong>
-              <p>用连续训练和真实项目，把方法从课堂带回生活与工作。</p>
+              <strong>训练 · 工具 · 共创</strong>
             </article>
           </div>
         </div>
@@ -70,129 +110,124 @@
 
       <section id="founders" class="section founder-section">
         <div class="section-heading">
-          <p class="eyebrow">Origin</p>
-          <h2>白质不是一家冷冰冰的课程公司，而是一个正在生长的认知训练共同体。</h2>
-          <p>当前以工作室形态运转，由理论研发、课程交付、工具开发、社群运营和市场洞察几条线共同推进。</p>
+          <p class="eyebrow">Studio</p>
+          <h2>一个认知训练共同体。</h2>
+          <p>由理论、课程、工具、社群和市场几条线共同生长。</p>
         </div>
         <div class="founder-layout">
           <article class="founder-card lead-founder">
             <div class="avatar-mark">夏</div>
-            <span>创始人 / 主理人</span>
+            <span>Founder</span>
             <h3>夏洛克</h3>
-            <p>负责 White Matter 的核心战略、产品标准与理论体系，把认知科学、训练任务和 AI 时代的能力建设连接成一套长期方向。</p>
+            <p>理论 · 产品 · 战略</p>
           </article>
           <article class="founder-card">
             <div class="avatar-mark">陆</div>
-            <span>核心主理 / 课程与工具</span>
+            <span>Course / Tool</span>
             <h3>陆贰</h3>
-            <p>参与理论研究、课程研发、授课、软件开发与社群承接，推动符号云课程、织思 MVP 和 AI 协作课程落地。</p>
+            <p>课程 · 织思 · 社群</p>
           </article>
           <article class="founder-card">
             <div class="avatar-mark">九</div>
-            <span>共创成员 / 小导师</span>
+            <span>Coach</span>
             <h3>九皮</h3>
-            <p>从学习者成长为共创成员，参与学员带教、训练反馈和课程共创，是社区内部成长路径的真实样本。</p>
+            <p>带教 · 共创 · 样本</p>
           </article>
           <article class="founder-card">
             <div class="avatar-mark">B</div>
-            <span>Research Assistant</span>
+            <span>Research</span>
             <h3>Blanche</h3>
-            <p>承担科研辅助、社群管理和讲师预备任务，以周汇报和调研任务参与社区知识生产。</p>
+            <p>调研 · RA · 讲师预备</p>
           </article>
           <article class="founder-card">
             <div class="avatar-mark">正</div>
-            <span>战略协作 / 市场洞察</span>
+            <span>Market</span>
             <h3>张正午</h3>
-            <p>提供市场运营、账号方向、课程体验和训练设计反馈，协助把社区内容与真实用户场景对齐。</p>
+            <p>市场 · 账号 · 战略反馈</p>
           </article>
         </div>
       </section>
 
       <section id="branches" class="section branch-section">
         <div class="section-heading centered">
-          <p class="eyebrow">Community Branches</p>
-          <h2>点开一个分支，看到对应内容。</h2>
-          <p>社区不只是一门课。它包含认知训练、AI 协作、工具建模、内容研究和合作试点。</p>
+          <p class="eyebrow">Branches</p>
+          <h2>五个入口。</h2>
+          <p>认知训练 / 课程 / 样本 / 工具 / 合作</p>
         </div>
         <div class="branch-shell">
           <div class="branch-menu" role="tablist" aria-label="社区分支">
-            <button type="button" class="is-active" data-panel-target="work" role="tab" aria-selected="true">我们做什么</button>
-            <button type="button" data-panel-target="courses" role="tab" aria-selected="false">课程交付</button>
-            <button type="button" data-panel-target="delivery" role="tab" aria-selected="false">真实案例</button>
-            <button type="button" data-panel-target="zhisi" role="tab" aria-selected="false">织思工具</button>
-            <button type="button" data-panel-target="collab" role="tab" aria-selected="false">合作入口</button>
+            <button type="button" class="is-active" data-panel-target="work" role="tab" aria-selected="true">认知训练</button>
+            <button type="button" data-panel-target="courses" role="tab" aria-selected="false">课程</button>
+            <button type="button" data-panel-target="delivery" role="tab" aria-selected="false">样本</button>
+            <button type="button" data-panel-target="zhisi" role="tab" aria-selected="false">织思</button>
+            <button type="button" data-panel-target="collab" role="tab" aria-selected="false">合作</button>
           </div>
 
           <div class="branch-panels">
             <article class="branch-panel is-active" data-panel="work" role="tabpanel">
               <div class="panel-copy">
-                <span class="panel-kicker">What We Do</span>
-                <h3>把“会想、会说、会用 AI”训练成一套可迁移能力。</h3>
-                <p>我们关注的不是知识灌输，而是人在真实问题里如何理解信息、拆解结构、判断逻辑、组织表达，并把 AI 放进自己的任务链。</p>
+                <span class="panel-kicker">Cognition</span>
+                <h3>从信息，到结构。</h3>
               </div>
-              <div class="feature-grid">
-                <article><strong>复杂信息理解</strong><p>从语言表面进入关系、结构和问题位置。</p></article>
-                <article><strong>结构化表达</strong><p>把模糊感受变成可讨论、可输出的模型。</p></article>
-                <article><strong>逻辑判断</strong><p>判断观点、计划和 AI 输出哪里成立、哪里断裂。</p></article>
-                <article><strong>认知迁移</strong><p>把一个场景学到的方法迁移到学习、工作和决策。</p></article>
+              <div class="signal-list" aria-label="认知训练方向">
+                <span>信息理解</span>
+                <span>结构表达</span>
+                <span>逻辑判断</span>
+                <span>AI 协作</span>
               </div>
             </article>
 
             <article class="branch-panel" data-panel="courses" role="tabpanel" hidden>
               <div class="panel-copy">
                 <span class="panel-kicker">Courses</span>
-                <h3>课程是社区的训练场，不是单向讲座。</h3>
-                <p>当前课程结构由认知能力主线、人机协作六讲、私教与小班训练、青少年 AI 训练营候选线组成。</p>
+                <h3>课程是训练场。</h3>
               </div>
               <div class="course-lines">
-                <div><span>01</span><strong>符号云四阶</strong><p>符号与逻辑、对象云、事件链、事件云，逐步训练复杂问题建模能力。</p></div>
-                <div><span>02</span><strong>人机协作六讲</strong><p>从大模型底层逻辑、语义围场、结构化提示词到真实工作流。</p></div>
-                <div><span>03</span><strong>私教与小班</strong><p>课前理解、课程输入、课后训练、过程记录和阶段反馈形成闭环。</p></div>
-                <div><span>04</span><strong>青少年 AI 训练营</strong><p>围绕 AI 学习力、项目表达、PPT/报告和可展示作品设计。</p></div>
+                <div><span>01</span><strong>符号云四阶</strong></div>
+                <div><span>02</span><strong>人机协作六讲</strong></div>
+                <div><span>03</span><strong>私教与小班</strong></div>
+                <div><span>04</span><strong>青少年 AI 训练营</strong></div>
               </div>
             </article>
 
             <article class="branch-panel" data-panel="delivery" role="tabpanel" hidden>
               <div class="panel-copy">
-                <span class="panel-kicker">Delivery</span>
-                <h3>真实交付来自连续训练和过程记录。</h3>
-                <p>White Matter 已积累长期私教、小班课、课后训练、结构化课记和匿名案例。公开展示时只呈现脱敏后的能力变化轨迹。</p>
+                <span class="panel-kicker">Proof</span>
+                <h3>真实训练样本。</h3>
               </div>
-              <div class="case-grid">
-                <article><h4>学习者 A</h4><p>从复杂文本局部理解，推进到主动追问关键问题和组织口头模型。</p><strong>6 次样本 · 约 11 小时</strong></article>
-                <article><h4>学习者 B</h4><p>从创意强但执行链不足，进入工具选择、demo 任务和精确执行训练。</p><strong>5 次样本 · 约 8 小时</strong></article>
-                <article><h4>小班样本</h4><p>完成课前评估、连续主课、课后训练和多次输出讲评。</p><strong>4 名评估 · 7 次主课</strong></article>
+              <div class="metric-grid">
+                <article><strong>6</strong><span>次结构化课程样本</span></article>
+                <article><strong>5</strong><span>次创意项目训练</span></article>
+                <article><strong>7</strong><span>次连续小班主课</span></article>
               </div>
             </article>
 
             <article class="branch-panel media-panel" data-panel="zhisi" role="tabpanel" hidden>
               <div class="panel-copy">
                 <span class="panel-kicker">Zhisi</span>
-                <h3>织思是社区的思考工具线。</h3>
-                <p>织思把线性文字转成节点、关系、结构和场景，让讨论、学习和 AI 协作过程更容易被看见、被复盘、被改进。</p>
-                <ul class="simple-list">
-                  <li>节点-连线建模：拆对象、属性、关系和推演路径</li>
-                  <li>对象云：围绕人物、事件、项目和客户做场域分析</li>
-                  <li>AI 辅助整理：把讨论记录、结构图和输出报告连接起来</li>
-                </ul>
+                <h3>把思考外化成图。</h3>
+                <div class="signal-list compact" aria-label="织思能力">
+                  <span>节点</span>
+                  <span>关系</span>
+                  <span>对象云</span>
+                  <span>AI 整理</span>
+                </div>
               </div>
               <figure class="tool-preview">
                 <img src="./assets/white-matter-deck-overview.png" alt="White Matter 合作资料预览">
-                <figcaption>织思和课程资料会逐步形成社区成员可使用的工具与模板。</figcaption>
               </figure>
             </article>
 
             <article class="branch-panel" data-panel="collab" role="tabpanel" hidden>
               <div class="panel-copy">
                 <span class="panel-kicker">Join</span>
-                <h3>适合加入或合作的几类人。</h3>
-                <p>社区面向学习者、家长、教育机构、企业团队和 AI 创作者开放。当前优先推进课程试点、青少年 AI 训练营、企业人机协作培训和织思工具试用。</p>
+                <h3>进入连接网络。</h3>
               </div>
-              <div class="feature-grid compact">
-                <article><strong>学习者</strong><p>希望提升阅读、表达、判断和 AI 使用能力。</p></article>
-                <article><strong>家长 / 机构</strong><p>关注青少年 AI 学习力、项目式学习和表达输出。</p></article>
-                <article><strong>企业团队</strong><p>需要把 AI 接进真实工作流，而不只是体验工具。</p></article>
-                <article><strong>共创伙伴</strong><p>愿意参与课程、工具、内容和社区建设。</p></article>
+              <div class="signal-list" aria-label="合作对象">
+                <span>学习者</span>
+                <span>家长 / 机构</span>
+                <span>企业团队</span>
+                <span>共创伙伴</span>
               </div>
             </article>
           </div>
@@ -201,39 +236,22 @@
 
       <section id="programs" class="section program-section">
         <div class="section-heading">
-          <p class="eyebrow">Programs</p>
-          <h2>社区里的相关介绍。</h2>
-          <p>下面这些是 White Matter 当前可以持续生长的内容、课程和工具入口。</p>
+          <p class="eyebrow">Signals</p>
+          <h2>正在生长的四条线。</h2>
         </div>
         <div class="program-grid">
-          <article>
-            <span>Course</span>
-            <h3>AI 时代认知能力课程矩阵</h3>
-            <p>从信息理解、结构化表达、逻辑判断到 AI 协作，形成可训练的学习力和工作能力。</p>
-          </article>
-          <article>
-            <span>Tool</span>
-            <h3>织思可视化建模</h3>
-            <p>把人的思考过程外化为节点、关系和结构，服务课堂讨论、项目复盘和 AI 协作。</p>
-          </article>
-          <article>
-            <span>Research</span>
-            <h3>内容与研发</h3>
-            <p>访谈高强度 AI 使用者，沉淀任务拆解、工作流组织和能力成长路径。</p>
-          </article>
-          <article>
-            <span>Community</span>
-            <h3>共学与共创</h3>
-            <p>通过组会、训练任务、输出讲评和真实项目，让成员在社区里持续升级。</p>
-          </article>
+          <article><span>Course</span><h3>认知能力课程</h3></article>
+          <article><span>Tool</span><h3>织思可视化建模</h3></article>
+          <article><span>Research</span><h3>AI 使用者访谈</h3></article>
+          <article><span>Community</span><h3>共学与共创</h3></article>
         </div>
       </section>
 
       <section id="contact" class="section contact-section">
         <div class="contact-copy">
-          <p class="eyebrow">Collaboration</p>
-          <h2>加入 White Matter 社区，或发起一次合作。</h2>
-          <p>适合咨询课程试点、青少年 AI 训练营、企业人机协作培训、织思工具试用、社区共创和内容合作。</p>
+          <p class="eyebrow">Contact</p>
+          <h2>连接 White Matter。</h2>
+          <p>课程、工具、训练营、企业协作。</p>
         </div>
         <form class="contact-form" id="betaForm">
           <label>
@@ -246,10 +264,10 @@
           </label>
           <label>
             <span>合作方向</span>
-            <textarea name="message" rows="4" placeholder="例如：加入社区、AI 训练营、企业培训、织思工具、课程合作"></textarea>
+            <textarea name="message" rows="4" placeholder="课程 / 织思 / 训练营 / 企业合作"></textarea>
           </label>
-          <button type="submit">提交合作意向</button>
-          <p class="form-note" id="formNote">提交后会先保存在当前页面，正式上线后可接入飞书多维表、腾讯云表单、企业微信或自有后端。</p>
+          <button type="submit">提交</button>
+          <p class="form-note" id="formNote">已先保存在当前页面。正式上线后接入表单服务。</p>
         </form>
       </section>
     </main>
