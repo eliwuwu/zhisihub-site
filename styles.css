@@ -211,62 +211,31 @@ p {
 .neural-figure {
   position: absolute;
   z-index: 1;
-  top: 104px;
-  right: clamp(18px, 6vw, 96px);
-  width: min(52vw, 740px);
-  opacity: 0.86;
+  top: 82px;
+  right: clamp(-22px, 2.4vw, 42px);
+  width: min(56vw, 760px);
+  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.96;
   pointer-events: none;
 }
 
-.neural-figure svg {
+.neural-figure::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(33, 184, 201, 0.16), transparent 62%);
+  filter: blur(28px);
+}
+
+.neural-figure img {
+  position: relative;
   width: 100%;
   height: auto;
-  overflow: visible;
-}
-
-.brain-outline {
-  fill: rgba(33, 184, 201, 0.045);
-  stroke: rgba(205, 232, 255, 0.24);
-  stroke-width: 2;
-}
-
-.fiber,
-.neuron-cluster path {
-  fill: none;
-  stroke: url(#fiberGradient);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.fiber {
-  stroke-width: 4;
-  opacity: 0.48;
-}
-
-.fiber-b,
-.fiber-d {
-  opacity: 0.32;
-}
-
-.synapses circle {
-  fill: rgba(159, 239, 255, 0.9);
-  stroke: rgba(33, 184, 201, 0.65);
-  stroke-width: 3;
-}
-
-.neuron-cluster {
-  opacity: 0.76;
-}
-
-.neuron-cluster path {
-  stroke-width: 3;
-  opacity: 0.64;
-}
-
-.neuron-cluster circle {
-  fill: rgba(229, 139, 49, 0.88);
-  stroke: rgba(255, 230, 190, 0.48);
-  stroke-width: 2;
+  filter: drop-shadow(0 0 28px rgba(159, 239, 255, 0.18)) drop-shadow(0 22px 70px rgba(0, 0, 0, 0.34));
+  mix-blend-mode: screen;
 }
 
 .hero-inner {
@@ -829,10 +798,10 @@ h1 {
   }
 
   .neural-figure {
-    top: 86px;
-    right: -170px;
-    width: 560px;
-    opacity: 0.42;
+    top: 94px;
+    right: -228px;
+    width: 620px;
+    opacity: 0.52;
   }
 
   h1 {
