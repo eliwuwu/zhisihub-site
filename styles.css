@@ -903,3 +903,224 @@ h1 {
     font-size: 2.55rem;
   }
 }
+
+/* Monochrome visual direction */
+:root {
+  color-scheme: light;
+  --ink: #101010;
+  --muted: #666666;
+  --dim: #8a8a8a;
+  --paper: #f7f7f7;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --line: rgba(16, 16, 16, 0.13);
+  --navy: #101010;
+  --navy-2: #222222;
+  --cyan: #101010;
+  --blue: #333333;
+  --orange: #101010;
+  --violet: #4a4a4a;
+  --shadow: 0 24px 80px rgba(16, 16, 16, 0.08);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(247, 247, 247, 0.9);
+  color: var(--ink);
+}
+
+.brand-mark {
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.brand small {
+  color: var(--muted);
+}
+
+.nav-links {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.nav-links a,
+.nav-links button {
+  color: rgba(16, 16, 16, 0.66);
+}
+
+.nav-links a:hover,
+.nav-links button:hover,
+.nav-links button.is-active {
+  background: #101010;
+  color: #ffffff;
+}
+
+.nav-cta,
+.primary-button,
+.contact-form button {
+  background: #101010;
+  color: #ffffff;
+}
+
+.community-hero {
+  background: #f7f7f7;
+  color: var(--ink);
+  align-items: center;
+  min-height: min(820px, calc(100svh - 72px));
+  padding-top: 96px;
+  padding-bottom: 54px;
+}
+
+.community-hero::after {
+  background:
+    repeating-linear-gradient(90deg, rgba(16, 16, 16, 0.028) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(0deg, rgba(16, 16, 16, 0.02) 0 1px, transparent 1px 96px);
+  opacity: 0.9;
+}
+
+.hero-bg img {
+  filter: grayscale(1) contrast(1.04);
+  opacity: 0.1;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(247, 247, 247, 0.98) 0%, rgba(247, 247, 247, 0.92) 42%, rgba(247, 247, 247, 0.36) 100%),
+    linear-gradient(180deg, rgba(247, 247, 247, 0.24) 0%, rgba(247, 247, 247, 1) 100%);
+}
+
+.neural-figure {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  opacity: 0.56;
+}
+
+.neural-figure::before {
+  display: none;
+}
+
+.neural-figure img {
+  opacity: 0.86;
+  filter: grayscale(1) invert(1) saturate(0) contrast(1.18) brightness(1.06);
+  mix-blend-mode: multiply;
+}
+
+.eyebrow,
+.mission-strip span,
+.panel-kicker,
+.program-grid span,
+.founder-card span,
+.course-lines span,
+.metric-grid strong {
+  color: #101010;
+}
+
+.hero-lead {
+  color: rgba(16, 16, 16, 0.68);
+}
+
+.neural-note {
+  border-color: rgba(16, 16, 16, 0.16);
+  background: rgba(255, 255, 255, 0.68);
+  color: rgba(16, 16, 16, 0.7);
+}
+
+.secondary-button {
+  border-color: rgba(16, 16, 16, 0.22);
+  background: rgba(255, 255, 255, 0.78);
+  color: #101010;
+}
+
+.mission-strip article,
+.founder-card,
+.branch-panel,
+.program-grid article,
+.contact-form,
+.legal-page article {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.founder-section,
+.program-section,
+.branch-section,
+.contact-section {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f3f3f3 100%);
+}
+
+.lead-founder {
+  background: #ffffff;
+}
+
+.avatar-mark {
+  border-color: rgba(16, 16, 16, 0.18);
+  background: #101010;
+  color: #ffffff;
+}
+
+.branch-menu button {
+  background: rgba(255, 255, 255, 0.76);
+  color: rgba(16, 16, 16, 0.62);
+}
+
+.branch-menu button:hover,
+.branch-menu button.is-active {
+  border-color: #101010;
+  background: #101010;
+  color: #ffffff;
+}
+
+.signal-list span {
+  color: rgba(16, 16, 16, 0.82);
+}
+
+.tool-preview img {
+  box-shadow: 0 18px 56px rgba(16, 16, 16, 0.1);
+}
+
+.program-grid article:nth-child(1),
+.program-grid article:nth-child(2),
+.program-grid article:nth-child(3),
+.program-grid article:nth-child(4) {
+  border-top-color: #101010;
+}
+
+.contact-form span,
+.site-footer a {
+  color: #101010;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.86);
+  color: #101010;
+}
+
+.site-footer {
+  background: #f7f7f7;
+}
+
+@media (max-width: 760px) {
+  .community-hero {
+    align-items: end;
+    min-height: auto;
+    padding: 70px 20px 34px;
+  }
+
+  .neural-figure {
+    right: -278px;
+    opacity: 0.3;
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(90deg, rgba(247, 247, 247, 1) 0%, rgba(247, 247, 247, 0.92) 62%, rgba(247, 247, 247, 0.48) 100%),
+      linear-gradient(180deg, rgba(247, 247, 247, 0.52) 0%, rgba(247, 247, 247, 1) 100%);
+  }
+}
