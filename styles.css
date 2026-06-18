@@ -995,10 +995,18 @@ body {
 }
 
 .neural-figure {
-  border: 0;
-  background: transparent;
-  box-shadow: none;
-  opacity: 0.56;
+  top: 78px;
+  right: clamp(-26px, 2vw, 34px);
+  width: min(52vw, 720px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(16, 16, 16, 0.16);
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0c1118;
+  box-shadow: 0 28px 110px rgba(16, 16, 16, 0.18);
+  opacity: 0.94;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .neural-figure::before {
@@ -1006,9 +1014,22 @@ body {
 }
 
 .neural-figure img {
-  opacity: 0.86;
-  filter: grayscale(1) invert(1) saturate(0) contrast(1.18) brightness(1.06);
-  mix-blend-mode: multiply;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transform: none;
+  filter: saturate(0.92) contrast(1.05) brightness(1.02);
+  mix-blend-mode: normal;
+}
+
+.mission-strip {
+  width: min(820px, 100%);
+}
+
+.mission-strip article {
+  min-height: 112px;
+  padding: 18px 20px;
 }
 
 .eyebrow,
@@ -1056,6 +1077,11 @@ body {
 
 .lead-founder {
   background: #ffffff;
+}
+
+.founder-layout {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(920px, 100%);
 }
 
 .avatar-mark {
@@ -1114,8 +1140,17 @@ body {
   }
 
   .neural-figure {
-    right: -278px;
-    opacity: 0.3;
+    top: 104px;
+    right: -288px;
+    width: 620px;
+    opacity: 0.46;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .founder-layout {
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .hero-shade {
