@@ -1,26 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 460" role="img" aria-labelledby="title desc">
-  <title id="title">罗尔线稿形象</title>
-  <desc id="desc">白底深色线条的人物半身形象。</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">罗尔 Founder 线稿形象</title>
+  <desc id="desc">穿简洁外套、双臂交叉的创始人线稿半身像。</desc>
   <defs>
     <style>
-      .line{fill:none;stroke:#6d641c;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
-      .thin{fill:none;stroke:#6d641c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
-      .soft{fill:none;stroke:#a49c65;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+      .bold{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#9e9866;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.62}
+      .shade{fill:none;stroke:#cbc5a1;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.54}
     </style>
   </defs>
-  <path class="line" d="M105 186c-2-61 34-105 93-104 47 1 78 33 85 83"/>
-  <path class="line" d="M110 163c18-48 59-72 112-73 35 0 61 23 70 57"/>
-  <path class="thin" d="M125 124c26-31 62-44 103-40M122 145c38-24 84-31 137-17M114 171c37-27 94-39 164-22M142 106c14-16 35-27 67-31"/>
-  <path class="line" d="M121 170c-4 25-2 77 11 104 14 28 37 49 63 48 24-1 45-19 58-45 13-25 18-78 13-105"/>
-  <path class="line" d="M112 203c-10 1-14 16-8 31 4 10 12 17 20 17M267 203c10 1 15 16 9 31-4 10-12 17-20 17"/>
-  <path class="thin" d="M153 207c12-8 27-8 40-1M216 206c12-7 26-7 39 1"/>
-  <path class="line" d="M160 219c8-4 19-4 27 0M223 219c8-4 19-4 27 0"/>
-  <path class="thin" d="M205 218c0 18-4 33-11 45 8 5 20 5 30 0"/>
-  <path class="line" d="M171 282c17 11 41 12 62 0"/>
-  <path class="line" d="M138 315c-41 17-73 48-91 93M241 315c42 17 73 49 92 94"/>
-  <path class="line" d="M116 404c39-34 92-42 151-14"/>
-  <path class="line" d="M93 436c52-43 132-50 207-7"/>
-  <path class="line" d="M146 316c14 31 33 49 55 54 18-10 34-28 47-55"/>
-  <path class="thin" d="M116 390c42 5 83 7 123 1M129 427c32-19 76-21 126-5"/>
-  <path class="soft" d="M138 183c33-16 75-18 119-4M143 194c35-8 75-7 114 4M156 333c15 15 30 25 45 31M237 331c-12 15-25 26-38 32"/>
+  <g transform="translate(38 28)">
+    <path class="bold" d="M236 447c-9-119 55-212 172-236 101-21 195 18 249 105 25 40 32 87 26 139"/>
+    <path class="bold" d="M252 389c49-97 128-149 239-155 84-4 148 32 183 99"/>
+    <path class="line" d="M269 327c71-57 152-81 240-75M247 373c88-53 203-65 344-36M285 287c58-59 130-82 216-72M389 226c42-32 91-40 148-22"/>
+    <path class="bold" d="M268 436c-14 83-1 197 39 258 33 51 78 80 133 79 55-1 99-32 130-86 36-62 45-173 36-250"/>
+    <path class="bold" d="M261 506c-37-2-57 37-43 86 10 36 36 62 66 62M611 506c38-2 58 37 43 86-10 36-36 62-66 62"/>
+    <path class="line" d="M337 550c35-18 80-16 112 3M494 551c34-18 78-16 110 2"/>
+    <path class="bold" d="M356 588c26-11 54-10 79 2M512 589c25-11 53-10 78 2"/>
+    <path class="line" d="M461 590c-1 48-14 93-38 131 26 14 60 13 92-2"/>
+    <path class="bold" d="M366 735c47 36 118 37 171 0"/>
+    <path class="thin" d="M385 761c42 17 87 17 132 0M356 672c56 17 111 18 164 2"/>
+    <path class="bold" d="M311 795c-106 38-188 112-251 223M569 795c107 38 190 113 254 225"/>
+    <path class="bold" d="M280 865c43 54 97 92 162 113 66-24 119-61 160-113"/>
+    <path class="line" d="M251 828c40 57 105 99 194 130M630 828c-41 58-105 101-190 130"/>
+    <path class="bold" d="M118 1066c97-98 197-135 299-112M764 1068c-99-96-198-134-300-113"/>
+    <path class="bold" d="M215 1005c60 71 152 107 275 111M660 1004c-60 70-153 107-277 112"/>
+    <path class="line" d="M138 1084c130 46 254 57 374 32M745 1084c-115 44-235 55-360 32"/>
+    <path class="thin" d="M305 835c35 48 81 84 139 106M579 836c-35 48-80 83-135 105M302 1012c95 45 198 58 308 38"/>
+    <path class="shade" d="M333 510c72-25 153-26 244-2M339 526c77-9 156-6 236 9M386 706c47 13 96 13 145 0"/>
+  </g>
 </svg>
