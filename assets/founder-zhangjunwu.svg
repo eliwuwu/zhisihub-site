@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 460" role="img" aria-labelledby="title desc">
+  <title id="title">张俊武线稿形象</title>
+  <desc id="desc">白底深色线条的人物半身形象。</desc>
+  <defs>
+    <style>
+      .line{fill:none;stroke:#6d641c;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#6d641c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+      .soft{fill:none;stroke:#a49c65;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+    </style>
+  </defs>
+  <path class="line" d="M119 179c-3-55 28-92 79-94 48-2 78 31 80 87"/>
+  <path class="line" d="M124 151c13-38 43-57 86-59 32-1 56 16 67 43"/>
+  <path class="thin" d="M133 120c28-21 61-28 98-19M122 139c37-19 83-23 139-8M121 159c45-18 92-20 142-4"/>
+  <path class="line" d="M128 169c-4 26-2 77 10 104 13 29 34 48 59 48 25 0 47-19 60-47 12-26 16-78 11-105"/>
+  <path class="line" d="M119 203c-10 1-15 15-9 31 4 10 12 17 21 17M270 203c10 1 15 15 9 31-4 10-12 17-21 17"/>
+  <path class="thin" d="M156 206c10-7 25-7 37-1M217 206c11-7 25-7 37 1"/>
+  <path class="line" d="M164 219c7-4 17-4 25 0M224 219c8-4 18-4 26 0"/>
+  <path class="thin" d="M204 219c0 17-4 31-11 43 8 5 18 5 28 0"/>
+  <path class="line" d="M171 281c18 13 43 13 64 0"/>
+  <path class="line" d="M137 314c-40 16-72 48-94 96M241 314c42 17 74 50 96 98"/>
+  <path class="line" d="M112 375c45 26 104 28 176 3"/>
+  <path class="line" d="M80 430c49-42 87-61 122-58 36 3 68 23 105 58"/>
+  <path class="line" d="M146 316l51 70 48-70"/>
+  <path class="thin" d="M160 331l38 53 34-53M117 397c52 18 103 17 154 0"/>
+  <path class="soft" d="M143 187c34-13 76-15 118-3M147 197c36-6 74-5 108 4M165 334c10 16 21 29 33 39M231 334c-11 17-22 30-33 39"/>
+</svg>

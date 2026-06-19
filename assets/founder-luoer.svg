@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 460" role="img" aria-labelledby="title desc">
+  <title id="title">罗尔线稿形象</title>
+  <desc id="desc">白底深色线条的人物半身形象。</desc>
+  <defs>
+    <style>
+      .line{fill:none;stroke:#6d641c;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#6d641c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+      .soft{fill:none;stroke:#a49c65;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+    </style>
+  </defs>
+  <path class="line" d="M105 186c-2-61 34-105 93-104 47 1 78 33 85 83"/>
+  <path class="line" d="M110 163c18-48 59-72 112-73 35 0 61 23 70 57"/>
+  <path class="thin" d="M125 124c26-31 62-44 103-40M122 145c38-24 84-31 137-17M114 171c37-27 94-39 164-22M142 106c14-16 35-27 67-31"/>
+  <path class="line" d="M121 170c-4 25-2 77 11 104 14 28 37 49 63 48 24-1 45-19 58-45 13-25 18-78 13-105"/>
+  <path class="line" d="M112 203c-10 1-14 16-8 31 4 10 12 17 20 17M267 203c10 1 15 16 9 31-4 10-12 17-20 17"/>
+  <path class="thin" d="M153 207c12-8 27-8 40-1M216 206c12-7 26-7 39 1"/>
+  <path class="line" d="M160 219c8-4 19-4 27 0M223 219c8-4 19-4 27 0"/>
+  <path class="thin" d="M205 218c0 18-4 33-11 45 8 5 20 5 30 0"/>
+  <path class="line" d="M171 282c17 11 41 12 62 0"/>
+  <path class="line" d="M138 315c-41 17-73 48-91 93M241 315c42 17 73 49 92 94"/>
+  <path class="line" d="M116 404c39-34 92-42 151-14"/>
+  <path class="line" d="M93 436c52-43 132-50 207-7"/>
+  <path class="line" d="M146 316c14 31 33 49 55 54 18-10 34-28 47-55"/>
+  <path class="thin" d="M116 390c42 5 83 7 123 1M129 427c32-19 76-21 126-5"/>
+  <path class="soft" d="M138 183c33-16 75-18 119-4M143 194c35-8 75-7 114 4M156 333c15 15 30 25 45 31M237 331c-12 15-25 26-38 32"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 460" role="img" aria-labelledby="title desc">
+  <title id="title">夏洛克线稿形象</title>
+  <desc id="desc">白底深色线条的人物半身形象。</desc>
+  <defs>
+    <style>
+      .line{fill:none;stroke:#6d641c;stroke-width:4.2;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#6d641c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+      .soft{fill:none;stroke:#a49c65;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round;opacity:.42}
+    </style>
+  </defs>
+  <path class="line" d="M118 191c-6-46 12-92 63-97 49-5 78 32 73 87"/>
+  <path class="line" d="M123 178c-9-39 2-72 36-91 22-12 54-17 84 2"/>
+  <path class="thin" d="M127 123c18-30 53-48 92-41M142 102c23-27 64-32 97-16M118 150c23-24 63-43 127-40M132 137c33-16 62-20 105-14"/>
+  <path class="line" d="M129 167c-5 23-2 72 11 101 10 23 27 46 48 47 23 1 43-20 55-43 12-24 17-78 13-103"/>
+  <path class="line" d="M121 197c-11 0-16 13-10 29 4 11 12 18 21 18M259 197c11 0 16 13 10 29-4 11-12 18-21 18"/>
+  <path class="thin" d="M158 202c9-7 24-7 35-1M212 202c10-7 25-6 35 0"/>
+  <path class="line" d="M165 214c7-4 18-4 25 0M217 214c7-4 18-4 25 0"/>
+  <path class="thin" d="M200 211c-1 17-4 31-10 42 7 4 17 4 26 1"/>
+  <path class="line" d="M169 276c21 14 47 14 67 0"/>
+  <path class="thin" d="M178 263c18 6 34 6 50 0"/>
+  <path class="line" d="M151 311c-42 18-74 48-95 93M231 309c43 18 76 48 98 95"/>
+  <path class="line" d="M118 363c34 20 85 29 147 0"/>
+  <path class="line" d="M90 402c37 25 102 38 184 5"/>
+  <path class="line" d="M151 314c14 25 30 40 47 47 16-9 29-24 42-48"/>
+  <path class="thin" d="M74 430c35-31 66-46 104-54M288 430c-33-31-65-47-106-55"/>
+  <path class="soft" d="M145 181c21-17 45-21 74-18M146 193c29-10 62-12 95-4M154 329c19 17 35 25 46 29M236 326c-16 16-29 26-39 31"/>
+</svg>

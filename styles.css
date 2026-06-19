@@ -1075,13 +1075,56 @@ body {
 
 .founder-layout {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(920px, 100%);
+  width: min(1080px, 100%);
+  gap: 18px;
+  align-items: stretch;
 }
 
 .avatar-mark {
   border-color: rgba(16, 16, 16, 0.18);
   background: #101010;
   color: #ffffff;
+}
+
+.founder-card {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.founder-copy {
+  position: relative;
+  z-index: 1;
+  padding: 28px 28px 0;
+}
+
+.founder-copy span {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(16, 16, 16, 0.48);
+  font-size: 0.86rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.founder-card h3 {
+  margin: 0;
+  font-size: clamp(2.1rem, 3.2vw, 3.15rem);
+  font-weight: 620;
+  line-height: 1.02;
+}
+
+.founder-portrait {
+  position: absolute;
+  right: -8%;
+  bottom: -34px;
+  width: 92%;
+  max-width: none;
+  object-fit: contain;
 }
 
 .branch-menu button {
@@ -1145,6 +1188,20 @@ body {
   .founder-layout {
     grid-template-columns: 1fr;
     width: 100%;
+  }
+
+  .founder-card {
+    min-height: 430px;
+  }
+
+  .founder-copy {
+    padding: 24px 24px 0;
+  }
+
+  .founder-portrait {
+    right: -5%;
+    bottom: -28px;
+    width: 92%;
   }
 
   .hero-shade {
