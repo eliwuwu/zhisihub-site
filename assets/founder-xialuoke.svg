@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
   <title id="title">夏洛克 Founder 线稿形象</title>
-  <desc id="desc">年轻、冷静、思考者气质的创始人线稿半身像。</desc>
+  <desc id="desc">根据侧脸照片绘制的夏洛克创始人简笔线稿，保留眼镜、侧脸、海边栏杆和深色外套姿态。</desc>
   <defs>
     <style>
       .bold{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
@@ -9,24 +9,34 @@
       .shade{fill:none;stroke:#cbc5a1;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.54}
     </style>
   </defs>
-  <g transform="translate(40 24)">
-    <path class="bold" d="M233 465c-20-116 14-222 121-266 91-37 204-11 267 71 37 48 48 110 33 187"/>
-    <path class="line" d="M248 371c64-106 168-152 319-128M232 426c82-89 199-130 368-115M282 298c65-80 150-103 254-73"/>
-    <path class="thin" d="M255 342c78-56 161-81 264-78M270 392c77-36 178-49 302-32M318 252c48-43 104-62 175-55"/>
-    <path class="bold" d="M262 444c-12 77-2 196 39 260 31 48 74 76 127 76 55 0 102-30 134-83 40-66 51-184 40-254"/>
-    <path class="bold" d="M258 508c-38-4-60 36-47 86 10 38 35 65 66 66M606 508c39-4 60 36 47 86-10 38-35 65-66 66"/>
-    <path class="line" d="M327 549c33-18 76-18 108-1M479 547c34-18 78-18 110 1"/>
-    <path class="bold" d="M347 586c25-12 51-12 76 0M498 586c24-12 50-12 75 0"/>
-    <path class="line" d="M449 584c-2 48-15 92-38 130 25 13 56 12 88-2"/>
-    <path class="thin" d="M342 688c37 17 75 20 117 10M502 694c22 5 43 4 66-2"/>
-    <path class="bold" d="M344 727c47 39 121 41 174 0"/>
-    <path class="thin" d="M366 755c44 18 91 18 135 0"/>
-    <path class="bold" d="M310 785c-100 37-178 114-237 233M546 786c111 38 190 115 245 233"/>
-    <path class="bold" d="M207 978c104 65 247 77 423 18"/>
-    <path class="line" d="M120 1104c128-85 243-119 350-102 76 12 144 46 210 102"/>
-    <path class="bold" d="M310 798c41 65 82 108 123 128 43-23 78-66 112-127"/>
-    <path class="line" d="M238 905l-92 190M281 890l-42 217"/>
-    <path class="thin" d="M178 1006c138 70 303 80 492 29M320 817c34 41 72 70 111 88M536 820c-33 41-67 69-102 86"/>
-    <path class="shade" d="M321 500c69-31 147-37 237-18M320 515c83-14 166-13 247 4M334 650c53 16 111 16 174 0M286 330c60-56 126-89 197-100"/>
+  <g transform="translate(28 24)">
+    <path class="bold" d="M473 232c-72-47-175-33-231 32-47 55-54 129-19 207"/>
+    <path class="line" d="M253 303c54-49 119-72 195-65M229 342c70-45 143-57 221-37M260 270c48-34 104-48 169-43"/>
+    <path class="thin" d="M274 254c51-20 101-27 151-18M235 323c72-28 143-32 213-13M230 373c62-22 125-20 190 5"/>
+    <path class="bold" d="M364 319c-42 21-73 55-93 101"/>
+    <path class="bold" d="M271 420c22 9 45 14 70 15"/>
+    <path class="line" d="M337 436c-14 13-30 24-48 32"/>
+    <path class="bold" d="M289 468c18 30 49 49 93 57"/>
+    <path class="line" d="M320 401c28-8 56-3 84 13"/>
+    <path class="bold" d="M337 415c17-7 36-5 57 8"/>
+    <path class="line" d="M305 434c27 9 55 10 85 1"/>
+    <path class="line" d="M260 421c-20 22-39 39-58 50"/>
+    <path class="bold" d="M205 467c27 22 58 34 94 35"/>
+    <path class="thin" d="M312 493c24 20 53 34 87 42M329 525c24 15 51 24 82 27"/>
+    <path class="bold" d="M395 540c-24 58-16 109 25 151"/>
+    <path class="bold" d="M327 584c-85 33-142 101-171 203"/>
+    <path class="bold" d="M445 590c112 44 185 128 220 252"/>
+    <path class="line" d="M243 672c69 72 155 108 260 108"/>
+    <path class="line" d="M300 618c50 55 109 89 177 103"/>
+    <path class="bold" d="M192 768c-23 92-20 190 10 294"/>
+    <path class="bold" d="M653 840c24 75 27 151 8 229"/>
+    <path class="line" d="M240 813c98 47 212 59 340 33M223 885c119 44 250 50 393 17M228 974c117 28 244 30 380 7"/>
+    <path class="bold" d="M74 838c176-40 358-53 547-39"/>
+    <path class="bold" d="M86 931c174-35 352-43 534-24"/>
+    <path class="bold" d="M151 805c40 28 84 40 132 35"/>
+    <path class="line" d="M151 804c-23 31-30 61-20 91M193 818c-7 37 4 65 33 84"/>
+    <path class="line" d="M131 877c45 15 89 11 132-12"/>
+    <path class="thin" d="M148 875c19-9 38-14 57-15M169 815c22 15 46 21 72 19"/>
+    <path class="shade" d="M124 744c69-16 138-27 208-32M464 720c57 15 111 42 162 82M177 669c38-42 83-70 136-85"/>
   </g>
 </svg>

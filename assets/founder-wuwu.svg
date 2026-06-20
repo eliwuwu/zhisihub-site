@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">wuwu Founder 线稿形象</title>
+  <desc id="desc">根据头像照片绘制的 wuwu 创始人简笔线稿，保留银灰短发、咖啡杯和条纹外套特征。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#9e9866;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.62}
+      .shade{fill:none;stroke:#cbc5a1;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.54}
+    </style>
+  </defs>
+  <g transform="translate(42 24)">
+    <path class="bold" d="M248 399c-18-82 10-150 83-198 70-45 170-43 238 9 56 43 74 110 50 189"/>
+    <path class="bold" d="M260 330c51-96 132-141 244-135 72 4 123 35 153 94"/>
+    <path class="line" d="M279 294c64-52 139-79 224-81M258 339c82-49 173-63 274-41M313 240c64-31 127-38 190-21"/>
+    <path class="thin" d="M285 260c51-24 104-36 161-34M303 319c78-22 157-25 238-8M364 210c43-10 84-11 122-2"/>
+    <path class="shade" d="M300 278c24-33 52-54 85-64M398 207c-14 32-25 68-34 109M453 211c4 37 2 72-6 106M511 224c20 30 30 65 31 104"/>
+    <path class="bold" d="M264 386c-7 72 8 159 44 216 33 52 78 82 134 82 58 0 104-33 136-88 33-58 42-141 33-211"/>
+    <path class="bold" d="M257 452c-35 0-56 36-45 82 9 35 33 61 62 63M614 447c38-2 59 34 45 80-10 35-35 61-66 63"/>
+    <path class="line" d="M348 493c31-16 70-17 101-3M497 491c32-15 70-14 101 3"/>
+    <path class="bold" d="M365 525c23-10 47-10 71 0M516 525c23-10 48-10 72 0"/>
+    <path class="line" d="M465 523c-2 43-14 83-38 120 24 13 55 12 86-2"/>
+    <path class="thin" d="M360 618c52 16 106 16 161 0M357 646c54 18 110 18 166 0"/>
+    <path class="bold" d="M378 662c44 34 108 34 158 0"/>
+    <path class="bold" d="M323 696c-97 27-169 93-217 197"/>
+    <path class="bold" d="M590 696c111 31 187 104 229 221"/>
+    <path class="bold" d="M275 795c89 61 200 77 334 50"/>
+    <path class="line" d="M314 709c38 53 86 86 143 100 53-16 95-49 128-99"/>
+    <path class="bold" d="M202 779c-28 91-34 187-18 288"/>
+    <path class="bold" d="M685 784c28 92 34 186 19 282"/>
+    <path class="line" d="M250 850c109 43 230 53 364 30M227 924c128 40 263 45 405 15M232 1010c128 24 264 26 409 6"/>
+    <path class="thin" d="M286 744v318M322 732v336M360 722v352M400 713v362M442 810v268M492 804v271M538 726v343M578 735v329M617 752v303"/>
+    <path class="line" d="M343 760c-30 51-52 104-66 158M567 756c30 54 52 111 66 169"/>
+    <path class="line" d="M381 733c-14 22-19 45-15 70M529 731c11 23 14 47 9 72"/>
+    <path class="bold" d="M126 581c34-43 79-62 136-57"/>
+    <path class="line" d="M105 548c58-28 111-29 159-4"/>
+    <path class="bold" d="M113 482c32-37 77-56 134-55"/>
+    <path class="line" d="M92 499c35 47 69 93 103 139"/>
+    <path class="line" d="M145 444c27 51 56 105 87 162"/>
+    <path class="bold" d="M95 430c58-25 114-25 170 0"/>
+    <path class="bold" d="M93 429c-18 58-19 117-3 177"/>
+    <path class="bold" d="M264 430c11 58 1 115-31 171"/>
+    <path class="thin" d="M113 451c39-12 80-12 122 0M101 487c48-13 96-12 143 3M99 527c50-9 97-7 141 7M107 567c40-6 78-2 113 10"/>
+    <path class="line" d="M103 421c-31 10-55 31-72 64M91 609c-46 29-65 74-56 134"/>
+    <path class="bold" d="M67 690c60 43 123 47 189 13"/>
+    <path class="line" d="M87 650c31 22 64 31 100 26M123 689c19-5 38-13 58-25"/>
+    <path class="thin" d="M371 760c22 18 50 29 84 32M536 757c-22 20-48 32-79 36"/>
+    <path class="line" d="M338 887l43-29 44 29-44 28zM554 890l42-28 43 28-43 29z"/>
+    <path class="thin" d="M271 804c103 48 222 60 356 34M299 698c43 43 96 69 158 78M582 699c-37 42-79 67-126 76"/>
+  </g>
+</svg>
