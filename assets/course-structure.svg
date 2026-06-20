@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">课程结构线稿</title>
+  <desc id="desc">认知训练课程的极简结构图。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#a8a176;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+      .dot{fill:#fff8db;stroke:#6f681b;stroke-width:4}
+    </style>
+  </defs>
+  <path class="bold" d="M164 511c108-150 190-258 309-323 89-49 179-63 268-54"/>
+  <path class="thin" d="M180 548c108-68 226-100 356-96 84 3 146 20 207 48"/>
+  <path class="line" d="M215 423h438M254 350h362M304 277h253"/>
+  <circle class="dot" cx="215" cy="423" r="28"/>
+  <circle class="dot" cx="254" cy="350" r="24"/>
+  <circle class="dot" cx="304" cy="277" r="21"/>
+  <circle class="dot" cx="653" cy="423" r="28"/>
+  <circle class="dot" cx="616" cy="350" r="24"/>
+  <circle class="dot" cx="557" cy="277" r="21"/>
+  <path class="thin" d="M215 423c52 45 109 70 171 74M254 350c57 35 120 51 188 48M304 277c63 25 127 29 192 14"/>
+  <path class="bold" d="M134 580c88-71 188-107 301-108 103-1 209 28 317 88"/>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img" aria-labelledby="title desc">
+  <title id="title">白质神经光束</title>
+  <desc id="desc">透明底的暖白神经连接光束，带柔和光触点。</desc>
+  <defs>
+    <linearGradient id="fiber" x1="120" y1="760" x2="1040" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5f6060" stop-opacity=".08"/>
+      <stop offset=".42" stop-color="#c0b08a" stop-opacity=".46"/>
+      <stop offset=".7" stop-color="#fff4d8" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#8a8170" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="core" x1="180" y1="720" x2="930" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7b7664" stop-opacity=".18"/>
+      <stop offset=".48" stop-color="#fff8e8" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#d6bd73" stop-opacity=".35"/>
+    </linearGradient>
+    <radialGradient id="touch" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fffdf4"/>
+      <stop offset=".32" stop-color="#ffe9a8" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#d6b04e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="warm-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.98  0 1 0 0 0.83  0 0 1 0 0.48  0 0 0 .72 0" result="gold"/>
+      <feMerge>
+        <feMergeNode in="gold"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="contact-glow" x="-180%" y="-180%" width="460%" height="460%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 1 0 0 .82  0 0 1 0 .36  0 0 0 .85 0" result="halo"/>
+      <feMerge>
+        <feMergeNode in="halo"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g opacity=".22" stroke="#2f3232" stroke-width="3">
+      <path d="M217 720C252 548 342 402 504 310C641 232 804 211 968 252"/>
+      <path d="M198 742C262 610 372 508 532 445C665 393 804 382 1018 414"/>
+      <path d="M257 772C362 699 487 658 643 652C798 647 909 677 1014 737"/>
+    </g>
+
+    <g filter="url(#warm-glow)">
+      <path d="M176 762C278 635 381 539 512 476C664 403 807 340 1018 195" stroke="url(#core)" stroke-width="24" opacity=".55"/>
+      <path d="M214 790C322 667 438 571 578 506C717 441 856 398 1056 315" stroke="url(#core)" stroke-width="18" opacity=".5"/>
+      <path d="M236 810C371 711 502 656 645 632C794 607 914 628 1058 684" stroke="url(#core)" stroke-width="16" opacity=".42"/>
+      <path d="M285 832C411 770 535 748 678 769C810 788 915 847 1028 916" stroke="url(#core)" stroke-width="11" opacity=".3"/>
+    </g>
+
+    <g stroke="url(#fiber)" filter="url(#warm-glow)">
+      <path d="M178 760C279 586 385 418 624 318C741 268 869 237 1006 184" stroke-width="7" opacity=".9"/>
+      <path d="M188 780C300 610 426 459 652 374C772 329 895 309 1038 270" stroke-width="6" opacity=".78"/>
+      <path d="M209 798C337 640 485 520 699 454C815 419 922 404 1065 379" stroke-width="5.5" opacity=".72"/>
+      <path d="M229 811C374 682 527 589 720 544C853 513 946 523 1078 533" stroke-width="5" opacity=".65"/>
+      <path d="M258 826C401 724 555 670 724 662C859 656 950 689 1062 730" stroke-width="5" opacity=".58"/>
+      <path d="M300 845C441 783 584 770 722 811C837 845 926 908 1016 963" stroke-width="4.5" opacity=".5"/>
+      <path d="M190 746C272 630 336 548 445 493C575 427 751 398 972 361" stroke-width="4" opacity=".58"/>
+      <path d="M172 733C235 626 281 530 386 445C506 348 676 302 873 242" stroke-width="4" opacity=".52"/>
+      <path d="M221 779C321 706 411 653 536 624C672 592 830 594 1048 622" stroke-width="3.6" opacity=".42"/>
+      <path d="M246 790C352 752 450 732 570 739C720 747 836 800 994 882" stroke-width="3.4" opacity=".35"/>
+    </g>
+
+    <g stroke="#5e5f5f" stroke-width="1.4" opacity=".16">
+      <path d="M205 742C287 683 367 643 461 620C551 598 663 602 780 628"/>
+      <path d="M202 724C273 638 345 572 452 528C560 483 689 470 835 482"/>
+      <path d="M229 801C357 728 475 696 612 701C762 707 869 755 983 826"/>
+      <path d="M239 725C322 585 425 470 591 404C713 356 839 335 990 303"/>
+    </g>
+  </g>
+
+  <g filter="url(#contact-glow)">
+    <circle cx="1008" cy="184" r="34" fill="url(#touch)" opacity=".92"/>
+    <circle cx="1008" cy="184" r="4.8" fill="#fff8db"/>
+    <circle cx="1058" cy="315" r="28" fill="url(#touch)" opacity=".78"/>
+    <circle cx="1058" cy="315" r="3.8" fill="#fff4c9"/>
+    <circle cx="1075" cy="531" r="24" fill="url(#touch)" opacity=".66"/>
+    <circle cx="1075" cy="531" r="3.4" fill="#ffeebd"/>
+    <circle cx="1060" cy="730" r="27" fill="url(#touch)" opacity=".7"/>
+    <circle cx="1060" cy="730" r="3.8" fill="#fff2c8"/>
+    <circle cx="1016" cy="963" r="24" fill="url(#touch)" opacity=".56"/>
+    <circle cx="1016" cy="963" r="3.2" fill="#fff0c2"/>
+    <circle cx="624" cy="318" r="20" fill="url(#touch)" opacity=".5"/>
+    <circle cx="624" cy="318" r="2.8" fill="#fff4cf"/>
+    <circle cx="720" cy="544" r="19" fill="url(#touch)" opacity=".46"/>
+    <circle cx="720" cy="544" r="2.8" fill="#fff1c2"/>
+  </g>
+</svg>

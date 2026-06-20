@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">织思结构图线稿</title>
+  <desc id="desc">织思把节点、关系和对象云连接起来的极简图示。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#a8a176;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+      .node{fill:#fff;stroke:#6f681b;stroke-width:5}
+      .core{fill:#fff8db;stroke:#6f681b;stroke-width:7}
+    </style>
+  </defs>
+  <circle class="core" cx="452" cy="350" r="72"/>
+  <circle class="node" cx="228" cy="198" r="46"/>
+  <circle class="node" cx="675" cy="208" r="42"/>
+  <circle class="node" cx="188" cy="494" r="39"/>
+  <circle class="node" cx="704" cy="504" r="47"/>
+  <circle class="node" cx="451" cy="125" r="34"/>
+  <path class="bold" d="M407 294 263 226M510 296l129-65M383 383 223 478M519 388l148 91M452 278V159"/>
+  <path class="thin" d="M274 176c78-57 174-80 287-67M192 540c128 62 280 80 455 21M721 456c39-83 37-164-4-243M206 450c-34-78-25-153 28-226"/>
+  <path class="line" d="M410 343h84M420 372h64M435 319h34"/>
+  <path class="thin" d="M329 304c-24 42-30 84-18 126M575 305c24 45 27 91 9 139"/>
+</svg>

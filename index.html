@@ -24,11 +24,11 @@
       </a>
       <nav class="nav-links" aria-label="页面导航">
         <a href="#mission">使命</a>
+        <a href="#courses">课程</a>
+        <a href="#zhisi">织思</a>
         <a href="#founders">发起人</a>
-        <button type="button" data-panel-target="work" data-scroll-target="#branches">分支</button>
-        <button type="button" data-panel-target="zhisi" data-scroll-target="#branches">织思</button>
       </nav>
-      <a class="nav-cta" href="#contact">加入</a>
+      <a class="nav-cta" href="#contact">合作</a>
     </header>
 
     <main>
@@ -38,17 +38,13 @@
         </picture>
         <div class="hero-shade"></div>
         <figure class="neural-figure">
-          <img src="./assets/white-matter-fiber-tree-line.png" alt="白底灰色神经纤维与蓝色触点示意图">
+          <img src="./assets/white-matter-neural-glow.svg" alt="暖白神经连接光束示意图">
         </figure>
         <div class="hero-inner">
           <p class="eyebrow">White Matter Community</p>
           <h1>让思考<br>长出连接。</h1>
           <p class="hero-lead">神经连接 · 认知连接 · AI 协作</p>
           <p class="neural-note">白质：大脑连接通路的隐喻。</p>
-          <div class="hero-actions" aria-label="主要入口">
-            <a class="primary-button" href="#branches">进入分支</a>
-            <a class="secondary-button" href="#founders">查看发起人</a>
-          </div>
           <div class="mission-strip" aria-label="使命愿景">
             <article>
               <span>Mission</span>
@@ -62,6 +58,45 @@
               <span>Method</span>
               <strong>训练 · 工具 · 共创</strong>
             </article>
+          </div>
+          <a class="scroll-cue" href="#courses" aria-label="向下滚动到课程">Scroll</a>
+        </div>
+      </section>
+
+      <section id="courses" class="section content-section course-section">
+        <div class="section-heading">
+          <p class="eyebrow">Courses</p>
+          <h2>课程是认知训练场。</h2>
+          <p>把信息理解、结构表达、AI 协作和项目交付拆成可练习的动作。</p>
+        </div>
+        <div class="content-layout">
+          <figure class="line-visual">
+            <img src="./assets/course-structure.svg" alt="课程结构线稿图">
+          </figure>
+          <div class="detail-grid">
+            <article><span>01</span><h3>认知训练</h3><p>信息理解、问题拆解、结构表达。</p></article>
+            <article><span>02</span><h3>AI 协作</h3><p>从提问、判断到共创工作流。</p></article>
+            <article><span>03</span><h3>项目交付</h3><p>把想法做成网页、报告、作品集。</p></article>
+            <article><span>04</span><h3>小班共学</h3><p>持续练习、反馈和复盘。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="zhisi" class="section content-section zhisi-section">
+        <div class="section-heading">
+          <p class="eyebrow">Zhisi</p>
+          <h2>织思让思考可见。</h2>
+          <p>不是把内容堆成文档，而是把节点、关系和对象云变成可以继续生长的结构。</p>
+        </div>
+        <div class="content-layout reversed">
+          <figure class="line-visual">
+            <img src="./assets/zhisi-map.svg" alt="织思结构线稿图">
+          </figure>
+          <div class="detail-grid">
+            <article><span>Node</span><h3>节点</h3><p>把想法拆成可移动、可组合的对象。</p></article>
+            <article><span>Link</span><h3>关系</h3><p>显示因果、层级、证据和反例。</p></article>
+            <article><span>Cloud</span><h3>对象云</h3><p>让课程、资料和项目沉淀为知识网络。</p></article>
+            <article><span>AI</span><h3>协作</h3><p>让 AI 参与整理，而不是替代判断。</p></article>
           </div>
         </div>
       </section>
@@ -97,110 +132,14 @@
         </div>
       </section>
 
-      <section id="branches" class="section branch-section">
-        <div class="section-heading centered">
-          <p class="eyebrow">Branches</p>
-          <h2>五个入口。</h2>
-          <p>认知训练 / 课程 / 样本 / 工具 / 合作</p>
-        </div>
-        <div class="branch-shell">
-          <div class="branch-menu" role="tablist" aria-label="社区分支">
-            <button type="button" class="is-active" data-panel-target="work" role="tab" aria-selected="true">认知训练</button>
-            <button type="button" data-panel-target="courses" role="tab" aria-selected="false">课程</button>
-            <button type="button" data-panel-target="delivery" role="tab" aria-selected="false">样本</button>
-            <button type="button" data-panel-target="zhisi" role="tab" aria-selected="false">织思</button>
-            <button type="button" data-panel-target="collab" role="tab" aria-selected="false">合作</button>
-          </div>
-
-          <div class="branch-panels">
-            <article class="branch-panel is-active" data-panel="work" role="tabpanel">
-              <div class="panel-copy">
-                <span class="panel-kicker">Cognition</span>
-                <h3>从信息，到结构。</h3>
-              </div>
-              <div class="signal-list" aria-label="认知训练方向">
-                <span>信息理解</span>
-                <span>结构表达</span>
-                <span>逻辑判断</span>
-                <span>AI 协作</span>
-              </div>
-            </article>
-
-            <article class="branch-panel" data-panel="courses" role="tabpanel" hidden>
-              <div class="panel-copy">
-                <span class="panel-kicker">Courses</span>
-                <h3>课程是训练场。</h3>
-              </div>
-              <div class="course-lines">
-                <div><span>01</span><strong>符号云四阶</strong></div>
-                <div><span>02</span><strong>人机协作六讲</strong></div>
-                <div><span>03</span><strong>私教与小班</strong></div>
-                <div><span>04</span><strong>青少年 AI 训练营</strong></div>
-              </div>
-            </article>
-
-            <article class="branch-panel" data-panel="delivery" role="tabpanel" hidden>
-              <div class="panel-copy">
-                <span class="panel-kicker">Proof</span>
-                <h3>真实训练样本。</h3>
-              </div>
-              <div class="metric-grid">
-                <article><strong>6</strong><span>次结构化课程样本</span></article>
-                <article><strong>5</strong><span>次创意项目训练</span></article>
-                <article><strong>7</strong><span>次连续小班主课</span></article>
-              </div>
-            </article>
-
-            <article class="branch-panel media-panel" data-panel="zhisi" role="tabpanel" hidden>
-              <div class="panel-copy">
-                <span class="panel-kicker">Zhisi</span>
-                <h3>把思考外化成图。</h3>
-                <div class="signal-list compact" aria-label="织思能力">
-                  <span>节点</span>
-                  <span>关系</span>
-                  <span>对象云</span>
-                  <span>AI 整理</span>
-                </div>
-              </div>
-              <figure class="tool-preview">
-                <img src="./assets/white-matter-deck-overview.png" alt="White Matter 合作资料预览">
-              </figure>
-            </article>
-
-            <article class="branch-panel" data-panel="collab" role="tabpanel" hidden>
-              <div class="panel-copy">
-                <span class="panel-kicker">Join</span>
-                <h3>进入连接网络。</h3>
-              </div>
-              <div class="signal-list" aria-label="合作对象">
-                <span>学习者</span>
-                <span>家长 / 机构</span>
-                <span>企业团队</span>
-                <span>共创伙伴</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="programs" class="section program-section">
-        <div class="section-heading">
-          <p class="eyebrow">Signals</p>
-          <h2>正在生长的四条线。</h2>
-        </div>
-        <div class="program-grid">
-          <article><span>Course</span><h3>认知能力课程</h3></article>
-          <article><span>Tool</span><h3>织思可视化建模</h3></article>
-          <article><span>Research</span><h3>AI 使用者访谈</h3></article>
-          <article><span>Community</span><h3>共学与共创</h3></article>
-        </div>
-      </section>
-
       <section id="contact" class="section contact-section">
         <div class="contact-copy">
           <p class="eyebrow">Contact</p>
-          <h2>连接 White Matter。</h2>
-          <p>课程、工具、训练营、企业协作。</p>
+          <h2>合作从一个问题开始。</h2>
+          <p>课程、织思、训练营、企业工作坊或共创项目。</p>
+          <figure class="contact-visual">
+            <img src="./assets/collab-signal.svg" alt="合作连接线稿图">
+          </figure>
         </div>
         <form class="contact-form" id="betaForm">
           <label>

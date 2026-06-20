@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">合作连接线稿</title>
+  <desc id="desc">课程、工具和伙伴之间形成连接网络的极简图示。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#a8a176;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;opacity:.65}
+      .node{fill:#fff;stroke:#6f681b;stroke-width:5}
+      .warm{fill:#fff8db;stroke:#6f681b;stroke-width:6}
+    </style>
+  </defs>
+  <path class="thin" d="M139 445c162-167 345-250 551-250M157 500c176-64 355-62 538 8M211 282c133 151 293 250 480 299"/>
+  <path class="bold" d="M182 456c95-92 183-146 265-161 91-17 176 14 257 93"/>
+  <path class="line" d="M254 312c91 31 162 75 214 132M622 268c-52 82-113 142-183 181M339 542c71-63 147-94 228-94"/>
+  <circle class="warm" cx="450" cy="352" r="70"/>
+  <circle class="node" cx="182" cy="456" r="43"/>
+  <circle class="node" cx="254" cy="312" r="36"/>
+  <circle class="node" cx="622" cy="268" r="40"/>
+  <circle class="node" cx="704" cy="388" r="38"/>
+  <circle class="node" cx="339" cy="542" r="34"/>
+  <circle class="node" cx="567" cy="448" r="35"/>
+  <path class="thin" d="M414 344h74M426 374h49M426 322h52"/>
+</svg>
