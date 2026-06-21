@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">陆贰线稿形象</title>
+  <desc id="desc">男性成员，正面短发、清爽轮廓和松弛上衣的高颜值简笔线稿。</desc>
+  <defs>
+    <style>
+      .b{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .l{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .t{fill:none;stroke:#aaa47a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+    </style>
+  </defs>
+  <g transform="translate(46 30)">
+    <path class="b" d="M246 404c-12-101 43-184 146-215 99-30 208 3 270 82 35 45 45 98 34 158"/>
+    <path class="b" d="M270 350c58-82 143-124 254-121 83 2 145 37 184 98"/>
+    <path class="l" d="M292 300c72-43 150-55 235-37M272 340c89-39 184-42 285-10M344 257c54-24 109-29 166-14"/>
+    <path class="b" d="M280 414c-10 77 6 158 47 216 36 51 85 79 146 79 62 0 111-30 148-85 38-57 51-136 38-212"/>
+    <path class="b" d="M276 474c-32 0-51 34-39 76 9 31 33 53 61 53M660 474c34 0 53 34 41 76-10 32-35 54-64 54"/>
+    <path class="l" d="M370 508c34-14 74-13 109 3M523 508c34-14 74-13 109 3"/>
+    <path class="b" d="M390 540c24-8 49-7 75 4M543 540c24-8 49-7 75 4"/>
+    <path class="l" d="M494 542c-3 42-17 80-42 113 28 12 62 10 98-4"/>
+    <path class="b" d="M410 670c48 31 112 31 164-1"/>
+    <path class="b" d="M352 724c-110 36-193 112-249 228M610 724c112 36 195 112 250 229"/>
+    <path class="l" d="M306 814c103 67 222 87 358 58M282 906c129 46 269 51 421 15M296 1000c126 28 263 27 410-4"/>
+    <path class="l" d="M390 734c36 43 71 72 105 86 36-15 72-44 109-87"/>
+    <path class="t" d="M342 780c46 38 98 62 156 72M620 780c-43 37-87 61-134 72"/>
+  </g>
+</svg>
