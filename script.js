@@ -12,6 +12,6 @@ if (form && note) {
     });
     window.localStorage.setItem("whiteMatterLeads", JSON.stringify(leads));
     form.reset();
-    note.textContent = "已记录合作意向。正式上线后可接入飞书多维表、腾讯云表单、企业微信或自有后端。";
+    note.textContent = "已记录加入申请。正式上线后可接入飞书多维表、腾讯云表单、企业微信或自有后端。";
   });
 }

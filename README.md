@@ -14,7 +14,7 @@ python3 -m http.server 4173
 
 - `index.html`：官网首页
 - `styles.css`：页面样式
-- `script.js`：合作意向表单本地反馈
+- `script.js`：加入申请表单本地反馈
 - `privacy.html`：隐私政策
 - `terms.html`：服务条款
 - `assets/`：White Matter 视觉素材与合作资料预览图

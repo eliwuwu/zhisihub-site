@@ -1131,11 +1131,11 @@ body {
 .founder-card {
   position: relative;
   display: flex;
-  min-height: 282px;
+  min-height: 246px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: hidden;
-  padding: 22px 18px 0;
+  padding: 20px 18px 0;
   border: 1px solid rgba(16, 16, 16, 0.1);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
@@ -1167,9 +1167,9 @@ body {
 }
 
 .founder-sketch {
-  width: min(118%, 210px);
-  max-height: 208px;
-  margin: auto auto -6px;
+  width: min(110%, 190px);
+  max-height: 178px;
+  margin: 18px auto -4px;
   opacity: 0.94;
 }
 
@@ -1349,7 +1349,7 @@ body {
   }
 
   .founder-card {
-    min-height: 250px;
+    min-height: 232px;
     padding: 20px 18px 0;
   }
 
@@ -1358,8 +1358,8 @@ body {
   }
 
   .founder-sketch {
-    width: min(100%, 190px);
-    max-height: 190px;
+    width: min(100%, 178px);
+    max-height: 176px;
   }
 
   .content-layout {
