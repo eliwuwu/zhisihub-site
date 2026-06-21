@@ -1119,17 +1119,39 @@ body {
 
 .founder-card {
   position: relative;
-  min-height: 440px;
+  min-height: 210px;
   overflow: hidden;
   padding: 0;
   border-radius: 8px;
   background: #ffffff;
 }
 
+.founder-card::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 82px;
+  height: 82px;
+  border: 1px solid rgba(111, 104, 27, 0.32);
+  border-radius: 50%;
+}
+
+.founder-card::before {
+  content: "";
+  position: absolute;
+  right: 62px;
+  bottom: 25px;
+  width: 1px;
+  height: 76px;
+  background: rgba(111, 104, 27, 0.26);
+  transform: rotate(42deg);
+}
+
 .founder-copy {
   position: relative;
   z-index: 1;
-  padding: 28px 28px 0;
+  padding: 28px;
 }
 
 .founder-copy span {
@@ -1147,15 +1169,6 @@ body {
   font-size: clamp(1.85rem, 2.45vw, 2.85rem);
   font-weight: 620;
   line-height: 1.02;
-}
-
-.founder-portrait {
-  position: absolute;
-  right: -12%;
-  bottom: -30px;
-  width: 104%;
-  max-width: none;
-  object-fit: contain;
 }
 
 @media (max-width: 1180px) {
@@ -1336,17 +1349,11 @@ body {
   }
 
   .founder-card {
-    min-height: 430px;
+    min-height: 210px;
   }
 
   .founder-copy {
-    padding: 24px 24px 0;
-  }
-
-  .founder-portrait {
-    right: -5%;
-    bottom: -28px;
-    width: 92%;
+    padding: 24px;
   }
 
   .content-layout {
