@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">九皮 Member 线稿形象</title>
+  <desc id="desc">九皮的女性成员简笔线稿头像，长发、柔和侧脸、简洁上衣。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#9e9866;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+      .shade{fill:none;stroke:#cbc5a1;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;opacity:.48}
+    </style>
+  </defs>
+  <g transform="translate(44 24)">
+    <path class="bold" d="M255 378c-20-105 30-188 132-223 99-34 210 2 267 87 34 52 35 115 8 183"/>
+    <path class="bold" d="M280 330c72-83 164-116 276-98"/>
+    <path class="line" d="M300 280c67-47 143-62 229-44M276 324c86-44 179-50 279-18M352 238c54-25 113-28 178-8"/>
+    <path class="thin" d="M306 257c47-16 98-23 154-20M340 307c73-15 145-13 216 6"/>
+    <path class="bold" d="M295 360c-17 79-5 162 38 223 37 53 88 82 151 82 62 0 113-31 150-91 39-63 47-142 25-219"/>
+    <path class="bold" d="M288 432c-34 1-54 36-41 79 10 32 35 55 64 55"/>
+    <path class="line" d="M377 470c34-16 75-16 110 0M532 468c34-15 74-14 108 3"/>
+    <path class="bold" d="M397 501c24-10 50-9 76 2M551 500c24-9 50-8 76 2"/>
+    <path class="line" d="M504 499c-4 44-19 84-44 119 27 12 60 10 95-5"/>
+    <path class="bold" d="M414 638c48 31 113 30 164-2"/>
+    <path class="bold" d="M255 380c-48 97-54 212-18 344"/>
+    <path class="bold" d="M655 382c48 99 54 215 20 348"/>
+    <path class="thin" d="M248 466c-27 97-26 192 3 286M662 466c27 96 26 190-3 283"/>
+    <path class="bold" d="M360 686c-106 32-184 103-234 214"/>
+    <path class="bold" d="M614 686c112 34 190 108 236 223"/>
+    <path class="line" d="M312 792c104 54 225 65 363 32M286 878c126 40 263 43 411 9M292 970c126 25 262 23 408-5"/>
+    <path class="line" d="M384 700c37 47 76 77 117 90 43-16 82-47 117-91"/>
+    <path class="thin" d="M340 738c45 42 98 68 160 80M626 740c-45 39-92 65-141 78"/>
+    <path class="shade" d="M396 735c10 64 9 128-4 193M562 732c-8 63-7 127 4 193"/>
+  </g>
+</svg>

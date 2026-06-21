@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Blanche Member 线稿形象</title>
+  <desc id="desc">Blanche 的女性成员简笔线稿头像，利落短发、清爽正侧脸、简洁外套。</desc>
+  <defs>
+    <style>
+      .bold{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .line{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .thin{fill:none;stroke:#9e9866;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+      .shade{fill:none;stroke:#cbc5a1;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;opacity:.48}
+    </style>
+  </defs>
+  <g transform="translate(44 22)">
+    <path class="bold" d="M304 382c-20-97 23-176 117-215 88-36 195-15 262 54 47 49 62 113 43 187"/>
+    <path class="bold" d="M320 312c58-72 137-109 237-109 76 0 137 29 181 88"/>
+    <path class="line" d="M334 264c64-38 134-51 211-40M316 314c76-35 157-41 245-20M377 228c50-21 104-25 162-11"/>
+    <path class="line" d="M316 330c-34 31-50 72-48 121"/>
+    <path class="bold" d="M312 363c-11 74 5 151 46 207 36 49 85 76 146 76 59 0 108-29 146-85 37-56 47-129 30-203"/>
+    <path class="bold" d="M300 404c-20 72-14 140 18 204M684 402c19 72 12 140-20 204"/>
+    <path class="line" d="M386 465c33-13 72-11 107 5M536 466c33-13 72-11 106 5"/>
+    <path class="bold" d="M405 496c23-8 48-6 74 5M555 496c23-8 48-6 74 5"/>
+    <path class="line" d="M505 499c-4 43-19 82-44 116 27 12 60 10 95-4"/>
+    <path class="bold" d="M414 635c47 32 111 31 162-1"/>
+    <path class="thin" d="M356 235c-8 43-5 88 9 135M432 208c-5 55 2 108 22 158M596 222c27 44 38 95 33 153"/>
+    <path class="bold" d="M368 678c-106 36-184 112-233 226"/>
+    <path class="bold" d="M628 678c106 36 184 112 232 226"/>
+    <path class="line" d="M324 772c103 54 219 63 350 27M296 854c123 38 257 39 402 3M306 946c121 24 252 21 394-9"/>
+    <path class="line" d="M398 696c31 44 64 73 100 86 38-14 73-44 107-87"/>
+    <path class="line" d="M338 760l88-78M656 760l-88-78"/>
+    <path class="thin" d="M370 748c38 34 82 56 132 68M620 748c-39 33-80 56-124 69"/>
+    <path class="shade" d="M426 718c-18 52-26 106-25 164M570 718c17 52 25 107 25 164"/>
+  </g>
+</svg>

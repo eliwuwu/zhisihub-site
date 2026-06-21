@@ -1105,9 +1105,9 @@ body {
 }
 
 .founder-layout {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: min(1080px, 100%);
-  gap: 18px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: min(1280px, 100%);
+  gap: 14px;
   align-items: stretch;
 }
 
@@ -1119,7 +1119,7 @@ body {
 
 .founder-card {
   position: relative;
-  min-height: 470px;
+  min-height: 440px;
   overflow: hidden;
   padding: 0;
   border-radius: 8px;
@@ -1144,18 +1144,25 @@ body {
 
 .founder-card h3 {
   margin: 0;
-  font-size: clamp(2.1rem, 3.2vw, 3.15rem);
+  font-size: clamp(1.85rem, 2.45vw, 2.85rem);
   font-weight: 620;
   line-height: 1.02;
 }
 
 .founder-portrait {
   position: absolute;
-  right: -8%;
-  bottom: -34px;
-  width: 92%;
+  right: -12%;
+  bottom: -30px;
+  width: 104%;
   max-width: none;
   object-fit: contain;
+}
+
+@media (max-width: 1180px) {
+  .founder-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(760px, 100%);
+  }
 }
 
 .scroll-cue {
