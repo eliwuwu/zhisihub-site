@@ -1105,9 +1105,9 @@ body {
 }
 
 .founder-layout {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  width: min(1280px, 100%);
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(1080px, 100%);
+  gap: 18px;
   align-items: stretch;
 }
 
@@ -1119,39 +1119,17 @@ body {
 
 .founder-card {
   position: relative;
-  min-height: 210px;
+  min-height: 470px;
   overflow: hidden;
   padding: 0;
   border-radius: 8px;
   background: #ffffff;
 }
 
-.founder-card::after {
-  content: "";
-  position: absolute;
-  right: 22px;
-  bottom: 22px;
-  width: 82px;
-  height: 82px;
-  border: 1px solid rgba(111, 104, 27, 0.32);
-  border-radius: 50%;
-}
-
-.founder-card::before {
-  content: "";
-  position: absolute;
-  right: 62px;
-  bottom: 25px;
-  width: 1px;
-  height: 76px;
-  background: rgba(111, 104, 27, 0.26);
-  transform: rotate(42deg);
-}
-
 .founder-copy {
   position: relative;
   z-index: 1;
-  padding: 28px;
+  padding: 28px 28px 0;
 }
 
 .founder-copy span {
@@ -1166,27 +1144,18 @@ body {
 
 .founder-card h3 {
   margin: 0;
-  font-family: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif;
-  font-size: clamp(1.92rem, 2.32vw, 2.72rem);
-  font-weight: 650;
-  line-height: 0.98;
-  letter-spacing: 0;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
-}
-
-.founder-card:nth-child(3) h3,
-.founder-card:nth-child(5) h3 {
-  font-family: "Bodoni 72", "Didot", "Georgia", serif;
-  font-size: clamp(1.72rem, 2.05vw, 2.34rem);
+  font-size: clamp(2.1rem, 3.2vw, 3.15rem);
   font-weight: 620;
+  line-height: 1.02;
 }
 
-@media (max-width: 1180px) {
-  .founder-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(760px, 100%);
-  }
+.founder-portrait {
+  position: absolute;
+  right: -8%;
+  bottom: -34px;
+  width: 92%;
+  max-width: none;
+  object-fit: contain;
 }
 
 .scroll-cue {
@@ -1360,11 +1329,17 @@ body {
   }
 
   .founder-card {
-    min-height: 210px;
+    min-height: 430px;
   }
 
   .founder-copy {
-    padding: 24px;
+    padding: 24px 24px 0;
+  }
+
+  .founder-portrait {
+    right: -5%;
+    bottom: -28px;
+    width: 92%;
   }
 
   .content-layout {
