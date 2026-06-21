@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Blanche线稿形象</title>
+  <desc id="desc">女性成员，利落短发、清爽轮廓和简洁外套的高颜值简笔线稿。</desc>
+  <defs>
+    <style>
+      .b{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .l{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .t{fill:none;stroke:#aaa47a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+    </style>
+  </defs>
+  <g transform="translate(44 24)">
+    <path class="b" d="M294 386c-22-99 22-179 119-218 93-37 204-13 271 60 47 50 62 114 43 188"/>
+    <path class="b" d="M316 318c61-73 142-108 243-103 77 4 137 36 179 97"/>
+    <path class="l" d="M338 270c64-36 136-47 214-31M318 318c78-33 161-36 251-10M380 234c50-20 104-23 162-9"/>
+    <path class="b" d="M314 366c-12 73 5 149 46 204 36 48 84 75 145 75 59 0 109-29 147-85 37-56 48-130 31-203"/>
+    <path class="b" d="M304 418c-22 69-16 136 18 202M686 414c21 69 14 136-20 202"/>
+    <path class="l" d="M386 466c33-12 72-10 106 5M536 466c33-12 72-10 106 5"/>
+    <path class="b" d="M406 498c23-7 48-5 73 5M556 498c23-7 48-5 73 5"/>
+    <path class="l" d="M506 502c-4 41-19 79-44 112 27 11 60 8 95-7"/>
+    <path class="b" d="M416 636c47 30 111 29 162-3"/>
+    <path class="b" d="M366 688c-108 37-188 114-238 230M626 688c108 37 188 114 238 230"/>
+    <path class="l" d="M318 790c104 55 224 66 361 31M296 876c127 39 264 40 411 1M308 966c122 23 255 20 398-8"/>
+    <path class="l" d="M398 706c33 43 67 72 102 85 38-14 73-43 106-86"/>
+    <path class="t" d="M360 750c42 35 89 58 140 68M620 750c-40 35-82 58-126 68"/>
+  </g>
+</svg>

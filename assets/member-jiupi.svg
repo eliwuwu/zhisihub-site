@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">九皮线稿形象</title>
+  <desc id="desc">女性成员，长发、柔和轮廓和简洁针织上衣的高颜值简笔线稿。</desc>
+  <defs>
+    <style>
+      .b{fill:none;stroke:#6f681b;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+      .l{fill:none;stroke:#6f681b;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+      .t{fill:none;stroke:#aaa47a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.58}
+    </style>
+  </defs>
+  <g transform="translate(44 24)">
+    <path class="b" d="M258 382c-22-107 29-191 133-228 101-35 213 0 272 85 37 54 39 119 10 191"/>
+    <path class="b" d="M286 326c74-81 166-113 278-93"/>
+    <path class="l" d="M304 276c68-43 144-56 229-39M282 322c86-39 179-43 278-13M356 236c54-22 113-24 176-7"/>
+    <path class="b" d="M292 360c-20 78-9 160 32 222 36 54 86 84 149 86 63 2 116-28 156-88 42-62 52-141 31-218"/>
+    <path class="b" d="M286 430c-32 2-50 36-37 77 10 31 34 53 62 53"/>
+    <path class="l" d="M374 470c34-13 74-11 109 5M526 470c34-13 74-11 109 5"/>
+    <path class="b" d="M394 502c24-8 49-6 75 5M546 502c24-8 49-6 75 5"/>
+    <path class="l" d="M500 504c-5 42-20 80-45 113 27 12 61 9 96-6"/>
+    <path class="b" d="M412 638c48 30 112 28 164-5"/>
+    <path class="b" d="M258 392c-48 102-54 218-18 350M670 392c48 104 53 220 16 350"/>
+    <path class="b" d="M356 696c-109 34-190 108-243 224M612 696c113 35 194 109 245 224"/>
+    <path class="l" d="M308 808c105 55 226 66 363 34M286 894c128 39 265 40 411 3"/>
+    <path class="t" d="M380 710c39 45 80 74 122 87M622 710c-41 44-83 73-126 87"/>
+  </g>
+</svg>
