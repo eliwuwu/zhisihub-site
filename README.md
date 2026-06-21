@@ -17,7 +17,7 @@ python3 -m http.server 4173
 - `script.js`：加入申请表单本地反馈
 - `privacy.html`：隐私政策
 - `terms.html`：服务条款
-- `assets/`：White Matter 视觉素材与合作资料预览图
+- `assets/`：White Matter 视觉素材、成员头像与合作资料预览图
 - `robots.txt` / `sitemap.xml`：搜索引擎基础文件
 
 ## 部署

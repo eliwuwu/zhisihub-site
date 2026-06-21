@@ -1131,11 +1131,11 @@ body {
 .founder-card {
   position: relative;
   display: flex;
-  min-height: 246px;
+  min-height: 266px;
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
-  padding: 20px 18px 0;
+  padding: 20px 18px 18px;
   border: 1px solid rgba(16, 16, 16, 0.1);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
@@ -1167,10 +1167,30 @@ body {
 }
 
 .founder-sketch {
-  width: min(110%, 190px);
-  max-height: 178px;
-  margin: 18px auto -4px;
-  opacity: 0.94;
+  width: min(100%, 176px);
+  height: 176px;
+  margin: 18px auto 0;
+  object-fit: contain;
+  opacity: 1;
+}
+
+.founder-avatar {
+  border-radius: 0;
+}
+
+.zhisi-section .section-heading {
+  display: block;
+  width: min(1120px, 100%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.zhisi-section .section-heading h2 {
+  margin-bottom: 12px;
+}
+
+.zhisi-section .section-heading p:not(.eyebrow) {
+  max-width: 680px;
 }
 
 .scroll-cue {
@@ -1349,8 +1369,8 @@ body {
   }
 
   .founder-card {
-    min-height: 232px;
-    padding: 20px 18px 0;
+    min-height: 240px;
+    padding: 20px 18px 18px;
   }
 
   .founder-copy {
@@ -1358,8 +1378,8 @@ body {
   }
 
   .founder-sketch {
-    width: min(100%, 178px);
-    max-height: 176px;
+    width: min(100%, 172px);
+    height: 172px;
   }
 
   .content-layout {
