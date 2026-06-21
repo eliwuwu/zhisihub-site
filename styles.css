@@ -1117,14 +1117,9 @@ body {
 
 .founder-layout {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  width: min(1060px, 100%);
-  gap: 0;
+  width: min(1120px, 100%);
+  gap: 12px;
   align-items: stretch;
-  overflow: hidden;
-  border: 1px solid rgba(16, 16, 16, 0.11);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 22px 70px rgba(16, 16, 16, 0.045);
 }
 
 .avatar-mark {
@@ -1135,29 +1130,22 @@ body {
 
 .founder-card {
   position: relative;
-  min-height: 138px;
+  display: flex;
+  min-height: 282px;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
-  padding: 0;
-  border-radius: 0;
-  border: 0;
-  border-right: 1px solid rgba(16, 16, 16, 0.09);
-  background: transparent;
-  box-shadow: none;
-  backdrop-filter: none;
-}
-
-.founder-card:last-child {
-  border-right: 0;
+  padding: 22px 18px 0;
+  border: 1px solid rgba(16, 16, 16, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 22px 70px rgba(16, 16, 16, 0.045);
 }
 
 .founder-copy {
   position: relative;
   z-index: 1;
-  display: flex;
-  min-height: 138px;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 22px 18px;
+  padding: 0;
 }
 
 .founder-copy span {
@@ -1173,9 +1161,16 @@ body {
 .founder-card h3 {
   margin: 0;
   color: rgba(16, 16, 16, 0.62);
-  font-size: clamp(1.22rem, 1.52vw, 1.65rem);
+  font-size: clamp(1.12rem, 1.38vw, 1.5rem);
   font-weight: 560;
   line-height: 1.02;
+}
+
+.founder-sketch {
+  width: min(118%, 210px);
+  max-height: 208px;
+  margin: auto auto -6px;
+  opacity: 0.94;
 }
 
 .scroll-cue {
@@ -1354,18 +1349,17 @@ body {
   }
 
   .founder-card {
-    min-height: 104px;
-    border-right: 0;
-    border-bottom: 1px solid rgba(16, 16, 16, 0.09);
-  }
-
-  .founder-card:last-child {
-    border-bottom: 0;
+    min-height: 250px;
+    padding: 20px 18px 0;
   }
 
   .founder-copy {
-    min-height: 104px;
-    padding: 18px 20px;
+    padding: 0;
+  }
+
+  .founder-sketch {
+    width: min(100%, 190px);
+    max-height: 190px;
   }
 
   .content-layout {

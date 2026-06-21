@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 210" role="img" aria-labelledby="title desc">
+  <title id="title">陆贰简笔画</title>
+  <desc id="desc">理工感的男孩线稿形象。</desc>
+  <g fill="none" stroke="#6f681b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M67 90c3-37 24-58 58-58 34 0 55 23 56 60"/>
+    <path d="M72 80c17-18 43-27 83-25"/>
+    <path d="M80 68c20-9 42-11 69-5"/>
+    <path d="M78 94c0 46 19 74 48 74s49-28 49-74"/>
+    <path d="M78 107c-11 0-16 8-13 20 3 12 10 18 19 14"/>
+    <path d="M174 107c11 0 16 8 13 20-3 12-10 18-19 14"/>
+    <rect x="88" y="103" width="31" height="22" rx="5"/>
+    <rect x="135" y="103" width="31" height="22" rx="5"/>
+    <path d="M119 114h16"/>
+    <path d="M102 139c12 8 31 8 43 0"/>
+    <path d="M46 202c11-30 34-45 67-50"/>
+    <path d="M174 202c-10-30-32-45-64-50"/>
+    <path d="M87 171h78"/>
+    <path d="M95 181h60"/>
+  </g>
+  <g fill="none" stroke="#d8cfab" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M75 184h24"/>
+    <circle cx="104" cy="184" r="3"/>
+    <path d="M128 184h24"/>
+    <circle cx="157" cy="184" r="3"/>
+  </g>
+</svg>
