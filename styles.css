@@ -1166,9 +1166,20 @@ body {
 
 .founder-card h3 {
   margin: 0;
-  font-size: clamp(1.85rem, 2.45vw, 2.85rem);
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif;
+  font-size: clamp(1.92rem, 2.32vw, 2.72rem);
+  font-weight: 650;
+  line-height: 0.98;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.founder-card:nth-child(3) h3,
+.founder-card:nth-child(5) h3 {
+  font-family: "Bodoni 72", "Didot", "Georgia", serif;
+  font-size: clamp(1.72rem, 2.05vw, 2.34rem);
   font-weight: 620;
-  line-height: 1.02;
 }
 
 @media (max-width: 1180px) {
