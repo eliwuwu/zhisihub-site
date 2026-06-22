@@ -1399,3 +1399,298 @@ body {
     display: none;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .community-hero .eyebrow,
+  .community-hero h1,
+  .hero-lead,
+  .neural-note,
+  .mission-strip article,
+  .scroll-cue {
+    animation: hero-rise 760ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .community-hero h1 {
+    animation-delay: 90ms;
+  }
+
+  .hero-lead {
+    animation-delay: 180ms;
+  }
+
+  .neural-note {
+    animation-delay: 260ms;
+  }
+
+  .mission-strip article:nth-child(1) {
+    animation-delay: 360ms;
+  }
+
+  .mission-strip article:nth-child(2) {
+    animation-delay: 450ms;
+  }
+
+  .mission-strip article:nth-child(3) {
+    animation-delay: 540ms;
+  }
+
+  .scroll-cue {
+    animation-delay: 660ms;
+  }
+
+  .neural-figure {
+    animation: neural-float 9s ease-in-out infinite;
+    transform-origin: 58% 52%;
+  }
+
+  .neural-figure::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 84% 19%, rgba(255, 218, 128, 0.58) 0 2px, transparent 8px),
+      radial-gradient(circle at 88% 32%, rgba(255, 223, 146, 0.44) 0 2px, transparent 7px),
+      radial-gradient(circle at 90% 54%, rgba(255, 230, 166, 0.36) 0 2px, transparent 8px),
+      radial-gradient(circle at 86% 73%, rgba(255, 218, 128, 0.34) 0 2px, transparent 8px),
+      radial-gradient(circle at 58% 32%, rgba(255, 234, 180, 0.24) 0 2px, transparent 7px);
+    filter: blur(0.2px);
+    opacity: 0.42;
+    animation: touch-pulse 4.8s ease-in-out infinite;
+  }
+
+  .neural-figure img {
+    animation: neural-pulse 6.2s ease-in-out infinite;
+  }
+
+  .scroll-cue::after {
+    animation: scroll-cue 1.45s ease-in-out infinite;
+  }
+
+  .reveal-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 720ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 720ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      border-color 260ms ease,
+      box-shadow 260ms ease;
+  }
+
+  .reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .detail-grid article:nth-child(2),
+  .founder-card:nth-child(2) {
+    transition-delay: 80ms;
+  }
+
+  .detail-grid article:nth-child(3),
+  .founder-card:nth-child(3) {
+    transition-delay: 150ms;
+  }
+
+  .detail-grid article:nth-child(4),
+  .founder-card:nth-child(4) {
+    transition-delay: 220ms;
+  }
+
+  .founder-card:nth-child(5) {
+    transition-delay: 290ms;
+  }
+
+  .line-visual,
+  .contact-visual,
+  .founder-card,
+  .contact-form,
+  .mission-strip article,
+  .detail-grid article {
+    transition:
+      transform 260ms ease,
+      border-color 260ms ease,
+      box-shadow 260ms ease;
+  }
+
+  .line-visual,
+  .contact-visual {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line-visual::after,
+  .contact-visual::after {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 228, 162, 0.16), transparent 62%);
+    opacity: 0;
+    transform: scale(0.82);
+    transition:
+      opacity 900ms ease,
+      transform 900ms ease;
+    pointer-events: none;
+  }
+
+  .line-visual.is-visible::after,
+  .contact-visual.is-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .line-art-svg {
+    width: min(100%, 560px);
+    height: auto;
+    overflow: visible;
+  }
+
+  .line-art-svg .draw-path {
+    stroke-dasharray: var(--path-length);
+    stroke-dashoffset: var(--path-length);
+    transition: stroke-dashoffset 1300ms cubic-bezier(0.22, 0.72, 0.18, 1);
+  }
+
+  .line-art-svg.is-drawn .draw-path {
+    stroke-dashoffset: 0;
+  }
+
+  .line-art-svg .draw-node {
+    opacity: 0;
+    transform: scale(0.92);
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+      opacity 520ms ease,
+      transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .line-art-svg.is-drawn .draw-node {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mission-strip article:hover,
+  .detail-grid article:hover,
+  .line-visual:hover,
+  .contact-visual:hover,
+  .contact-form:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 16, 16, 0.24);
+    box-shadow: 0 26px 78px rgba(16, 16, 16, 0.09);
+  }
+
+  .founder-card::after {
+    content: "";
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    left: 18px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(16, 16, 16, 0.42), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 320ms ease;
+  }
+
+  .founder-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(16, 16, 16, 0.24);
+    box-shadow: 0 30px 86px rgba(16, 16, 16, 0.1);
+  }
+
+  .founder-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .founder-sketch {
+    transition:
+      transform 280ms ease,
+      filter 280ms ease;
+  }
+
+  .founder-card:hover .founder-sketch {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 12px 20px rgba(16, 16, 16, 0.08));
+  }
+
+  .contact-form.has-sent {
+    border-color: rgba(16, 16, 16, 0.28);
+    box-shadow:
+      0 22px 80px rgba(16, 16, 16, 0.1),
+      0 0 0 1px rgba(255, 224, 150, 0.2) inset;
+  }
+
+  .form-note.is-success {
+    color: rgba(16, 16, 16, 0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neural-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(-10px, 8px, 0) rotate(-0.8deg);
+  }
+}
+
+@keyframes neural-pulse {
+  0%,
+  100% {
+    opacity: 0.92;
+    filter: drop-shadow(0 22px 58px rgba(120, 104, 62, 0.08));
+  }
+
+  50% {
+    opacity: 1;
+    filter:
+      drop-shadow(0 22px 58px rgba(120, 104, 62, 0.1))
+      drop-shadow(0 0 22px rgba(214, 176, 78, 0.08));
+  }
+}
+
+@keyframes touch-pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+
+  48% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(4px) rotate(45deg);
+  }
+}
