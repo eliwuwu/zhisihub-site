@@ -59,46 +59,6 @@ navigationLinks.forEach((link) => {
   });
 });
 
-const neuralHero = document.querySelector(".community-hero");
-const neuralFigure = document.querySelector(".neural-figure");
-
-if (neuralHero && neuralFigure && !prefersReducedMotion) {
-  let neuralFrame = 0;
-
-  const deactivateNeuralGlow = () => {
-    neuralHero.classList.remove("is-neural-active");
-  };
-
-  const updateNeuralGlow = (event) => {
-    window.cancelAnimationFrame(neuralFrame);
-    neuralFrame = window.requestAnimationFrame(() => {
-      const rect = neuralFigure.getBoundingClientRect();
-      const reach = Math.min(180, window.innerWidth * 0.12);
-      const isNear =
-        event.clientX >= rect.left - reach &&
-        event.clientX <= rect.right + reach &&
-        event.clientY >= rect.top - reach &&
-        event.clientY <= rect.bottom + reach;
-
-      if (!isNear) {
-        deactivateNeuralGlow();
-        return;
-      }
-
-      const x = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
-      const y = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
-
-      neuralFigure.style.setProperty("--neural-light-x", `${x.toFixed(1)}%`);
-      neuralFigure.style.setProperty("--neural-light-y", `${y.toFixed(1)}%`);
-      neuralHero.classList.add("is-neural-active");
-    });
-  };
-
-  neuralHero.addEventListener("pointermove", updateNeuralGlow);
-  neuralHero.addEventListener("pointerleave", deactivateNeuralGlow);
-  window.addEventListener("scroll", deactivateNeuralGlow, { passive: true });
-}
-
 const revealTargets = document.querySelectorAll([
   ".section-heading",
   ".line-visual",

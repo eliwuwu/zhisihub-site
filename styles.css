@@ -1290,24 +1290,7 @@ body {
 }
 
 .neural-figure::before {
-  content: "";
-  position: absolute;
-  inset: 5%;
-  z-index: 2;
-  display: block;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at var(--neural-light-x, 76%) var(--neural-light-y, 32%), rgba(255, 238, 185, 0.82) 0 2px, rgba(255, 223, 148, 0.32) 3px 12px, transparent 30px),
-    radial-gradient(circle at calc(var(--neural-light-x, 76%) - 8%) calc(var(--neural-light-y, 32%) + 14%), rgba(255, 245, 212, 0.48) 0 2px, transparent 22px),
-    radial-gradient(circle at calc(var(--neural-light-x, 76%) + 10%) calc(var(--neural-light-y, 32%) - 10%), rgba(255, 226, 158, 0.36) 0 2px, transparent 20px),
-    radial-gradient(circle at var(--neural-light-x, 76%) var(--neural-light-y, 32%), rgba(255, 220, 142, 0.2), transparent 20%);
-  filter: blur(0.3px);
-  opacity: 0;
-  transform: scale(0.98);
-  transition:
-    opacity 320ms ease,
-    transform 320ms ease;
-  pointer-events: none;
+  display: none;
 }
 
 .neural-figure img {
@@ -1318,17 +1301,6 @@ body {
   transform: scale(1.05) translate(2%, -2%);
   filter: drop-shadow(0 22px 58px rgba(120, 104, 62, 0.08));
   mix-blend-mode: normal;
-}
-
-.community-hero.is-neural-active .neural-figure::before {
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-.community-hero.is-neural-active .neural-figure img {
-  filter:
-    drop-shadow(0 22px 58px rgba(120, 104, 62, 0.1))
-    drop-shadow(0 0 26px rgba(215, 177, 89, 0.16));
 }
 
 .mission-strip {
@@ -1757,7 +1729,7 @@ body {
   }
 
   .neural-figure {
-    animation: neural-float 9s ease-in-out infinite;
+    animation: neural-float 11s ease-in-out infinite;
     transform-origin: 58% 52%;
   }
 
@@ -1775,19 +1747,11 @@ body {
       radial-gradient(circle at 58% 32%, rgba(255, 234, 180, 0.24) 0 2px, transparent 7px);
     filter: blur(0.2px);
     opacity: 0.42;
-    animation: touch-pulse 4.8s ease-in-out infinite;
+    animation: touch-pulse 7.6s ease-in-out infinite;
   }
 
   .neural-figure img {
-    animation: neural-pulse 6.2s ease-in-out infinite;
-  }
-
-  .community-hero.is-neural-active .neural-figure::after {
-    animation: touch-pulse-active 2.2s ease-in-out infinite;
-  }
-
-  .community-hero.is-neural-active .neural-figure img {
-    animation: neural-pulse-active 2.8s ease-in-out infinite;
+    animation: neural-pulse 8.4s ease-in-out infinite;
   }
 
   .scroll-cue::after {
@@ -2122,23 +2086,6 @@ body {
   }
 }
 
-@keyframes neural-pulse-active {
-  0%,
-  100% {
-    opacity: 0.96;
-    filter:
-      drop-shadow(0 22px 58px rgba(120, 104, 62, 0.11))
-      drop-shadow(0 0 24px rgba(214, 176, 78, 0.16));
-  }
-
-  50% {
-    opacity: 1;
-    filter:
-      drop-shadow(0 22px 58px rgba(120, 104, 62, 0.13))
-      drop-shadow(0 0 38px rgba(214, 176, 78, 0.28));
-  }
-}
-
 @keyframes touch-pulse {
   0%,
   100% {
@@ -2147,17 +2094,6 @@ body {
 
   48% {
     opacity: 0.7;
-  }
-}
-
-@keyframes touch-pulse-active {
-  0%,
-  100% {
-    opacity: 0.54;
-  }
-
-  48% {
-    opacity: 0.94;
   }
 }
 
