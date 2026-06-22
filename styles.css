@@ -1252,6 +1252,15 @@ body {
   padding-bottom: 54px;
 }
 
+.community-hero h1 {
+  width: min(760px, 100%);
+  margin-bottom: 26px;
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: clamp(3.85rem, 5vw, 4.85rem);
+  font-weight: 900;
+  line-height: 1.02;
+}
+
 .community-hero::after {
   display: none;
 }
@@ -1295,12 +1304,12 @@ body {
 }
 
 .mission-strip {
-  width: min(760px, 100%);
+  width: min(720px, 100%);
 }
 
 .mission-strip article {
-  min-height: 96px;
-  padding: 15px 18px;
+  min-height: 90px;
+  padding: 16px 18px;
 }
 
 .eyebrow,
@@ -1314,13 +1323,32 @@ body {
 }
 
 .hero-lead {
+  max-width: 760px;
   color: rgba(16, 16, 16, 0.68);
+  font-size: 1.1rem;
 }
 
 .neural-note {
-  border-color: rgba(16, 16, 16, 0.16);
-  background: rgba(255, 255, 255, 0.68);
-  color: rgba(16, 16, 16, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(720px, 100%);
+  padding: 0 0 13px;
+  border: 0;
+  border-bottom: 1px solid rgba(16, 16, 16, 0.16);
+  border-radius: 0;
+  background: transparent;
+  color: rgba(16, 16, 16, 0.66);
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.neural-note::before {
+  content: "";
+  flex: 0 0 30px;
+  height: 1px;
+  background: rgba(16, 16, 16, 0.34);
 }
 
 .secondary-button {
@@ -1343,8 +1371,8 @@ body {
 
 .mission-strip article {
   border-color: rgba(16, 16, 16, 0.12);
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 18px 54px rgba(16, 16, 16, 0.045);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 14px 44px rgba(16, 16, 16, 0.035);
 }
 
 .founder-section,
@@ -1595,6 +1623,25 @@ body {
     align-items: end;
     min-height: auto;
     padding: 70px 20px 34px;
+  }
+
+  .community-hero h1 {
+    max-width: calc(100vw - 40px);
+    font-size: 3.12rem;
+    line-height: 1.06;
+    word-break: keep-all;
+  }
+
+  .neural-note {
+    align-items: flex-start;
+    gap: 10px;
+    max-width: calc(100vw - 40px);
+    font-size: 0.92rem;
+  }
+
+  .neural-note::before {
+    flex-basis: 20px;
+    margin-top: 0.78em;
   }
 
   .neural-figure {
