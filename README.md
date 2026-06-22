@@ -24,7 +24,8 @@ python3 -m http.server 4173
 
 当前已部署到 GitHub Pages：
 
-- 网站地址：https://eliwuwu.github.io/zhisihub-site/
+- 正式网站地址：https://zhisihub.com/
+- GitHub Pages 备用地址：https://eliwuwu.github.io/zhisihub-site/
 - 仓库地址：https://github.com/eliwuwu/zhisihub-site
 
-`zhisihub.com` 等 DNS 解析确认后再绑定自定义域名；正式绑定大陆服务器前，需要完成 ICP 备案。
+`zhisihub.com` 已通过 DNSPod 解析到 GitHub Pages。正式绑定中国大陆服务器前，需要完成 ICP 备案。
