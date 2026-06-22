@@ -1236,6 +1236,12 @@ body {
   color: #ffffff;
 }
 
+.nav-links a.is-active,
+.nav-links a[aria-current="true"] {
+  background: rgba(16, 16, 16, 0.08);
+  color: #101010;
+}
+
 .nav-cta,
 .primary-button,
 .contact-form button {
@@ -1250,6 +1256,19 @@ body {
   min-height: min(820px, calc(100svh - 72px));
   padding-top: 96px;
   padding-bottom: 54px;
+}
+
+.community-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at var(--field-x, 72%) var(--field-y, 42%), rgba(224, 199, 126, 0.16), transparent 24%),
+    radial-gradient(circle at 78% 58%, rgba(16, 16, 16, 0.035), transparent 34%);
+  opacity: 0.72;
+  pointer-events: none;
+  transition: opacity 360ms ease;
 }
 
 .community-hero h1 {
@@ -1845,6 +1864,7 @@ body {
 
   .line-art-svg.is-drawn .draw-path {
     stroke-dashoffset: 0;
+    animation: path-soft-glow 7.2s ease-in-out infinite;
   }
 
   .line-art-svg .draw-node {
@@ -1860,6 +1880,7 @@ body {
   .line-art-svg.is-drawn .draw-node {
     opacity: 1;
     transform: scale(1);
+    animation: line-node-breathe 4.6s ease-in-out infinite;
   }
 
   .mission-strip article:hover,
@@ -2063,11 +2084,15 @@ body {
 @keyframes neural-float {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform:
+      translate3d(var(--neural-x, 0px), calc(var(--neural-y, 0px) + var(--neural-scroll, 0px)), 0)
+      rotate(0deg);
   }
 
   50% {
-    transform: translate3d(-10px, 8px, 0) rotate(-0.8deg);
+    transform:
+      translate3d(calc(var(--neural-x, 0px) - 10px), calc(var(--neural-y, 0px) + var(--neural-scroll, 0px) + 8px), 0)
+      rotate(-0.8deg);
   }
 }
 
@@ -2163,6 +2188,30 @@ body {
   to {
     opacity: 1;
     transform: rotate(-45deg) translate(4px, -6px) scale(1);
+  }
+}
+
+@keyframes path-soft-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 rgba(214, 176, 78, 0));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 6px rgba(214, 176, 78, 0.18));
+  }
+}
+
+@keyframes line-node-breathe {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 0 rgba(214, 176, 78, 0));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(214, 176, 78, 0.24));
   }
 }
 
