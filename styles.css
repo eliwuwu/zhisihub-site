@@ -1178,6 +1178,10 @@ h1 {
     font-size: 2.15rem;
   }
 
+  .contact-copy h2 {
+    font-size: clamp(1.7rem, 7.3vw, 2.05rem);
+  }
+
   .branch-panel {
     min-height: auto;
     padding: 22px;
@@ -1632,6 +1636,13 @@ body {
   gap: 18px;
 }
 
+.contact-copy h2 {
+  width: max-content;
+  max-width: 100%;
+  font-size: clamp(2.36rem, 3.35vw, 3rem);
+  white-space: nowrap;
+}
+
 .contact-visual {
   min-height: 280px;
   padding: 20px;
@@ -1708,6 +1719,10 @@ body {
   .neural-note::before {
     flex-basis: 20px;
     margin-top: 0.78em;
+  }
+
+  .contact-copy h2 {
+    font-size: clamp(1.58rem, 6.95vw, 1.78rem);
   }
 
   .neural-figure {
