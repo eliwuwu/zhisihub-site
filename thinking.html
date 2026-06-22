@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="White Matter 白质工作室已经收到你的加入请求。">
+    <meta name="description" content="White Matter 白质工作室正在连接你的问题。">
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#f7f7f7">
-    <title>申请已收到 | White Matter 白质工作室</title>
+    <meta http-equiv="refresh" content="3; url=./thanks.html">
+    <title>正在连接 | White Matter 白质工作室</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./styles.css?v=mission-link-20260622">
   </head>
@@ -28,20 +29,15 @@
       <a class="nav-cta" href="./">返回</a>
     </header>
 
-    <main class="thanks-page">
-      <section class="thanks-hero" aria-label="申请提交成功">
-        <div class="thanks-copy">
-          <p class="eyebrow">Request Received</p>
-          <h1>我们已经收到你的请求</h1>
-          <p class="thanks-lead">期待您的加入。</p>
-          <p class="thanks-note">新的连接已经形成。白质工作室会通过你留下的联系方式与你联系。</p>
-          <div class="thanks-actions">
-            <a class="primary-button" href="./">返回首页</a>
-            <a class="secondary-button" href="./#zhisi">继续了解织思</a>
-          </div>
+    <main class="thanks-page thinking-page">
+      <section class="thinking-hero" aria-label="正在连接你的问题">
+        <div class="thinking-copy">
+          <p class="eyebrow">Thinking</p>
+          <h1>正在连接<br>你的问题</h1>
+          <p>正在整理你的请求，稍后进入确认页面。</p>
         </div>
 
-        <figure class="thought-field" aria-label="连接正在形成">
+        <figure class="thought-field thinking-field" aria-label="节点正在汇聚">
           <span class="thought-orbit orbit-one"></span>
           <span class="thought-orbit orbit-two"></span>
           <span class="thought-line line-one"></span>
@@ -52,15 +48,15 @@
           <span class="thought-node node-three"></span>
           <span class="thought-node node-four"></span>
           <span class="thought-node node-core"></span>
-          <span class="check-mark" aria-hidden="true"></span>
         </figure>
+        <p class="thinking-route">Request received · preparing confirmation</p>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <span>© 2026 White Matter 白质工作室</span>
-      <span>zhisihub.com</span>
-      <span><a href="./privacy.html">隐私政策</a> · <a href="./terms.html">服务条款</a></span>
-    </footer>
+    <script>
+      window.setTimeout(() => {
+        window.location.href = "./thanks.html";
+      }, 2400);
+    </script>
   </body>
 </html>

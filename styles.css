@@ -786,6 +786,11 @@ h1 {
   background: #ffffff;
 }
 
+.thinking-page {
+  display: grid;
+  min-height: calc(100svh - 72px);
+}
+
 .thanks-hero {
   position: relative;
   display: grid;
@@ -830,6 +835,51 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.thinking-hero {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 24px;
+  min-height: calc(100svh - 72px);
+  padding: 92px 24px 70px;
+  text-align: center;
+}
+
+.thinking-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.thinking-copy h1 {
+  margin-bottom: 14px;
+  color: #101010;
+  font-size: clamp(2.35rem, 4.7vw, 4.6rem);
+  font-weight: 920;
+  line-height: 1.02;
+}
+
+.thinking-copy p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0 auto;
+  color: rgba(16, 16, 16, 0.58);
+  font-size: 1rem;
+  line-height: 1.76;
+}
+
+.thinking-field {
+  width: min(72vw, 430px);
+  opacity: 0.92;
+}
+
+.thinking-route {
+  margin-top: 2px;
+  color: rgba(16, 16, 16, 0.42);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .thought-field {
@@ -1253,12 +1303,20 @@ body {
 }
 
 .community-hero h1 {
-  width: min(820px, 100%);
-  margin-bottom: 24px;
+  width: min(800px, 100%);
+  margin-bottom: 30px;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: clamp(4.28rem, 5.75vw, 5.55rem);
-  font-weight: 950;
-  line-height: 1.01;
+  font-size: clamp(4.12rem, 5.48vw, 5.35rem);
+  font-weight: 920;
+  line-height: 0.99;
+}
+
+.community-hero h1 span {
+  display: block;
+}
+
+.community-hero h1 span:last-child {
+  margin-left: clamp(10px, 1.05vw, 18px);
 }
 
 .community-hero::after {
@@ -1693,7 +1751,6 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .community-hero .eyebrow,
   .community-hero h1,
-  .hero-lead,
   .neural-note,
   .mission-strip article,
   .scroll-cue {
@@ -1704,28 +1761,24 @@ body {
     animation-delay: 90ms;
   }
 
-  .hero-lead {
-    animation-delay: 180ms;
-  }
-
   .neural-note {
-    animation-delay: 260ms;
+    animation-delay: 190ms;
   }
 
   .mission-strip article:nth-child(1) {
-    animation-delay: 360ms;
+    animation-delay: 300ms;
   }
 
   .mission-strip article:nth-child(2) {
-    animation-delay: 450ms;
+    animation-delay: 390ms;
   }
 
   .mission-strip article:nth-child(3) {
-    animation-delay: 540ms;
+    animation-delay: 480ms;
   }
 
   .scroll-cue {
-    animation-delay: 660ms;
+    animation-delay: 600ms;
   }
 
   .neural-figure {
@@ -1955,7 +2008,11 @@ body {
   .thanks-copy h1,
   .thanks-lead,
   .thanks-note,
-  .thanks-actions {
+  .thanks-actions,
+  .thinking-copy .eyebrow,
+  .thinking-copy h1,
+  .thinking-copy p:not(.eyebrow),
+  .thinking-route {
     animation: hero-rise 760ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
@@ -1973,6 +2030,18 @@ body {
 
   .thanks-actions {
     animation-delay: 430ms;
+  }
+
+  .thinking-copy h1 {
+    animation-delay: 90ms;
+  }
+
+  .thinking-copy p:not(.eyebrow) {
+    animation-delay: 180ms;
+  }
+
+  .thinking-route {
+    animation-delay: 480ms;
   }
 
   .thought-field {
@@ -2240,6 +2309,32 @@ body {
 
   .thought-field {
     width: min(100%, 390px);
+  }
+
+  .thinking-hero {
+    gap: 20px;
+    padding: 70px 20px 42px;
+  }
+
+  .thinking-copy h1 {
+    font-size: 2.35rem;
+    line-height: 1.08;
+  }
+
+  .thinking-copy p:not(.eyebrow) {
+    max-width: 320px;
+    font-size: 0.92rem;
+  }
+
+  .thinking-field {
+    width: min(100%, 320px);
+  }
+
+  .thinking-route {
+    max-width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+    white-space: normal;
   }
 
   .line-one {
