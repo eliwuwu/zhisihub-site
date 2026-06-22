@@ -13,6 +13,7 @@ python3 -m http.server 4173
 ## 文件结构
 
 - `index.html`：官网首页
+- `thanks.html`：加入申请提交成功页
 - `styles.css`：页面样式
 - `script.js`：加入申请表单状态反馈与本地兜底记录
 - `privacy.html`：隐私政策
@@ -31,3 +32,4 @@ python3 -m http.server 4173
 `zhisihub.com` 已通过 DNSPod 解析到 GitHub Pages。正式绑定中国大陆服务器前，需要完成 ICP 备案。
 
 加入申请表单已接入 FormSubmit，提交后发送到收件邮箱。
+提交成功后会跳转到 `https://zhisihub.com/thanks.html`。
