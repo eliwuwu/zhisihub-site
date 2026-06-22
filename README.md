@@ -14,7 +14,7 @@ python3 -m http.server 4173
 
 - `index.html`：官网首页
 - `styles.css`：页面样式
-- `script.js`：加入申请表单本地反馈
+- `script.js`：加入申请表单状态反馈与本地兜底记录
 - `privacy.html`：隐私政策
 - `terms.html`：服务条款
 - `assets/`：White Matter 视觉素材、成员头像与合作资料预览图
@@ -29,3 +29,5 @@ python3 -m http.server 4173
 - 仓库地址：https://github.com/eliwuwu/zhisihub-site
 
 `zhisihub.com` 已通过 DNSPod 解析到 GitHub Pages。正式绑定中国大陆服务器前，需要完成 ICP 备案。
+
+加入申请表单已接入 FormSubmit，提交后发送到收件邮箱。

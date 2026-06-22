@@ -3,8 +3,14 @@ const note = document.querySelector("#formNote");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (form && note) {
+  const submitted = new URLSearchParams(window.location.search).get("submitted");
+  if (submitted === "1") {
+    note.textContent = "申请已提交，我们会尽快联系你。";
+    note.classList.add("is-success");
+    form.classList.add("has-sent");
+  }
+
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
     const leads = JSON.parse(window.localStorage.getItem("whiteMatterLeads") || "[]");
     leads.push({
@@ -12,14 +18,9 @@ if (form && note) {
       createdAt: new Date().toISOString()
     });
     window.localStorage.setItem("whiteMatterLeads", JSON.stringify(leads));
-    form.reset();
-    note.textContent = "已记录加入申请。正式上线后可接入飞书多维表、腾讯云表单、企业微信或自有后端。";
+    note.textContent = "正在提交，请稍等。";
     note.classList.add("is-success");
     form.classList.add("has-sent");
-
-    window.setTimeout(() => {
-      form.classList.remove("has-sent");
-    }, 1800);
   });
 }
 
