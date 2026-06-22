@@ -59,104 +59,44 @@ navigationLinks.forEach((link) => {
   });
 });
 
-const sections = document.querySelectorAll("main section[id]");
-const navAnchors = document.querySelectorAll(".nav-links a[href^='#']");
+const neuralHero = document.querySelector(".community-hero");
+const neuralFigure = document.querySelector(".neural-figure");
 
-const setActiveSection = (sectionId) => {
-  const navSectionId = sectionId === "courses" ? "mission" : sectionId;
+if (neuralHero && neuralFigure && !prefersReducedMotion) {
+  let neuralFrame = 0;
 
-  navAnchors.forEach((anchor) => {
-    const isActive = anchor.getAttribute("href") === `#${navSectionId}`;
-    anchor.classList.toggle("is-active", isActive);
-    if (isActive) {
-      anchor.setAttribute("aria-current", "true");
-    } else {
-      anchor.removeAttribute("aria-current");
-    }
-  });
-};
+  const deactivateNeuralGlow = () => {
+    neuralHero.classList.remove("is-neural-active");
+  };
 
-if (sections.length && navAnchors.length) {
-  setActiveSection(sections[0].id);
+  const updateNeuralGlow = (event) => {
+    window.cancelAnimationFrame(neuralFrame);
+    neuralFrame = window.requestAnimationFrame(() => {
+      const rect = neuralFigure.getBoundingClientRect();
+      const reach = Math.min(180, window.innerWidth * 0.12);
+      const isNear =
+        event.clientX >= rect.left - reach &&
+        event.clientX <= rect.right + reach &&
+        event.clientY >= rect.top - reach &&
+        event.clientY <= rect.bottom + reach;
 
-  let sectionFrame = 0;
-  const updateActiveSectionFromScroll = () => {
-    const marker = window.innerHeight * 0.38;
-    let activeId = sections[0].id;
-
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top <= marker && rect.bottom > 96) {
-        activeId = section.id;
+      if (!isNear) {
+        deactivateNeuralGlow();
+        return;
       }
-    });
 
-    setActiveSection(activeId);
-  };
+      const x = Math.min(100, Math.max(0, ((event.clientX - rect.left) / rect.width) * 100));
+      const y = Math.min(100, Math.max(0, ((event.clientY - rect.top) / rect.height) * 100));
 
-  const requestActiveSectionUpdate = () => {
-    window.cancelAnimationFrame(sectionFrame);
-    sectionFrame = window.requestAnimationFrame(updateActiveSectionFromScroll);
-  };
-
-  if ("IntersectionObserver" in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        requestActiveSectionUpdate();
-      }
-    }, {
-      threshold: [0.32, 0.48, 0.64],
-      rootMargin: "-22% 0px -45% 0px"
-    });
-
-    sections.forEach((section) => sectionObserver.observe(section));
-  }
-
-  window.addEventListener("scroll", requestActiveSectionUpdate, { passive: true });
-  window.addEventListener("hashchange", () => {
-    window.setTimeout(requestActiveSectionUpdate, 80);
-    window.setTimeout(requestActiveSectionUpdate, 260);
-  });
-  window.setTimeout(requestActiveSectionUpdate, 80);
-}
-
-const hero = document.querySelector(".community-hero");
-
-if (hero && !prefersReducedMotion) {
-  let heroFrame = 0;
-
-  const setHeroMotion = (event) => {
-    window.cancelAnimationFrame(heroFrame);
-    heroFrame = window.requestAnimationFrame(() => {
-      const rect = hero.getBoundingClientRect();
-      const xRatio = (event.clientX - rect.left) / rect.width - 0.5;
-      const yRatio = (event.clientY - rect.top) / rect.height - 0.5;
-
-      hero.style.setProperty("--neural-x", `${(xRatio * 18).toFixed(2)}px`);
-      hero.style.setProperty("--neural-y", `${(yRatio * 14).toFixed(2)}px`);
-      hero.style.setProperty("--field-x", `${((xRatio + 0.5) * 100).toFixed(1)}%`);
-      hero.style.setProperty("--field-y", `${((yRatio + 0.5) * 100).toFixed(1)}%`);
+      neuralFigure.style.setProperty("--neural-light-x", `${x.toFixed(1)}%`);
+      neuralFigure.style.setProperty("--neural-light-y", `${y.toFixed(1)}%`);
+      neuralHero.classList.add("is-neural-active");
     });
   };
 
-  const resetHeroMotion = () => {
-    hero.style.setProperty("--neural-x", "0px");
-    hero.style.setProperty("--neural-y", "0px");
-    hero.style.setProperty("--field-x", "72%");
-    hero.style.setProperty("--field-y", "42%");
-  };
-
-  const setHeroScroll = () => {
-    const rect = hero.getBoundingClientRect();
-    const progress = Math.min(1, Math.max(0, -rect.top / Math.max(rect.height, 1)));
-    hero.style.setProperty("--neural-scroll", `${(progress * 18).toFixed(2)}px`);
-  };
-
-  hero.addEventListener("pointermove", setHeroMotion);
-  hero.addEventListener("pointerleave", resetHeroMotion);
-  window.addEventListener("scroll", setHeroScroll, { passive: true });
-  resetHeroMotion();
-  setHeroScroll();
+  neuralHero.addEventListener("pointermove", updateNeuralGlow);
+  neuralHero.addEventListener("pointerleave", deactivateNeuralGlow);
+  window.addEventListener("scroll", deactivateNeuralGlow, { passive: true });
 }
 
 const revealTargets = document.querySelectorAll([
