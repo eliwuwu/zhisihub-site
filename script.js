@@ -3,6 +3,8 @@ const note = document.querySelector("#formNote");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (form && note) {
+  const submitButton = form.querySelector("button[type='submit']");
+
   const submitted = new URLSearchParams(window.location.search).get("submitted");
   if (submitted === "1") {
     note.textContent = "申请已提交，我们会尽快联系你。";
@@ -18,11 +20,44 @@ if (form && note) {
       createdAt: new Date().toISOString()
     });
     window.localStorage.setItem("whiteMatterLeads", JSON.stringify(leads));
-    note.textContent = "正在提交，请稍等。";
+    note.textContent = "正在连接你的问题，请稍等。";
     note.classList.add("is-success");
-    form.classList.add("has-sent");
+    form.classList.add("has-sent", "is-submitting");
+
+    if (submitButton) {
+      submitButton.textContent = "正在连接你的问题";
+      submitButton.disabled = true;
+    }
   });
 }
+
+const navigationLinks = document.querySelectorAll([
+  ".brand[href^='#']",
+  ".nav-links a[href^='#']",
+  ".nav-cta[href^='#']",
+  ".scroll-cue[href^='#']"
+].join(","));
+
+let navigationTimer;
+
+navigationLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    const target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+
+    document.body.classList.add("nav-connecting");
+    document.querySelectorAll(".is-section-focus").forEach((element) => {
+      element.classList.remove("is-section-focus");
+    });
+    target.classList.add("is-section-focus");
+
+    window.clearTimeout(navigationTimer);
+    navigationTimer = window.setTimeout(() => {
+      document.body.classList.remove("nav-connecting");
+      target.classList.remove("is-section-focus");
+    }, prefersReducedMotion ? 120 : 1100);
+  });
+});
 
 const revealTargets = document.querySelectorAll([
   ".section-heading",

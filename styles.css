@@ -34,6 +34,18 @@ body {
   letter-spacing: 0;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 72px 0 0;
+  z-index: 15;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(33, 184, 201, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 28%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -77,6 +89,20 @@ p {
   background: rgba(7, 24, 39, 0.84);
   color: #ffffff;
   backdrop-filter: blur(18px);
+}
+
+.site-header::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(33, 184, 201, 0.82), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  pointer-events: none;
 }
 
 .brand {
@@ -680,6 +706,10 @@ h1 {
 }
 
 .contact-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-height: 50px;
   border: 0;
   border-radius: 8px;
@@ -687,6 +717,21 @@ h1 {
   color: #04131a;
   cursor: pointer;
   font-weight: 850;
+}
+
+.contact-form button:disabled {
+  cursor: progress;
+}
+
+.contact-form.is-submitting button::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow:
+    13px 0 0 currentColor,
+    26px 0 0 currentColor;
 }
 
 .form-note {
@@ -887,21 +932,29 @@ h1 {
 .node-one {
   top: 24%;
   left: 28%;
+  --node-x: 74px;
+  --node-y: 86px;
 }
 
 .node-two {
   top: 28%;
   right: 20%;
+  --node-x: -98px;
+  --node-y: 72px;
 }
 
 .node-three {
   right: 17%;
   bottom: 28%;
+  --node-x: -108px;
+  --node-y: -74px;
 }
 
 .node-four {
   left: 23%;
   bottom: 22%;
+  --node-x: 112px;
+  --node-y: -94px;
 }
 
 .check-mark {
@@ -1151,6 +1204,10 @@ body {
   border-bottom: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.92);
   color: var(--ink);
+}
+
+.site-header::after {
+  background: linear-gradient(90deg, transparent, rgba(16, 16, 16, 0.7), rgba(214, 176, 78, 0.68), transparent);
 }
 
 .brand-mark {
@@ -1809,8 +1866,42 @@ body {
       0 0 0 1px rgba(255, 224, 150, 0.2) inset;
   }
 
+  .contact-form.is-submitting button::after {
+    animation: thinking-dots 1.25s ease-in-out infinite;
+  }
+
   .form-note.is-success {
     color: rgba(16, 16, 16, 0.82);
+  }
+
+  body.nav-connecting::after {
+    animation: field-fade 780ms ease both;
+  }
+
+  body.nav-connecting .site-header::after {
+    animation: nav-line 780ms cubic-bezier(0.22, 0.72, 0.18, 1) both;
+  }
+
+  .community-hero.is-section-focus .mission-strip article,
+  .section.is-section-focus .line-visual,
+  .section.is-section-focus .contact-visual,
+  .section.is-section-focus .detail-grid article,
+  .section.is-section-focus .founder-card,
+  .section.is-section-focus .contact-form {
+    border-color: rgba(16, 16, 16, 0.26);
+    box-shadow:
+      0 28px 86px rgba(16, 16, 16, 0.1),
+      0 0 0 1px rgba(255, 224, 150, 0.22) inset;
+  }
+
+  .section.is-section-focus .line-visual::after,
+  .section.is-section-focus .contact-visual::after {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  .section.is-section-focus .line-art-svg .draw-node {
+    filter: drop-shadow(0 0 10px rgba(214, 176, 78, 0.3));
   }
 
   .thanks-copy .eyebrow,
@@ -2001,7 +2092,7 @@ body {
 @keyframes node-arrive {
   from {
     opacity: 0;
-    transform: translateY(16px) scale(0.78);
+    transform: translate(var(--node-x, 0), var(--node-y, 16px)) scale(0.72);
   }
 
   to {
@@ -2025,6 +2116,52 @@ body {
   to {
     opacity: 1;
     transform: rotate(-45deg) translate(4px, -6px) scale(1);
+  }
+}
+
+@keyframes thinking-dots {
+  0%,
+  100% {
+    opacity: 0.36;
+    transform: translateY(0);
+    box-shadow:
+      13px 0 0 rgba(255, 255, 255, 0.44),
+      26px 0 0 rgba(255, 255, 255, 0.28);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translateY(-1px);
+    box-shadow:
+      13px 0 0 rgba(255, 255, 255, 0.86),
+      26px 0 0 rgba(255, 255, 255, 0.56);
+  }
+}
+
+@keyframes nav-line {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  38% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes field-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  36% {
+    opacity: 1;
   }
 }
 
