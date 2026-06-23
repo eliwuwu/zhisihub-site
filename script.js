@@ -146,3 +146,70 @@ const inlineLineArt = async () => {
 if (!prefersReducedMotion) {
   inlineLineArt();
 }
+
+const homeFiberField = document.querySelector("#homeFiberField");
+
+if (homeFiberField) {
+  const namespace = "http://www.w3.org/2000/svg";
+  const palette = [
+    "rgba(246, 251, 255, 0.92)",
+    "rgba(159, 221, 234, 0.88)",
+    "rgba(116, 100, 216, 0.82)",
+    "rgba(63, 112, 215, 0.72)"
+  ];
+
+  const random = (index, salt = 0) => {
+    const value = Math.sin(index * 89.17 + salt * 193.31) * 10000;
+    return value - Math.floor(value);
+  };
+
+  const makePathData = (index) => {
+    const y = 315 + (random(index, 1) - 0.5) * 185;
+    const x1 = -90 - random(index, 2) * 70;
+    const c1x = 155 + random(index, 3) * 140;
+    const c1y = y + (random(index, 4) - 0.5) * 190;
+    const c2x = 560 + random(index, 5) * 220;
+    const c2y = 300 + (random(index, 6) - 0.5) * 130;
+    const x2 = 1320 + random(index, 7) * 120;
+    const y2 = 304 + (random(index, 8) - 0.5) * 105;
+    return `M ${x1.toFixed(1)} ${y.toFixed(1)} C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${x2.toFixed(1)} ${y2.toFixed(1)}`;
+  };
+
+  const appendFiberPath = (className, index, options = {}) => {
+    const path = document.createElementNS(namespace, "path");
+    path.setAttribute("d", makePathData(index));
+    path.setAttribute("pathLength", "760");
+    path.setAttribute("class", className);
+    path.setAttribute("stroke", palette[index % palette.length]);
+
+    if (options.opacity) path.style.opacity = options.opacity;
+    if (options.width) path.style.strokeWidth = options.width;
+    if (options.delay) path.style.animationDelay = options.delay;
+    if (options.duration) path.style.animationDuration = options.duration;
+
+    homeFiberField.appendChild(path);
+  };
+
+  for (let index = 0; index < 116; index += 1) {
+    if (index % 3 === 0) {
+      appendFiberPath("home-fiber-soft", index, {
+        opacity: String(0.09 + random(index, 10) * 0.075),
+        width: String(4.2 + random(index, 11) * 5.6)
+      });
+    }
+
+    appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
+      opacity: String(0.26 + random(index, 12) * 0.32),
+      width: String(0.32 + random(index, 13) * 0.72)
+    });
+
+    if (index % 4 === 0) {
+      appendFiberPath("home-fiber-signal", index, {
+        opacity: String(0.68 + random(index, 14) * 0.24),
+        width: String(1.35 + random(index, 15) * 1.25),
+        delay: `${-(random(index, 16) * 4.8).toFixed(2)}s`,
+        duration: `${(3.6 + random(index, 17) * 2.6).toFixed(2)}s`
+      });
+    }
+  }
+}
