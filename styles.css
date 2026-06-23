@@ -1710,15 +1710,20 @@ body {
   }
 
   .neural-note {
-    align-items: flex-start;
-    gap: 10px;
-    max-width: calc(100vw - 40px);
+    display: block;
+    width: calc(100vw - 40px);
+    max-width: none;
     font-size: 0.92rem;
+    line-height: 1.58;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .neural-note::before {
-    flex-basis: 20px;
-    margin-top: 0.78em;
+    display: inline-block;
+    width: 20px;
+    margin: 0 10px 0.28em 0;
+    vertical-align: middle;
   }
 
   .contact-copy h2 {
@@ -2386,10 +2391,10 @@ body {
 .community-hero {
   isolation: isolate;
   background:
-    radial-gradient(circle at 18% 51%, rgba(255, 255, 255, 0.24), rgba(159, 221, 234, 0.12) 8%, transparent 20%),
-    radial-gradient(circle at 42% 48%, rgba(166, 129, 255, 0.28), transparent 28%),
-    radial-gradient(circle at 78% 44%, rgba(91, 119, 230, 0.2), transparent 36%),
-    linear-gradient(180deg, #020711 0%, #04111d 56%, #01040b 100%);
+    radial-gradient(circle at 28% 50%, rgba(220, 188, 255, 0.34), rgba(150, 87, 255, 0.2) 12%, transparent 31%),
+    radial-gradient(circle at 68% 47%, rgba(124, 65, 255, 0.26), transparent 43%),
+    radial-gradient(circle at 86% 44%, rgba(49, 46, 140, 0.34), transparent 38%),
+    linear-gradient(180deg, #01020a 0%, #06021a 52%, #01030b 100%);
   color: #f6fbff;
 }
 
@@ -2400,9 +2405,10 @@ body {
   z-index: 3;
   pointer-events: none;
   background:
-    radial-gradient(circle at 18% 50%, rgba(246, 251, 255, 0.4), rgba(142, 232, 255, 0.12) 11%, transparent 24%),
-    linear-gradient(90deg, rgba(3, 9, 20, 0.58) 0%, rgba(3, 9, 20, 0.18) 36%, rgba(3, 9, 20, 0.03) 68%, rgba(3, 9, 20, 0.48) 100%),
-    linear-gradient(180deg, rgba(3, 9, 20, 0.1), rgba(3, 9, 20, 0.82));
+    radial-gradient(ellipse at 13% 45%, rgba(1, 2, 10, 0.95) 0%, rgba(1, 2, 10, 0.78) 18%, rgba(1, 2, 10, 0.34) 35%, transparent 54%),
+    radial-gradient(circle at 27% 50%, rgba(255, 255, 255, 0.12), rgba(179, 106, 255, 0.12) 10%, transparent 27%),
+    linear-gradient(90deg, rgba(1, 2, 10, 0.92) 0%, rgba(1, 2, 10, 0.66) 20%, rgba(1, 2, 10, 0.12) 48%, rgba(1, 2, 10, 0.44) 100%),
+    linear-gradient(180deg, rgba(1, 2, 10, 0.08), rgba(1, 2, 10, 0.84));
 }
 
 .community-hero::after {
@@ -2417,10 +2423,11 @@ body {
 .home-impact-beams {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
   pointer-events: none;
   mix-blend-mode: screen;
+  opacity: 0.58;
 }
 
 .home-impact-beams::before {
@@ -2431,8 +2438,8 @@ body {
   width: 72%;
   height: 42%;
   background:
-    radial-gradient(ellipse at 46% 50%, rgba(255, 255, 255, 0.98), rgba(205, 232, 255, 0.68) 7%, rgba(166, 129, 255, 0.38) 18%, rgba(91, 119, 230, 0.13) 36%, transparent 62%);
-  opacity: 0.9;
+    radial-gradient(ellipse at 46% 50%, rgba(255, 255, 255, 0.78), rgba(231, 213, 255, 0.58) 7%, rgba(177, 93, 255, 0.36) 18%, rgba(94, 55, 222, 0.16) 36%, transparent 62%);
+  opacity: 0.72;
 }
 
 .home-impact-beams span {
@@ -2442,7 +2449,7 @@ body {
   top: var(--top);
   height: var(--h);
   border-radius: 999px;
-  background: linear-gradient(270deg, transparent 0%, rgba(124, 111, 255, calc(var(--a) * 0.34)) 18%, rgba(190, 171, 255, var(--a)) 48%, rgba(255, 255, 255, calc(var(--a) * 0.86)) 72%, transparent 98%);
+  background: linear-gradient(270deg, transparent 0%, rgba(118, 72, 255, calc(var(--a) * 0.38)) 18%, rgba(187, 116, 255, var(--a)) 48%, rgba(255, 255, 255, calc(var(--a) * 0.84)) 72%, transparent 98%);
   opacity: var(--o);
   transform: rotate(var(--angle));
   transform-origin: 12% 50%;
@@ -2454,6 +2461,75 @@ body {
 .home-impact-beams span:nth-child(3) { --top: 46%; --h: 120px; --angle: 5.8deg; --a: 0.52; --o: 0.76; --speed: 5.4s; }
 .home-impact-beams span:nth-child(4) { --top: 56%; --h: 64px; --angle: 10.2deg; --a: 0.62; --o: 0.78; --speed: 4.2s; }
 .home-impact-beams span:nth-child(5) { --top: 64%; --h: 30px; --angle: 14deg; --a: 0.82; --o: 0.68; --speed: 3.4s; }
+
+.home-fiber-bitmap {
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("./assets/fiber-convergence-purple.png?v=purple-converge-20260623");
+  background-position: 47% 50%;
+  background-size: cover;
+  filter: saturate(1.22) contrast(1.12);
+  opacity: 0.98;
+  transform: scale(1.02);
+  transform-origin: 28% 50%;
+  animation: homeFiberMass 9s ease-in-out infinite alternate;
+}
+
+.home-fiber-bitmap::before,
+.home-fiber-bitmap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.home-fiber-bitmap::before {
+  background:
+    radial-gradient(ellipse at 28% 50%, rgba(255, 255, 255, 0.34), rgba(190, 116, 255, 0.2) 10%, transparent 26%),
+    linear-gradient(92deg, transparent 0%, rgba(103, 70, 255, 0.16) 49%, rgba(255, 255, 255, 0.2) 56%, transparent 67%);
+  opacity: 0.72;
+}
+
+.home-fiber-bitmap::after {
+  background:
+    radial-gradient(ellipse at 61% 49%, rgba(181, 91, 255, 0.28), transparent 37%),
+    linear-gradient(104deg, transparent 0 38%, rgba(255, 255, 255, 0.16) 47%, rgba(147, 86, 255, 0.28) 52%, transparent 64%);
+  opacity: 0.5;
+  transform: translateX(8%);
+  animation: homeFiberConvergeSweep 4.8s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+@keyframes homeFiberMass {
+  from {
+    filter: saturate(1.18) contrast(1.1);
+    transform: scale(1.015) translateX(0.8%);
+  }
+
+  to {
+    filter: saturate(1.36) contrast(1.18);
+    transform: scale(1.05) translateX(-1.4%);
+  }
+}
+
+@keyframes homeFiberConvergeSweep {
+  0% {
+    opacity: 0;
+    transform: translateX(15%) scaleX(1.08);
+  }
+
+  30%,
+  62% {
+    opacity: 0.62;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-12%) scaleX(0.92);
+  }
+}
 
 @keyframes homeBeamDrift {
   from {
@@ -2470,11 +2546,12 @@ body {
 .home-fiber-field {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   height: 100%;
   overflow: visible;
   pointer-events: none;
+  opacity: 0.94;
 }
 
 .home-fiber-field path {
@@ -2486,37 +2563,37 @@ body {
 }
 
 .home-fiber-soft {
-  stroke-width: 10.5;
-  opacity: 0.17;
+  stroke-width: 11.5;
+  opacity: 0.2;
 }
 
 .home-fiber-spine {
-  stroke-width: 3.8;
-  opacity: 0.7;
+  stroke-width: 4.2;
+  opacity: 0.78;
 }
 
 .home-fiber-core {
   stroke-width: 0.92;
-  opacity: 0.72;
+  opacity: 0.8;
 }
 
 .home-fiber-thread {
   stroke-width: 0.46;
-  opacity: 0.58;
+  opacity: 0.62;
 }
 
 .home-fiber-signal {
-  stroke-width: 2.4;
+  stroke-width: 2.8;
   opacity: 0.98;
-  stroke-dasharray: 48 720;
-  stroke-dashoffset: 768;
-  animation: homeFiberSignal 3.8s linear infinite;
+  stroke-dasharray: 34 760;
+  stroke-dashoffset: -760;
+  animation: homeFiberSignal 3.2s linear infinite;
 }
 
 .home-fiber-node,
 .home-fiber-neck {
   fill: rgba(246, 251, 255, 0.96);
-  filter: drop-shadow(0 0 9px rgba(205, 232, 255, 0.78)) drop-shadow(0 0 22px rgba(145, 134, 255, 0.45));
+  filter: drop-shadow(0 0 9px rgba(237, 226, 255, 0.86)) drop-shadow(0 0 24px rgba(168, 93, 255, 0.62));
   mix-blend-mode: screen;
 }
 
@@ -2540,10 +2617,12 @@ body {
 
 .community-hero .eyebrow {
   color: #9fddea;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9);
 }
 
 .community-hero h1 {
   color: #f6fbff;
+  text-shadow: 0 7px 34px rgba(0, 0, 0, 0.98), 0 2px 9px rgba(0, 0, 0, 0.88);
 }
 
 .community-hero h1 span:last-child {
@@ -2552,11 +2631,16 @@ body {
 
 .community-hero .neural-note {
   border-bottom-color: rgba(205, 232, 255, 0.22);
-  color: rgba(246, 251, 255, 0.78);
+  color: rgba(246, 251, 255, 0.9);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.88);
 }
 
 .community-hero .neural-note::before {
   background: #9fddea;
+}
+
+.mobile-note-break {
+  display: none;
 }
 
 .community-hero .mission-strip {
@@ -2565,9 +2649,10 @@ body {
 
 .community-hero .mission-strip article {
   border-color: rgba(205, 232, 255, 0.16);
-  background: rgba(6, 19, 31, 0.58);
+  background: linear-gradient(135deg, rgba(3, 6, 20, 0.9), rgba(9, 14, 36, 0.76));
   color: #f6fbff;
   backdrop-filter: blur(14px);
+  box-shadow: 0 18px 46px rgba(1, 2, 10, 0.32);
 }
 
 .community-hero .mission-strip span {
@@ -2583,6 +2668,11 @@ body {
 }
 
 @media (max-width: 760px) {
+  .home-fiber-bitmap {
+    background-position: 39% 50%;
+    transform-origin: 31% 50%;
+  }
+
   .home-fiber-field {
     transform: translateX(-22%) scale(1.22);
     transform-origin: 40% 50%;
@@ -2596,6 +2686,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .home-impact-beams span,
+  .home-fiber-bitmap,
+  .home-fiber-bitmap::after,
   .home-fiber-signal {
     animation: none;
   }
@@ -3075,5 +3167,26 @@ main {
   .founder-sketch {
     width: min(86%, 188px);
     height: 188px;
+  }
+}
+
+@media (max-width: 760px) {
+  .community-hero .neural-note {
+    display: block;
+    width: calc(100vw - 40px);
+    max-width: none;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .community-hero .neural-note::before {
+    display: inline-block;
+    width: 20px;
+    margin: 0 10px 0.28em 0;
+    vertical-align: middle;
+  }
+
+  .mobile-note-break {
+    display: block;
   }
 }

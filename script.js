@@ -152,11 +152,12 @@ const homeFiberField = document.querySelector("#homeFiberField");
 if (homeFiberField) {
   const namespace = "http://www.w3.org/2000/svg";
   const palette = [
-    "rgba(246, 251, 255, 0.96)",
-    "rgba(205, 232, 255, 0.92)",
-    "rgba(190, 171, 255, 0.9)",
-    "rgba(145, 134, 255, 0.86)",
-    "rgba(91, 119, 230, 0.76)"
+    "rgba(255, 255, 255, 0.98)",
+    "rgba(237, 226, 255, 0.96)",
+    "rgba(213, 178, 255, 0.94)",
+    "rgba(180, 111, 255, 0.92)",
+    "rgba(137, 82, 255, 0.86)",
+    "rgba(96, 73, 240, 0.78)"
   ];
 
   const random = (index, salt = 0) => {
@@ -167,14 +168,15 @@ if (homeFiberField) {
   const makePathData = (index) => {
     const leftLanes = [266, 302, 336, 372, 408, 444];
     const lane = leftLanes[index % leftLanes.length] + (random(index, 21) - 0.5) * 10;
-    const neckX = 258 + (random(index, 22) - 0.5) * 22;
-    const neckY = 350 + (random(index, 23) - 0.5) * 54;
-    const rightX = 1330 + random(index, 2) * 140;
-    const fanY = 112 + random(index, 1) * 492;
-    const c1x = 1020 + (random(index, 3) - 0.5) * 170;
-    const c1y = fanY + (random(index, 4) - 0.5) * 150;
-    const c2x = 540 + random(index, 5) * 180;
-    const c2y = neckY + (fanY - neckY) * (0.18 + random(index, 6) * 0.22);
+    const neckX = 270 + (random(index, 22) - 0.5) * 18;
+    const neckY = 350 + (random(index, 23) - 0.5) * 44;
+    const rightX = 1250 + random(index, 2) * 280;
+    const fanSpread = 68 + Math.pow(random(index, 1), 0.72) * 540;
+    const fanY = Math.max(54, Math.min(626, neckY + (random(index, 19) > 0.48 ? 1 : -1) * fanSpread + (random(index, 20) - 0.5) * 110));
+    const c1x = 990 + (random(index, 3) - 0.5) * 260;
+    const c1y = fanY + (random(index, 4) - 0.5) * 190;
+    const c2x = 455 + random(index, 5) * 270;
+    const c2y = neckY + (fanY - neckY) * (0.09 + random(index, 6) * 0.22);
     const leftX = -132 - random(index, 7) * 120;
     const leftControlX = 150 + random(index, 8) * 74;
     return [
@@ -212,37 +214,37 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 238; index += 1) {
+  for (let index = 0; index < 278; index += 1) {
     if (index % 2 === 0) {
       appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.08 + random(index, 10) * 0.13),
-        width: String(4.8 + random(index, 11) * 8.2)
+        opacity: String(0.1 + random(index, 10) * 0.16),
+        width: String(5.2 + random(index, 11) * 9.6)
       });
     }
 
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.34 + random(index, 12) * 0.42),
-      width: String(0.36 + random(index, 13) * 0.9)
+      opacity: String(0.38 + random(index, 12) * 0.48),
+      width: String(0.4 + random(index, 13) * 1.06)
     });
 
-    if (index < 42) {
+    if (index < 58) {
       appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.38 + random(index, 24) * 0.38),
-        width: String(1.8 + random(index, 25) * 3.8)
+        opacity: String(0.46 + random(index, 24) * 0.42),
+        width: String(2.1 + random(index, 25) * 4.8)
       });
     }
 
-    if (index % 3 === 0) {
+    if (index % 2 === 0) {
       appendFiberPath("home-fiber-signal", index, {
-        opacity: String(0.72 + random(index, 14) * 0.26),
-        width: String(1.45 + random(index, 15) * 1.55),
-        delay: `${-(random(index, 16) * 3.8).toFixed(2)}s`,
-        duration: `${(2.7 + random(index, 17) * 2.2).toFixed(2)}s`
+        opacity: String(0.76 + random(index, 14) * 0.22),
+        width: String(1.35 + random(index, 15) * 2.15),
+        delay: `${-(random(index, 16) * 3.2).toFixed(2)}s`,
+        duration: `${(2.15 + random(index, 17) * 1.65).toFixed(2)}s`
       });
     }
   }
 
-  for (let index = 0; index < 72; index += 1) {
+  for (let index = 0; index < 96; index += 1) {
     appendFiberNode(index);
   }
 
