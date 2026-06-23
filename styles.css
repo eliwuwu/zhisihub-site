@@ -2956,55 +2956,78 @@ main {
 .founder-card,
 .lead-founder {
   justify-content: space-between;
-  min-height: 292px;
+  min-height: 286px;
   padding: 22px 20px 18px;
-  border-color: rgba(205, 232, 255, 0.42);
+  border-color: rgba(180, 226, 255, 0.18);
   background:
-    radial-gradient(circle at 54% 70%, rgba(142, 232, 255, 0.28), transparent 42%),
-    linear-gradient(180deg, rgba(247, 252, 255, 0.97) 0%, rgba(213, 234, 246, 0.9) 100%);
+    radial-gradient(circle at 50% 72%, rgba(142, 232, 255, 0.12), transparent 44%),
+    linear-gradient(180deg, rgba(246, 251, 255, 0.068), rgba(246, 251, 255, 0.03)),
+    rgba(5, 18, 31, 0.76);
   box-shadow:
-    0 24px 84px rgba(0, 0, 0, 0.24),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
-  backdrop-filter: none;
+    0 24px 84px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(142, 232, 255, 0.035) inset;
+  backdrop-filter: blur(18px);
+}
+
+.founder-card::before {
+  content: "";
+  position: absolute;
+  right: 17%;
+  bottom: 26px;
+  left: 17%;
+  height: 62%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 50% 52%, rgba(223, 244, 255, 0.24) 0%, rgba(142, 232, 255, 0.15) 34%, rgba(91, 119, 230, 0.06) 58%, transparent 74%);
+  filter: blur(10px);
+  opacity: 0.86;
+  pointer-events: none;
 }
 
 .founder-card h3 {
-  color: #06131f;
+  color: #f6fbff;
   font-weight: 850;
 }
 
 .founder-sketch {
+  position: relative;
+  z-index: 1;
   width: min(92%, 196px);
   height: 196px;
   margin: 12px auto 0;
   filter:
-    saturate(0.72)
-    contrast(1.05)
-    drop-shadow(0 16px 26px rgba(8, 26, 42, 0.2));
-  opacity: 0.88;
-  mix-blend-mode: multiply;
+    invert(1)
+    brightness(1.12)
+    saturate(0.58)
+    drop-shadow(0 16px 24px rgba(0, 0, 0, 0.32))
+    drop-shadow(0 0 18px rgba(205, 232, 255, 0.12));
+  opacity: 0.9;
+  mix-blend-mode: normal;
 }
 
 .founder-card::after {
-  background: linear-gradient(90deg, transparent, rgba(8, 61, 92, 0.28), transparent);
+  background: linear-gradient(90deg, transparent, rgba(142, 232, 255, 0.32), transparent);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .founder-card:hover,
   .section.is-section-focus .founder-card {
-    border-color: rgba(142, 232, 255, 0.7);
+    border-color: rgba(142, 232, 255, 0.34);
     box-shadow:
-      0 30px 92px rgba(0, 0, 0, 0.28),
-      0 0 0 1px rgba(255, 255, 255, 0.76) inset,
-      0 0 42px rgba(142, 232, 255, 0.13);
+      0 30px 92px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(142, 232, 255, 0.1) inset,
+      0 0 34px rgba(142, 232, 255, 0.07);
   }
 
   .founder-card:hover .founder-sketch {
     filter:
-      saturate(0.72)
-      contrast(1.08)
-      drop-shadow(0 18px 28px rgba(8, 26, 42, 0.24));
-    opacity: 0.94;
+      invert(1)
+      brightness(1.18)
+      saturate(0.6)
+      drop-shadow(0 18px 28px rgba(0, 0, 0, 0.34))
+      drop-shadow(0 0 22px rgba(205, 232, 255, 0.16));
+    opacity: 0.96;
   }
 }
 
