@@ -2799,6 +2799,32 @@ main {
   mix-blend-mode: screen;
 }
 
+.line-art-svg {
+  position: relative;
+  z-index: 1;
+  color: #cde8ff;
+  filter: drop-shadow(0 0 24px rgba(142, 232, 255, 0.16));
+  opacity: 0.92;
+  mix-blend-mode: screen;
+}
+
+.line-art-svg .bold,
+.line-art-svg .line {
+  stroke: #cde8ff !important;
+}
+
+.line-art-svg .thin {
+  stroke: rgba(142, 232, 255, 0.66) !important;
+}
+
+.line-art-svg .dot,
+.line-art-svg .node,
+.line-art-svg .core,
+.line-art-svg .warm {
+  fill: rgba(142, 232, 255, 0.12) !important;
+  stroke: #cde8ff !important;
+}
+
 .founder-card {
   background:
     radial-gradient(circle at 50% 82%, rgba(142, 232, 255, 0.12), transparent 38%),
