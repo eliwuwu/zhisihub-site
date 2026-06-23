@@ -2579,3 +2579,337 @@ body {
     animation: none;
   }
 }
+
+/* Unified dark site direction */
+:root {
+  color-scheme: dark;
+  --ink: #f6fbff;
+  --muted: #a9bfd0;
+  --dim: #71889c;
+  --paper: #020711;
+  --surface: rgba(9, 25, 42, 0.72);
+  --surface-strong: rgba(15, 40, 63, 0.86);
+  --line: rgba(180, 226, 255, 0.16);
+  --navy: #04111d;
+  --navy-2: #0b2336;
+  --cyan: #8ee8ff;
+  --blue: #5b77e6;
+  --orange: #e1b46a;
+  --violet: #9186ff;
+  --shadow: 0 24px 86px rgba(0, 0, 0, 0.42);
+}
+
+html {
+  background: #020711;
+}
+
+body {
+  background:
+    radial-gradient(circle at 18% 13%, rgba(142, 232, 255, 0.14), transparent 30%),
+    radial-gradient(circle at 72% 31%, rgba(91, 119, 230, 0.14), transparent 34%),
+    linear-gradient(180deg, #020711 0%, #06131f 39%, #081a2a 100%);
+  color: var(--ink);
+}
+
+main {
+  background:
+    linear-gradient(180deg, #020711 0%, #05111d 18%, #071827 48%, #091c2d 100%);
+}
+
+.site-header {
+  border-bottom-color: rgba(180, 226, 255, 0.14);
+  background: rgba(3, 9, 20, 0.8);
+  color: #f6fbff;
+  backdrop-filter: blur(18px);
+}
+
+.site-header::after {
+  background: linear-gradient(90deg, transparent, rgba(142, 232, 255, 0.76), rgba(145, 134, 255, 0.48), transparent);
+}
+
+.brand-mark {
+  background: rgba(246, 251, 255, 0.96);
+}
+
+.brand small {
+  color: rgba(246, 251, 255, 0.58);
+}
+
+.nav-links {
+  border-color: rgba(180, 226, 255, 0.14);
+  background: rgba(7, 24, 39, 0.62);
+}
+
+.nav-links a,
+.nav-links button {
+  color: rgba(246, 251, 255, 0.7);
+}
+
+.nav-links a:hover,
+.nav-links button:hover,
+.nav-links button.is-active {
+  background: rgba(142, 232, 255, 0.14);
+  color: #f6fbff;
+}
+
+.nav-cta,
+.primary-button {
+  background: #8ee8ff;
+  color: #020711;
+}
+
+.section {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(180, 226, 255, 0.08);
+  color: #f6fbff;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.content-section {
+  background:
+    radial-gradient(circle at 20% 12%, rgba(142, 232, 255, 0.12), transparent 32%),
+    linear-gradient(180deg, #020711 0%, #06131f 58%, #071827 100%);
+}
+
+.content-section::before,
+.founder-section::before,
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(246, 251, 255, 0.026) 0 1px, transparent 1px 118px),
+    repeating-linear-gradient(0deg, rgba(246, 251, 255, 0.018) 0 1px, transparent 1px 118px);
+  opacity: 0.4;
+}
+
+.course-section {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(142, 232, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 88% 28%, rgba(91, 119, 230, 0.1), transparent 34%),
+    linear-gradient(180deg, #020711 0%, #05111d 52%, #071827 100%);
+}
+
+.zhisi-section {
+  background:
+    radial-gradient(circle at 76% 16%, rgba(145, 134, 255, 0.13), transparent 33%),
+    radial-gradient(circle at 18% 74%, rgba(142, 232, 255, 0.1), transparent 35%),
+    linear-gradient(180deg, #071827 0%, #081a2a 48%, #06131f 100%);
+}
+
+.founder-section {
+  background:
+    radial-gradient(circle at 20% 22%, rgba(225, 180, 106, 0.08), transparent 28%),
+    radial-gradient(circle at 88% 50%, rgba(142, 232, 255, 0.1), transparent 34%),
+    linear-gradient(180deg, #06131f 0%, #081a2a 54%, #071827 100%);
+}
+
+.contact-section {
+  background:
+    radial-gradient(circle at 18% 26%, rgba(142, 232, 255, 0.14), transparent 34%),
+    radial-gradient(circle at 74% 70%, rgba(91, 119, 230, 0.12), transparent 35%),
+    linear-gradient(180deg, #071827 0%, #04111d 100%);
+}
+
+.section-heading h2,
+.contact-copy h2,
+.detail-grid h3,
+.founder-card h3,
+.mission-strip strong {
+  color: #f6fbff;
+}
+
+.section-heading p:not(.eyebrow),
+.contact-copy p,
+.detail-grid p,
+.founder-card p,
+.form-note,
+.site-footer {
+  color: rgba(222, 239, 255, 0.68);
+}
+
+.eyebrow,
+.section-heading .eyebrow,
+.detail-grid span,
+.mission-strip span,
+.founder-card span,
+.contact-form span,
+.site-footer a {
+  color: #8ee8ff;
+}
+
+.mission-strip article,
+.detail-grid article,
+.line-visual,
+.contact-visual,
+.founder-card,
+.contact-form,
+.legal-page article {
+  border: 1px solid rgba(180, 226, 255, 0.15);
+  background:
+    linear-gradient(180deg, rgba(246, 251, 255, 0.075), rgba(246, 251, 255, 0.035)),
+    rgba(6, 19, 31, 0.62);
+  box-shadow:
+    0 24px 82px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(142, 232, 255, 0.035) inset;
+  backdrop-filter: blur(18px);
+}
+
+.line-visual,
+.contact-visual {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(142, 232, 255, 0.16), transparent 46%),
+    linear-gradient(135deg, rgba(246, 251, 255, 0.07), rgba(91, 119, 230, 0.045)),
+    rgba(4, 17, 29, 0.7);
+  overflow: hidden;
+}
+
+.line-visual::before,
+.contact-visual::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(180, 226, 255, 0.08);
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, transparent, rgba(142, 232, 255, 0.08), transparent),
+    repeating-linear-gradient(135deg, rgba(246, 251, 255, 0.035) 0 1px, transparent 1px 18px);
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.line-visual img,
+.contact-visual img {
+  position: relative;
+  z-index: 1;
+  filter:
+    invert(1)
+    brightness(1.35)
+    saturate(0.72)
+    drop-shadow(0 0 24px rgba(142, 232, 255, 0.16));
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+.founder-card {
+  background:
+    radial-gradient(circle at 50% 82%, rgba(142, 232, 255, 0.12), transparent 38%),
+    linear-gradient(180deg, rgba(246, 251, 255, 0.075), rgba(246, 251, 255, 0.032)),
+    rgba(4, 17, 29, 0.74);
+}
+
+.lead-founder {
+  background:
+    radial-gradient(circle at 50% 78%, rgba(225, 180, 106, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(142, 232, 255, 0.11), rgba(246, 251, 255, 0.032)),
+    rgba(4, 17, 29, 0.78);
+}
+
+.founder-sketch {
+  filter:
+    invert(1)
+    brightness(1.18)
+    saturate(0.55)
+    drop-shadow(0 20px 32px rgba(0, 0, 0, 0.34))
+    drop-shadow(0 0 20px rgba(142, 232, 255, 0.14));
+  opacity: 0.84;
+  mix-blend-mode: screen;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-color: rgba(180, 226, 255, 0.18);
+  background: rgba(2, 7, 17, 0.62);
+  color: #f6fbff;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(222, 239, 255, 0.42);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 0;
+  border-color: rgba(142, 232, 255, 0.58);
+  box-shadow: 0 0 0 3px rgba(142, 232, 255, 0.12);
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, #8ee8ff, #9186ff);
+  color: #020711;
+}
+
+.site-footer {
+  border-top-color: rgba(180, 226, 255, 0.12);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(142, 232, 255, 0.08), transparent 36%),
+    #020711;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mission-strip article:hover,
+  .detail-grid article:hover,
+  .line-visual:hover,
+  .contact-visual:hover,
+  .contact-form:hover,
+  .founder-card:hover,
+  .section.is-section-focus .line-visual,
+  .section.is-section-focus .contact-visual,
+  .section.is-section-focus .detail-grid article,
+  .section.is-section-focus .founder-card,
+  .section.is-section-focus .contact-form {
+    border-color: rgba(142, 232, 255, 0.32);
+    box-shadow:
+      0 28px 90px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(142, 232, 255, 0.12) inset,
+      0 0 38px rgba(142, 232, 255, 0.08);
+  }
+
+  .line-visual::after,
+  .contact-visual::after {
+    background: radial-gradient(circle, rgba(142, 232, 255, 0.16), transparent 62%);
+  }
+
+  .founder-card::after {
+    background: linear-gradient(90deg, transparent, rgba(142, 232, 255, 0.54), transparent);
+  }
+
+  .founder-card:hover .founder-sketch {
+    filter:
+      invert(1)
+      brightness(1.24)
+      saturate(0.58)
+      drop-shadow(0 22px 34px rgba(0, 0, 0, 0.4))
+      drop-shadow(0 0 24px rgba(142, 232, 255, 0.16));
+  }
+
+  .contact-form.has-sent {
+    border-color: rgba(142, 232, 255, 0.36);
+    box-shadow:
+      0 24px 90px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(142, 232, 255, 0.16) inset;
+  }
+
+  .form-note.is-success {
+    color: rgba(142, 232, 255, 0.9);
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    background: rgba(3, 9, 20, 0.88);
+  }
+
+  .contact-copy h2 {
+    white-space: normal;
+  }
+}
