@@ -241,6 +241,45 @@ if (homeFiberField) {
         `C ${(112 + random(index, 6) * 42).toFixed(1)} ${(neckY + upper * 18).toFixed(1)}, ${midX.toFixed(1)} ${fanY.toFixed(1)}, ${endX.toFixed(1)} ${clamp(endY, 40, 640).toFixed(1)}`
       ].join(" ");
     }
+    if (variant === "lowerSilk") {
+      const depth = Math.pow(random(index, 1), 0.7);
+      const fanY = clamp(414 + depth * 226 + (random(index, 20) - 0.5) * 54, 404, 650);
+      const rightX = 620 + random(index, 3) * 610;
+      const bend = 20 + random(index, 4) * 72;
+      const c1x = 126 + random(index, 5) * 86;
+      const c1y = neckY + 28 + random(index, 6) * 42;
+      const c2x = 330 + random(index, 7) * 430;
+      const c2y = fanY - bend + (random(index, 8) - 0.5) * 46;
+      return [
+        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
+      ].join(" ");
+    }
+    if (variant === "middleSilk") {
+      const depth = Math.pow(random(index, 1), 0.82);
+      const fanY = clamp(382 + depth * 164 + (random(index, 20) - 0.5) * 42, 370, 552);
+      const rightX = 600 + random(index, 3) * 620;
+      const c1x = 124 + random(index, 5) * 92;
+      const c1y = neckY + 8 + random(index, 6) * 30;
+      const c2x = 326 + random(index, 7) * 480;
+      const c2y = fanY - 24 + (random(index, 8) - 0.5) * 48;
+      return [
+        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
+      ].join(" ");
+    }
+    if (variant === "bridgeSilk") {
+      const fanY = clamp(330 + Math.pow(random(index, 1), 0.78) * 178 + (random(index, 20) - 0.5) * 34, 324, 516);
+      const rightX = 560 + random(index, 3) * 650;
+      const c1x = 118 + random(index, 5) * 92;
+      const c1y = neckY + (fanY - neckY) * 0.18 + (random(index, 6) - 0.5) * 18;
+      const c2x = 300 + random(index, 7) * 520;
+      const c2y = fanY + (random(index, 8) - 0.5) * 34;
+      return [
+        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
+      ].join(" ");
+    }
     const spreadPower = variant === "spine" || variant === "ribbon" ? 0.54 : 0.78;
     const spreadLimit = variant === "signal" ? 360 : variant === "ribbon" ? 520 : 455;
     const spread = 32 + Math.pow(random(index, 1), spreadPower) * spreadLimit;
@@ -298,6 +337,46 @@ if (homeFiberField) {
       width: String(0.28 + random(index, 27) * 0.72),
       stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[index % 3]
     }, "curtain");
+  }
+
+  for (let index = 0; index < 132; index += 1) {
+    appendFiberPath(index % 5 === 0 ? "home-fiber-lower-silk home-fiber-lower-bright" : "home-fiber-lower-silk", index + 1460, {
+      opacity: String(0.42 + random(index, 36) * 0.28),
+      width: String(0.26 + random(index, 37) * 0.54),
+      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
+      delay: `${-(random(index, 38) * 7.2).toFixed(2)}s`,
+      duration: `${(7.6 + random(index, 39) * 3.4).toFixed(2)}s`
+    }, "lowerSilk");
+  }
+
+  for (let index = 0; index < 76; index += 1) {
+    appendFiberPath(index % 4 === 0 ? "home-fiber-middle-silk home-fiber-lower-bright" : "home-fiber-middle-silk", index + 1910, {
+      opacity: String(0.34 + random(index, 44) * 0.24),
+      width: String(0.22 + random(index, 45) * 0.44),
+      stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 2) % silkStrokes.length],
+      delay: `${-(random(index, 46) * 7.8).toFixed(2)}s`,
+      duration: `${(8.2 + random(index, 47) * 3.2).toFixed(2)}s`
+    }, "middleSilk");
+  }
+
+  for (let index = 0; index < 126; index += 1) {
+    appendFiberPath(index % 6 === 0 ? "home-fiber-bridge-silk home-fiber-lower-bright" : "home-fiber-bridge-silk", index + 2100, {
+      opacity: String(0.32 + random(index, 48) * 0.24),
+      width: String(0.2 + random(index, 49) * 0.42),
+      stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 3) % silkStrokes.length],
+      delay: `${-(random(index, 50) * 7.4).toFixed(2)}s`,
+      duration: `${(7.8 + random(index, 51) * 3.1).toFixed(2)}s`
+    }, "bridgeSilk");
+  }
+
+  for (let index = 0; index < 24; index += 1) {
+    appendFiberPath("home-fiber-lower-flow", index + 1740, {
+      opacity: String(0.28 + random(index, 40) * 0.18),
+      width: String(0.28 + random(index, 41) * 0.34),
+      stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : "url(#fiberSilkPurple)",
+      delay: `${-(random(index, 42) * 5.8).toFixed(2)}s`,
+      duration: `${(4.6 + random(index, 43) * 2.4).toFixed(2)}s`
+    }, "lowerSilk");
   }
 
   for (let index = 0; index < 44; index += 1) {
