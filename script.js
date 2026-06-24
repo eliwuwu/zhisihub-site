@@ -152,11 +152,19 @@ const homeFiberField = document.querySelector("#homeFiberField");
 if (homeFiberField) {
   const namespace = "http://www.w3.org/2000/svg";
   const palette = [
-    "rgba(246, 251, 255, 0.96)",
-    "rgba(205, 232, 255, 0.92)",
-    "rgba(190, 171, 255, 0.9)",
-    "rgba(145, 134, 255, 0.86)",
-    "rgba(91, 119, 230, 0.76)"
+    "rgba(211, 190, 255, 0.6)",
+    "rgba(187, 145, 255, 0.66)",
+    "rgba(158, 102, 255, 0.64)",
+    "rgba(123, 76, 239, 0.54)",
+    "rgba(86, 72, 196, 0.38)",
+    "rgba(226, 218, 255, 0.26)"
+  ];
+  const curtainPalette = [
+    "rgba(204, 175, 255, 0.58)",
+    "rgba(181, 130, 255, 0.58)",
+    "rgba(147, 88, 255, 0.54)",
+    "rgba(111, 80, 218, 0.48)",
+    "rgba(218, 205, 255, 0.34)"
   ];
 
   const random = (index, salt = 0) => {
@@ -164,32 +172,97 @@ if (homeFiberField) {
     return value - Math.floor(value);
   };
 
-  const makePathData = (index) => {
-    const leftLanes = [266, 302, 336, 372, 408, 444];
-    const lane = leftLanes[index % leftLanes.length] + (random(index, 21) - 0.5) * 10;
-    const neckX = 258 + (random(index, 22) - 0.5) * 22;
-    const neckY = 350 + (random(index, 23) - 0.5) * 54;
-    const rightX = 1330 + random(index, 2) * 140;
-    const fanY = 112 + random(index, 1) * 492;
-    const c1x = 1020 + (random(index, 3) - 0.5) * 170;
-    const c1y = fanY + (random(index, 4) - 0.5) * 150;
-    const c2x = 540 + random(index, 5) * 180;
-    const c2y = neckY + (fanY - neckY) * (0.18 + random(index, 6) * 0.22);
-    const leftX = -132 - random(index, 7) * 120;
-    const leftControlX = 150 + random(index, 8) * 74;
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+  const defs = document.createElementNS(namespace, "defs");
+  const addLinearGradient = (id, stops) => {
+    const gradient = document.createElementNS(namespace, "linearGradient");
+    gradient.setAttribute("id", id);
+    gradient.setAttribute("gradientUnits", "userSpaceOnUse");
+    gradient.setAttribute("x1", "54");
+    gradient.setAttribute("y1", "386");
+    gradient.setAttribute("x2", "1120");
+    gradient.setAttribute("y2", "386");
+    stops.forEach(({ offset, color, opacity }) => {
+      const stop = document.createElementNS(namespace, "stop");
+      stop.setAttribute("offset", offset);
+      stop.setAttribute("stop-color", color);
+      stop.setAttribute("stop-opacity", opacity);
+      gradient.appendChild(stop);
+    });
+    defs.appendChild(gradient);
+  };
+
+  addLinearGradient("fiberSilkViolet", [
+    { offset: "0%", color: "#5d37c8", opacity: "0" },
+    { offset: "8%", color: "#7e55ff", opacity: "0.2" },
+    { offset: "19%", color: "#b58aff", opacity: "0.78" },
+    { offset: "42%", color: "#e6d8ff", opacity: "0.72" },
+    { offset: "68%", color: "#8d63ff", opacity: "0.44" },
+    { offset: "100%", color: "#25155f", opacity: "0.02" }
+  ]);
+  addLinearGradient("fiberSilkPurple", [
+    { offset: "0%", color: "#4322a8", opacity: "0" },
+    { offset: "9%", color: "#6d3df2", opacity: "0.18" },
+    { offset: "23%", color: "#a66cff", opacity: "0.8" },
+    { offset: "52%", color: "#dcc8ff", opacity: "0.58" },
+    { offset: "82%", color: "#7f55ff", opacity: "0.32" },
+    { offset: "100%", color: "#1d0e4f", opacity: "0" }
+  ]);
+  addLinearGradient("fiberSilkSilver", [
+    { offset: "0%", color: "#8971ff", opacity: "0" },
+    { offset: "10%", color: "#a77dff", opacity: "0.1" },
+    { offset: "28%", color: "#eee8ff", opacity: "0.82" },
+    { offset: "54%", color: "#fbf8ff", opacity: "0.76" },
+    { offset: "76%", color: "#a478ff", opacity: "0.3" },
+    { offset: "100%", color: "#2d176b", opacity: "0" }
+  ]);
+  homeFiberField.appendChild(defs);
+
+  const silkStrokes = [
+    "url(#fiberSilkViolet)",
+    "url(#fiberSilkPurple)",
+    "url(#fiberSilkViolet)",
+    "url(#fiberSilkSilver)"
+  ];
+
+  const makePathData = (index, variant = "thread") => {
+    const neckX = 68 + (random(index, 22) - 0.5) * 22;
+    const neckY = 386 + (random(index, 23) - 0.5) * 18;
+    const direction = random(index, 2) > 0.49 ? 1 : -1;
+    if (variant === "curtain") {
+      const upper = index % 2 === 0 ? -1 : 1;
+      const fanY = clamp(neckY + upper * (128 + Math.pow(random(index, 1), 0.58) * 348) + (random(index, 20) - 0.5) * 30, 36, 644);
+      const midX = 210 + random(index, 3) * 150;
+      const endX = 610 + random(index, 4) * 360;
+      const endY = neckY + upper * (138 + random(index, 5) * 310);
+      return [
+        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+        `C ${(112 + random(index, 6) * 42).toFixed(1)} ${(neckY + upper * 18).toFixed(1)}, ${midX.toFixed(1)} ${fanY.toFixed(1)}, ${endX.toFixed(1)} ${clamp(endY, 40, 640).toFixed(1)}`
+      ].join(" ");
+    }
+    const spreadPower = variant === "spine" || variant === "ribbon" ? 0.54 : 0.78;
+    const spreadLimit = variant === "signal" ? 360 : variant === "ribbon" ? 520 : 455;
+    const spread = 32 + Math.pow(random(index, 1), spreadPower) * spreadLimit;
+    const fanY = clamp(neckY + direction * spread + (random(index, 20) - 0.5) * 66, 42, 636);
+    const rightX = variant === "ribbon" ? 610 + random(index, 3) * 520 : 1050 + random(index, 3) * 230;
+    const bend = (random(index, 4) - 0.5) * (variant === "ribbon" ? 48 : 92);
+    const c1x = 136 + random(index, 5) * (variant === "ribbon" ? 56 : 86);
+    const c1y = neckY + (fanY - neckY) * (variant === "ribbon" ? 0.025 : variant === "spine" ? 0.035 : 0.055) + bend * 0.18;
+    const c2x = variant === "ribbon" ? 286 + random(index, 6) * 180 : 426 + random(index, 6) * (variant === "signal" ? 500 : 374);
+    const c2y = neckY + (fanY - neckY) * (variant === "ribbon" ? 0.98 : variant === "spine" ? 0.9 : 0.7) + bend;
     return [
-      `M ${rightX.toFixed(1)} ${fanY.toFixed(1)}`,
-      `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
-      `C ${leftControlX.toFixed(1)} ${lane.toFixed(1)}, ${(leftControlX - 118).toFixed(1)} ${lane.toFixed(1)}, ${leftX.toFixed(1)} ${lane.toFixed(1)}`
+      `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+      `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
     ].join(" ");
   };
 
-  const appendFiberPath = (className, index, options = {}) => {
+  const appendFiberPath = (className, index, options = {}, variant = "thread") => {
     const path = document.createElementNS(namespace, "path");
-    path.setAttribute("d", makePathData(index));
+    path.setAttribute("d", makePathData(index, variant));
     path.setAttribute("pathLength", "760");
     path.setAttribute("class", className);
-    path.setAttribute("stroke", palette[index % palette.length]);
+    path.setAttribute("stroke", options.stroke || silkStrokes[index % silkStrokes.length]);
 
     if (options.opacity) path.style.opacity = options.opacity;
     if (options.width) path.style.strokeWidth = options.width;
@@ -201,9 +274,9 @@ if (homeFiberField) {
 
   const appendFiberNode = (index) => {
     const circle = document.createElementNS(namespace, "circle");
-    const cx = 650 + random(index, 30) * 560;
-    const cy = 126 + random(index, 31) * 428;
-    const radius = 0.8 + random(index, 32) * 3.4;
+    const cx = 510 + random(index, 30) * 660;
+    const cy = 72 + random(index, 31) * 512;
+    const radius = 0.55 + random(index, 32) * 1.65;
     circle.setAttribute("cx", cx.toFixed(1));
     circle.setAttribute("cy", cy.toFixed(1));
     circle.setAttribute("r", radius.toFixed(1));
@@ -212,46 +285,79 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 238; index += 1) {
-    if (index % 2 === 0) {
-      appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.08 + random(index, 10) * 0.13),
-        width: String(4.8 + random(index, 11) * 8.2)
-      });
-    }
-
+  for (let index = 0; index < 230; index += 1) {
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.34 + random(index, 12) * 0.42),
-      width: String(0.36 + random(index, 13) * 0.9)
+      opacity: String(0.32 + random(index, 12) * 0.24),
+      width: String(0.26 + random(index, 13) * 0.38)
     });
-
-    if (index < 42) {
-      appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.38 + random(index, 24) * 0.38),
-        width: String(1.8 + random(index, 25) * 3.8)
-      });
-    }
-
-    if (index % 3 === 0) {
-      appendFiberPath("home-fiber-signal", index, {
-        opacity: String(0.72 + random(index, 14) * 0.26),
-        width: String(1.45 + random(index, 15) * 1.55),
-        delay: `${-(random(index, 16) * 3.8).toFixed(2)}s`,
-        duration: `${(2.7 + random(index, 17) * 2.2).toFixed(2)}s`
-      });
-    }
   }
 
-  for (let index = 0; index < 72; index += 1) {
+  for (let index = 0; index < 286; index += 1) {
+    appendFiberPath("home-fiber-curtain", index + 980, {
+      opacity: String(0.42 + random(index, 26) * 0.3),
+      width: String(0.28 + random(index, 27) * 0.72),
+      stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[index % 3]
+    }, "curtain");
+  }
+
+  for (let index = 0; index < 44; index += 1) {
+    appendFiberPath("home-fiber-highlight", index + 1220, {
+      opacity: String(0.44 + random(index, 28) * 0.2),
+      width: String(0.16 + random(index, 29) * 0.28),
+      stroke: "url(#fiberSilkSilver)"
+    }, index % 3 === 0 ? "curtain" : "thread");
+  }
+
+  for (let index = 0; index < 36; index += 1) {
+    appendFiberPath("home-fiber-ribbon", index + 180, {
+      opacity: String(0.035 + random(index, 18) * 0.045),
+      width: String(1.8 + random(index, 19) * 2.6)
+    }, "ribbon");
+  }
+
+  for (let index = 0; index < 58; index += 1) {
+    appendFiberPath("home-fiber-soft", index + 320, {
+      opacity: String(0.035 + random(index, 10) * 0.055),
+      width: String(0.54 + random(index, 11) * 0.88)
+    }, "spine");
+  }
+
+  for (let index = 0; index < 52; index += 1) {
+    appendFiberPath("home-fiber-spine", index + 520, {
+      opacity: String(0.34 + random(index, 24) * 0.22),
+      width: String(0.42 + random(index, 25) * 0.78)
+    }, "spine");
+  }
+
+  for (let index = 0; index < 48; index += 1) {
+    appendFiberPath("home-fiber-signal", index + 760, {
+      opacity: String(0.42 + random(index, 14) * 0.2),
+      width: String(0.36 + random(index, 15) * 0.52),
+      delay: `${-(random(index, 16) * 4.2).toFixed(2)}s`,
+      duration: `${(3.2 + random(index, 17) * 2.2).toFixed(2)}s`
+    }, "signal");
+  }
+
+  for (let index = 0; index < 12; index += 1) {
     appendFiberNode(index);
   }
 
-  [266, 302, 336, 372, 408, 444].forEach((cy, index) => {
+  [380, 384, 388, 392].forEach((cy, index) => {
     const circle = document.createElementNS(namespace, "circle");
-    circle.setAttribute("cx", String(248 + index * 2.4));
+    circle.setAttribute("cx", String(68 + index * 1.2));
     circle.setAttribute("cy", String(cy));
-    circle.setAttribute("r", String(index === 2 ? 5.8 : 3.2));
+    circle.setAttribute("r", String(index === 1 ? 1.7 : 1.05));
     circle.setAttribute("class", "home-fiber-neck");
     homeFiberField.appendChild(circle);
+  });
+
+  [342, 386, 430].forEach((cy, index) => {
+    const line = document.createElementNS(namespace, "path");
+    line.setAttribute("d", `M -60 ${cy} C 4 ${cy}, 28 ${386 + (cy - 386) * 0.2}, 70 386`);
+    line.setAttribute("class", index === 1 ? "home-fiber-spine" : "home-fiber-soft");
+    line.setAttribute("stroke", palette[index]);
+    line.style.opacity = index === 1 ? "0.22" : "0.045";
+    line.style.strokeWidth = index === 1 ? "0.54" : "0.72";
+    homeFiberField.appendChild(line);
   });
 }
