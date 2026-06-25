@@ -3505,9 +3505,9 @@ body {
 
 .home-fiber-highlight {
   opacity: 0.48;
-  stroke-dasharray: 104 656;
+  stroke-dasharray: 84 676;
   stroke-dashoffset: 760;
-  animation: homeFiberGlint 5.2s linear infinite;
+  animation: homeFiberGlint 6.8s linear infinite;
 }
 
 .home-fiber-lower-silk {
@@ -3541,15 +3541,15 @@ body {
 .home-fiber-lower-flow {
   stroke-width: 0.8;
   opacity: 0.28;
-  stroke-dasharray: 330 430;
+  stroke-dasharray: 220 540;
   stroke-dashoffset: 760;
-  animation: homeFiberSignal 5.4s linear infinite;
+  animation: homeFiberSignal 7.2s linear infinite;
 }
 
 .home-fiber-signal {
   opacity: 0.58;
-  stroke-dasharray: 56 704;
-  animation-duration: 3.65s;
+  stroke-dasharray: 42 718;
+  animation-duration: 5.6s;
 }
 
 .hero-card-brand {
