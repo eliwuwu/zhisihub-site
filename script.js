@@ -198,24 +198,24 @@ if (homeFiberField) {
     { offset: "8%", color: "#7e55ff", opacity: "0.2" },
     { offset: "19%", color: "#b58aff", opacity: "0.78" },
     { offset: "42%", color: "#e6d8ff", opacity: "0.72" },
-    { offset: "68%", color: "#8d63ff", opacity: "0.44" },
-    { offset: "100%", color: "#25155f", opacity: "0.02" }
+    { offset: "68%", color: "#8d63ff", opacity: "0.52" },
+    { offset: "100%", color: "#4b28b8", opacity: "0.13" }
   ]);
   addLinearGradient("fiberSilkPurple", [
     { offset: "0%", color: "#4322a8", opacity: "0" },
     { offset: "9%", color: "#6d3df2", opacity: "0.18" },
     { offset: "23%", color: "#a66cff", opacity: "0.8" },
     { offset: "52%", color: "#dcc8ff", opacity: "0.58" },
-    { offset: "82%", color: "#7f55ff", opacity: "0.32" },
-    { offset: "100%", color: "#1d0e4f", opacity: "0" }
+    { offset: "82%", color: "#7f55ff", opacity: "0.44" },
+    { offset: "100%", color: "#4421a8", opacity: "0.12" }
   ]);
   addLinearGradient("fiberSilkSilver", [
     { offset: "0%", color: "#8971ff", opacity: "0" },
     { offset: "10%", color: "#a77dff", opacity: "0.1" },
     { offset: "28%", color: "#eee8ff", opacity: "0.82" },
     { offset: "54%", color: "#fbf8ff", opacity: "0.76" },
-    { offset: "76%", color: "#a478ff", opacity: "0.3" },
-    { offset: "100%", color: "#2d176b", opacity: "0" }
+    { offset: "76%", color: "#a478ff", opacity: "0.42" },
+    { offset: "100%", color: "#6f42e8", opacity: "0.14" }
   ]);
   homeFiberField.appendChild(defs);
 
@@ -280,6 +280,18 @@ if (homeFiberField) {
         `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
       ].join(" ");
     }
+    if (variant === "centerSilk") {
+      const fanY = clamp(304 + Math.pow(random(index, 1), 0.86) * 254 + (random(index, 20) - 0.5) * 44, 296, 566);
+      const rightX = 680 + random(index, 3) * 560;
+      const c1x = 116 + random(index, 5) * 92;
+      const c1y = neckY + (fanY - neckY) * 0.08 + (random(index, 6) - 0.5) * 18;
+      const c2x = 410 + random(index, 7) * 520;
+      const c2y = fanY + (random(index, 8) - 0.5) * 30;
+      return [
+        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
+        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
+      ].join(" ");
+    }
     const spreadPower = variant === "spine" || variant === "ribbon" ? 0.54 : 0.78;
     const spreadLimit = variant === "signal" ? 360 : variant === "ribbon" ? 520 : 455;
     const spread = 32 + Math.pow(random(index, 1), spreadPower) * spreadLimit;
@@ -339,34 +351,44 @@ if (homeFiberField) {
     }, "curtain");
   }
 
-  for (let index = 0; index < 132; index += 1) {
+  for (let index = 0; index < 152; index += 1) {
     appendFiberPath(index % 5 === 0 ? "home-fiber-lower-silk home-fiber-lower-bright" : "home-fiber-lower-silk", index + 1460, {
-      opacity: String(0.42 + random(index, 36) * 0.28),
-      width: String(0.26 + random(index, 37) * 0.54),
+      opacity: String(0.46 + random(index, 36) * 0.32),
+      width: String(0.28 + random(index, 37) * 0.58),
       stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
       delay: `${-(random(index, 38) * 7.2).toFixed(2)}s`,
       duration: `${(7.6 + random(index, 39) * 3.4).toFixed(2)}s`
     }, "lowerSilk");
   }
 
-  for (let index = 0; index < 76; index += 1) {
+  for (let index = 0; index < 108; index += 1) {
     appendFiberPath(index % 4 === 0 ? "home-fiber-middle-silk home-fiber-lower-bright" : "home-fiber-middle-silk", index + 1910, {
-      opacity: String(0.34 + random(index, 44) * 0.24),
-      width: String(0.22 + random(index, 45) * 0.44),
-      stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 2) % silkStrokes.length],
+      opacity: String(0.48 + random(index, 44) * 0.3),
+      width: String(0.28 + random(index, 45) * 0.56),
+      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 2) % silkStrokes.length],
       delay: `${-(random(index, 46) * 7.8).toFixed(2)}s`,
       duration: `${(8.2 + random(index, 47) * 3.2).toFixed(2)}s`
     }, "middleSilk");
   }
 
-  for (let index = 0; index < 126; index += 1) {
+  for (let index = 0; index < 192; index += 1) {
     appendFiberPath(index % 6 === 0 ? "home-fiber-bridge-silk home-fiber-lower-bright" : "home-fiber-bridge-silk", index + 2100, {
-      opacity: String(0.32 + random(index, 48) * 0.24),
-      width: String(0.2 + random(index, 49) * 0.42),
-      stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 3) % silkStrokes.length],
+      opacity: String(0.54 + random(index, 48) * 0.32),
+      width: String(0.32 + random(index, 49) * 0.58),
+      stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 3) % silkStrokes.length],
       delay: `${-(random(index, 50) * 7.4).toFixed(2)}s`,
       duration: `${(7.8 + random(index, 51) * 3.1).toFixed(2)}s`
     }, "bridgeSilk");
+  }
+
+  for (let index = 0; index < 96; index += 1) {
+    appendFiberPath(index % 5 === 0 ? "home-fiber-center-silk home-fiber-lower-bright" : "home-fiber-center-silk", index + 2380, {
+      opacity: String(0.52 + random(index, 52) * 0.3),
+      width: String(0.24 + random(index, 53) * 0.52),
+      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
+      delay: `${-(random(index, 54) * 7.6).toFixed(2)}s`,
+      duration: `${(7.4 + random(index, 55) * 3.4).toFixed(2)}s`
+    }, "centerSilk");
   }
 
   for (let index = 0; index < 24; index += 1) {
