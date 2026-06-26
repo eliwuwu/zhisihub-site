@@ -39,11 +39,11 @@ const homeFiberField = document.querySelector("#homeFiberField");
 if (homeFiberField) {
   const namespace = "http://www.w3.org/2000/svg";
   const palette = [
-    "rgba(28, 33, 40, 0.72)",
-    "rgba(58, 74, 104, 0.56)",
-    "rgba(92, 89, 132, 0.42)",
-    "rgba(41, 123, 145, 0.34)",
-    "rgba(124, 112, 52, 0.3)"
+    "rgba(22, 24, 25, 0.9)",
+    "rgba(70, 70, 62, 0.8)",
+    "rgba(103, 96, 61, 0.68)",
+    "rgba(143, 128, 74, 0.58)",
+    "rgba(16, 16, 16, 0.54)"
   ];
 
   const random = (index, salt = 0) => {
@@ -119,34 +119,26 @@ if (homeFiberField) {
   for (let index = 0; index < 190; index += 1) {
     if (index % 3 === 0) {
       appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.026 + random(index, 10) * 0.042),
-        width: String(1.05 + random(index, 11) * 1.85)
+        opacity: String(0.06 + random(index, 10) * 0.07),
+        width: String(1.2 + random(index, 11) * 2.1)
       });
     }
 
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.14 + random(index, 12) * 0.16),
-      width: String(0.16 + random(index, 13) * 0.5)
+      opacity: String(0.34 + random(index, 12) * 0.22),
+      width: String(0.32 + random(index, 13) * 0.72)
     });
 
     if (index < 30) {
       appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.14 + random(index, 24) * 0.14),
-        width: String(0.62 + random(index, 25) * 1.38)
+        opacity: String(0.34 + random(index, 24) * 0.22),
+        width: String(0.88 + random(index, 25) * 1.44)
       });
     }
 
-    if (index % 5 === 0) {
-      appendFiberPath("home-fiber-signal", index, {
-        opacity: String(0.1 + random(index, 14) * 0.1),
-        width: String(0.42 + random(index, 15) * 0.58),
-        delay: `${-(random(index, 16) * 38).toFixed(2)}s`,
-        duration: `${(38 + random(index, 17) * 28).toFixed(2)}s`
-      });
-    }
   }
 
-  for (let index = 0; index < 48; index += 1) {
+  for (let index = 0; index < 28; index += 1) {
     appendFiberNode(index);
   }
 
