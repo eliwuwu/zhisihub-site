@@ -1521,7 +1521,7 @@ body {
   mix-blend-mode: multiply;
   transform-box: fill-box;
   transform-origin: center;
-  animation: homeFiberThreadSway var(--sway-duration, 12s) ease-in-out infinite alternate;
+  animation: homeFiberThreadSway var(--sway-duration, 28s) ease-in-out infinite alternate;
   animation-delay: var(--sway-delay, -1s);
 }
 
@@ -1545,14 +1545,14 @@ body {
   opacity: 0.2;
 }
 
-.home-fiber-signal {
+.home-fiber-field .home-fiber-signal {
   stroke-width: 0.82;
-  opacity: 0.32;
-  stroke-dasharray: 18 742;
+  opacity: 0.18;
+  stroke-dasharray: 10 750;
   stroke-dashoffset: 768;
   animation:
-    homeFiberSignal var(--signal-duration, 16s) cubic-bezier(0.42, 0, 0.2, 1) infinite,
-    homeFiberThreadSway var(--sway-duration, 12s) ease-in-out infinite alternate;
+    homeFiberSignal var(--signal-duration, 46s) cubic-bezier(0.42, 0, 0.2, 1) infinite,
+    homeFiberThreadSway var(--sway-duration, 28s) ease-in-out infinite alternate;
   animation-delay: var(--signal-delay, 0s), var(--sway-delay, -1s);
 }
 

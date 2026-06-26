@@ -97,8 +97,8 @@ if (homeFiberField) {
     path.style.setProperty("--sway-x", `${swayX}px`);
     path.style.setProperty("--sway-y", `${swayY}px`);
     path.style.setProperty("--sway-rotate", `${swayRotate}deg`);
-    path.style.setProperty("--sway-duration", `${(9 + random(index, 44) * 8).toFixed(2)}s`);
-    path.style.setProperty("--sway-delay", `${-(random(index, 45) * 9).toFixed(2)}s`);
+    path.style.setProperty("--sway-duration", `${(22 + random(index, 44) * 18).toFixed(2)}s`);
+    path.style.setProperty("--sway-delay", `${-(random(index, 45) * 18).toFixed(2)}s`);
 
     homeFiberField.appendChild(path);
   };
@@ -138,10 +138,10 @@ if (homeFiberField) {
 
     if (index % 5 === 0) {
       appendFiberPath("home-fiber-signal", index, {
-        opacity: String(0.2 + random(index, 14) * 0.16),
+        opacity: String(0.1 + random(index, 14) * 0.1),
         width: String(0.42 + random(index, 15) * 0.58),
-        delay: `${-(random(index, 16) * 12).toFixed(2)}s`,
-        duration: `${(12 + random(index, 17) * 9).toFixed(2)}s`
+        delay: `${-(random(index, 16) * 38).toFixed(2)}s`,
+        duration: `${(38 + random(index, 17) * 28).toFixed(2)}s`
       });
     }
   }
