@@ -198,24 +198,24 @@ if (homeFiberField) {
     { offset: "8%", color: "#7e55ff", opacity: "0.2" },
     { offset: "19%", color: "#b58aff", opacity: "0.78" },
     { offset: "42%", color: "#e6d8ff", opacity: "0.72" },
-    { offset: "68%", color: "#8d63ff", opacity: "0.52" },
-    { offset: "100%", color: "#4b28b8", opacity: "0.13" }
+    { offset: "68%", color: "#8d63ff", opacity: "0.44" },
+    { offset: "100%", color: "#25155f", opacity: "0.02" }
   ]);
   addLinearGradient("fiberSilkPurple", [
     { offset: "0%", color: "#4322a8", opacity: "0" },
     { offset: "9%", color: "#6d3df2", opacity: "0.18" },
     { offset: "23%", color: "#a66cff", opacity: "0.8" },
     { offset: "52%", color: "#dcc8ff", opacity: "0.58" },
-    { offset: "82%", color: "#7f55ff", opacity: "0.44" },
-    { offset: "100%", color: "#4421a8", opacity: "0.12" }
+    { offset: "82%", color: "#7f55ff", opacity: "0.32" },
+    { offset: "100%", color: "#1d0e4f", opacity: "0" }
   ]);
   addLinearGradient("fiberSilkSilver", [
     { offset: "0%", color: "#8971ff", opacity: "0" },
     { offset: "10%", color: "#a77dff", opacity: "0.1" },
     { offset: "28%", color: "#eee8ff", opacity: "0.82" },
     { offset: "54%", color: "#fbf8ff", opacity: "0.76" },
-    { offset: "76%", color: "#a478ff", opacity: "0.42" },
-    { offset: "100%", color: "#6f42e8", opacity: "0.14" }
+    { offset: "76%", color: "#a478ff", opacity: "0.3" },
+    { offset: "100%", color: "#2d176b", opacity: "0" }
   ]);
   homeFiberField.appendChild(defs);
 
@@ -241,57 +241,6 @@ if (homeFiberField) {
         `C ${(112 + random(index, 6) * 42).toFixed(1)} ${(neckY + upper * 18).toFixed(1)}, ${midX.toFixed(1)} ${fanY.toFixed(1)}, ${endX.toFixed(1)} ${clamp(endY, 40, 640).toFixed(1)}`
       ].join(" ");
     }
-    if (variant === "lowerSilk") {
-      const depth = Math.pow(random(index, 1), 0.7);
-      const fanY = clamp(414 + depth * 226 + (random(index, 20) - 0.5) * 54, 404, 650);
-      const rightX = 620 + random(index, 3) * 610;
-      const bend = 20 + random(index, 4) * 72;
-      const c1x = 126 + random(index, 5) * 86;
-      const c1y = neckY + 28 + random(index, 6) * 42;
-      const c2x = 330 + random(index, 7) * 430;
-      const c2y = fanY - bend + (random(index, 8) - 0.5) * 46;
-      return [
-        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
-        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
-      ].join(" ");
-    }
-    if (variant === "middleSilk") {
-      const depth = Math.pow(random(index, 1), 0.82);
-      const fanY = clamp(382 + depth * 164 + (random(index, 20) - 0.5) * 42, 370, 552);
-      const rightX = 600 + random(index, 3) * 620;
-      const c1x = 124 + random(index, 5) * 92;
-      const c1y = neckY + 8 + random(index, 6) * 30;
-      const c2x = 326 + random(index, 7) * 480;
-      const c2y = fanY - 24 + (random(index, 8) - 0.5) * 48;
-      return [
-        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
-        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
-      ].join(" ");
-    }
-    if (variant === "bridgeSilk") {
-      const fanY = clamp(330 + Math.pow(random(index, 1), 0.78) * 178 + (random(index, 20) - 0.5) * 34, 324, 516);
-      const rightX = 560 + random(index, 3) * 650;
-      const c1x = 118 + random(index, 5) * 92;
-      const c1y = neckY + (fanY - neckY) * 0.18 + (random(index, 6) - 0.5) * 18;
-      const c2x = 300 + random(index, 7) * 520;
-      const c2y = fanY + (random(index, 8) - 0.5) * 34;
-      return [
-        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
-        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
-      ].join(" ");
-    }
-    if (variant === "centerSilk") {
-      const fanY = clamp(304 + Math.pow(random(index, 1), 0.86) * 254 + (random(index, 20) - 0.5) * 44, 296, 566);
-      const rightX = 680 + random(index, 3) * 560;
-      const c1x = 116 + random(index, 5) * 92;
-      const c1y = neckY + (fanY - neckY) * 0.08 + (random(index, 6) - 0.5) * 18;
-      const c2x = 410 + random(index, 7) * 520;
-      const c2y = fanY + (random(index, 8) - 0.5) * 30;
-      return [
-        `M ${neckX.toFixed(1)} ${neckY.toFixed(1)}`,
-        `C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${rightX.toFixed(1)} ${fanY.toFixed(1)}`
-      ].join(" ");
-    }
     const spreadPower = variant === "spine" || variant === "ribbon" ? 0.54 : 0.78;
     const spreadLimit = variant === "signal" ? 360 : variant === "ribbon" ? 520 : 455;
     const spread = 32 + Math.pow(random(index, 1), spreadPower) * spreadLimit;
@@ -314,21 +263,11 @@ if (homeFiberField) {
     path.setAttribute("pathLength", "760");
     path.setAttribute("class", className);
     path.setAttribute("stroke", options.stroke || silkStrokes[index % silkStrokes.length]);
-    const driftX = (random(index, 70) - 0.5) * 1.35;
-    const driftY = (random(index, 71) - 0.5) * 1.05;
-    path.style.setProperty("--fiber-dx", `${driftX.toFixed(2)}px`);
-    path.style.setProperty("--fiber-dy", `${driftY.toFixed(2)}px`);
-    path.style.setProperty("--fiber-dx2", `${(-driftX * 0.42).toFixed(2)}px`);
-    path.style.setProperty("--fiber-dy2", `${(driftY * 0.36).toFixed(2)}px`);
-    path.style.setProperty("--fiber-scale", (1 + random(index, 72) * 0.004).toFixed(4));
 
-    if (options.opacity) {
-      path.style.opacity = options.opacity;
-      path.style.setProperty("--fiber-o", options.opacity);
-    }
+    if (options.opacity) path.style.opacity = options.opacity;
     if (options.width) path.style.strokeWidth = options.width;
-    path.style.animationDelay = options.delay || `${-(random(index, 73) * 3.2).toFixed(2)}s`;
-    path.style.animationDuration = options.duration || `${(15 + random(index, 74) * 9).toFixed(2)}s`;
+    if (options.delay) path.style.animationDelay = options.delay;
+    if (options.duration) path.style.animationDuration = options.duration;
 
     homeFiberField.appendChild(path);
   };
@@ -346,112 +285,60 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 66; index += 1) {
+  for (let index = 0; index < 230; index += 1) {
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.42 + random(index, 12) * 0.28),
-      width: String(0.38 + random(index, 13) * 0.58)
+      opacity: String(0.32 + random(index, 12) * 0.24),
+      width: String(0.26 + random(index, 13) * 0.38)
     });
   }
 
-  for (let index = 0; index < 90; index += 1) {
+  for (let index = 0; index < 286; index += 1) {
     appendFiberPath("home-fiber-curtain", index + 980, {
-      opacity: String(0.56 + random(index, 26) * 0.34),
-      width: String(0.46 + random(index, 27) * 1.04),
+      opacity: String(0.42 + random(index, 26) * 0.3),
+      width: String(0.28 + random(index, 27) * 0.72),
       stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[index % 3]
     }, "curtain");
   }
 
-  for (let index = 0; index < 46; index += 1) {
-    appendFiberPath(index % 5 === 0 ? "home-fiber-lower-silk home-fiber-lower-bright" : "home-fiber-lower-silk", index + 1460, {
-      opacity: String(0.62 + random(index, 36) * 0.3),
-      width: String(0.48 + random(index, 37) * 0.88),
-      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
-      delay: `${-(random(index, 38) * 7.2).toFixed(2)}s`,
-      duration: `${(7.6 + random(index, 39) * 3.4).toFixed(2)}s`
-    }, "lowerSilk");
-  }
-
-  for (let index = 0; index < 34; index += 1) {
-    appendFiberPath(index % 4 === 0 ? "home-fiber-middle-silk home-fiber-lower-bright" : "home-fiber-middle-silk", index + 1910, {
-      opacity: String(0.64 + random(index, 44) * 0.3),
-      width: String(0.46 + random(index, 45) * 0.84),
-      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 2) % silkStrokes.length],
-      delay: `${-(random(index, 46) * 7.8).toFixed(2)}s`,
-      duration: `${(8.2 + random(index, 47) * 3.2).toFixed(2)}s`
-    }, "middleSilk");
-  }
-
-  for (let index = 0; index < 52; index += 1) {
-    appendFiberPath(index % 6 === 0 ? "home-fiber-bridge-silk home-fiber-lower-bright" : "home-fiber-bridge-silk", index + 2100, {
-      opacity: String(0.66 + random(index, 48) * 0.28),
-      width: String(0.5 + random(index, 49) * 0.88),
-      stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 3) % silkStrokes.length],
-      delay: `${-(random(index, 50) * 7.4).toFixed(2)}s`,
-      duration: `${(7.8 + random(index, 51) * 3.1).toFixed(2)}s`
-    }, "bridgeSilk");
-  }
-
-  for (let index = 0; index < 26; index += 1) {
-    appendFiberPath(index % 5 === 0 ? "home-fiber-center-silk home-fiber-lower-bright" : "home-fiber-center-silk", index + 2380, {
-      opacity: String(0.66 + random(index, 52) * 0.28),
-      width: String(0.44 + random(index, 53) * 0.78),
-      stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
-      delay: `${-(random(index, 54) * 7.6).toFixed(2)}s`,
-      duration: `${(7.4 + random(index, 55) * 3.4).toFixed(2)}s`
-    }, "centerSilk");
-  }
-
-  for (let index = 0; index < 6; index += 1) {
-    appendFiberPath("home-fiber-lower-flow", index + 1740, {
-      opacity: String(0.16 + random(index, 40) * 0.12),
-      width: String(0.42 + random(index, 41) * 0.42),
-      stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : "url(#fiberSilkPurple)",
-      delay: `${-(random(index, 42) * 18).toFixed(2)}s`,
-      duration: `${(18 + random(index, 43) * 7).toFixed(2)}s`
-    }, "lowerSilk");
-  }
-
-  for (let index = 0; index < 9; index += 1) {
+  for (let index = 0; index < 44; index += 1) {
     appendFiberPath("home-fiber-highlight", index + 1220, {
-      opacity: String(0.28 + random(index, 28) * 0.18),
-      width: String(0.34 + random(index, 29) * 0.44),
-      stroke: "url(#fiberSilkSilver)",
-      delay: `${-(random(index, 75) * 19).toFixed(2)}s`,
-      duration: `${(18 + random(index, 76) * 8).toFixed(2)}s`
+      opacity: String(0.44 + random(index, 28) * 0.2),
+      width: String(0.16 + random(index, 29) * 0.28),
+      stroke: "url(#fiberSilkSilver)"
     }, index % 3 === 0 ? "curtain" : "thread");
   }
 
-  for (let index = 0; index < 9; index += 1) {
+  for (let index = 0; index < 36; index += 1) {
     appendFiberPath("home-fiber-ribbon", index + 180, {
-      opacity: String(0.06 + random(index, 18) * 0.06),
-      width: String(2.8 + random(index, 19) * 3.2)
+      opacity: String(0.035 + random(index, 18) * 0.045),
+      width: String(1.8 + random(index, 19) * 2.6)
     }, "ribbon");
   }
 
-  for (let index = 0; index < 12; index += 1) {
+  for (let index = 0; index < 58; index += 1) {
     appendFiberPath("home-fiber-soft", index + 320, {
-      opacity: String(0.06 + random(index, 10) * 0.08),
-      width: String(0.92 + random(index, 11) * 1.2)
+      opacity: String(0.035 + random(index, 10) * 0.055),
+      width: String(0.54 + random(index, 11) * 0.88)
     }, "spine");
   }
 
-  for (let index = 0; index < 14; index += 1) {
+  for (let index = 0; index < 52; index += 1) {
     appendFiberPath("home-fiber-spine", index + 520, {
-      opacity: String(0.46 + random(index, 24) * 0.24),
-      width: String(0.7 + random(index, 25) * 1.02)
+      opacity: String(0.34 + random(index, 24) * 0.22),
+      width: String(0.42 + random(index, 25) * 0.78)
     }, "spine");
   }
 
-  for (let index = 0; index < 8; index += 1) {
+  for (let index = 0; index < 48; index += 1) {
     appendFiberPath("home-fiber-signal", index + 760, {
-      opacity: String(0.24 + random(index, 14) * 0.14),
-      width: String(0.62 + random(index, 15) * 0.72),
-      delay: `${-(random(index, 16) * 18).toFixed(2)}s`,
-      duration: `${(17 + random(index, 17) * 8).toFixed(2)}s`
+      opacity: String(0.42 + random(index, 14) * 0.2),
+      width: String(0.36 + random(index, 15) * 0.52),
+      delay: `${-(random(index, 16) * 4.2).toFixed(2)}s`,
+      duration: `${(3.2 + random(index, 17) * 2.2).toFixed(2)}s`
     }, "signal");
   }
 
-  for (let index = 0; index < 8; index += 1) {
+  for (let index = 0; index < 12; index += 1) {
     appendFiberNode(index);
   }
 
@@ -473,34 +360,4 @@ if (homeFiberField) {
     line.style.strokeWidth = index === 1 ? "0.54" : "0.72";
     homeFiberField.appendChild(line);
   });
-
-  const hero = homeFiberField.closest(".community-hero");
-  if (hero && !prefersReducedMotion) {
-    let frame = 0;
-    const applyPointer = (event) => {
-      if (event.pointerType === "touch") return;
-      const rect = hero.getBoundingClientRect();
-      const x = clamp((event.clientX - rect.left) / rect.width, 0, 1);
-      const y = clamp((event.clientY - rect.top) / rect.height, 0, 1);
-      if (frame) cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const shiftX = (x - 0.5) * 3.2;
-        const shiftY = (y - 0.5) * 2.4;
-        hero.classList.add("is-fiber-hover");
-        hero.style.setProperty("--fiber-x", `${(x * 100).toFixed(1)}%`);
-        hero.style.setProperty("--fiber-y", `${(y * 100).toFixed(1)}%`);
-        hero.style.setProperty("--fiber-shift-x", `${shiftX.toFixed(2)}px`);
-        hero.style.setProperty("--fiber-shift-y", `${shiftY.toFixed(2)}px`);
-      });
-    };
-
-    hero.addEventListener("pointermove", applyPointer, { passive: true });
-    hero.addEventListener("pointerleave", () => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = 0;
-      hero.classList.remove("is-fiber-hover");
-      hero.style.setProperty("--fiber-shift-x", "0px");
-      hero.style.setProperty("--fiber-shift-y", "0px");
-    });
-  }
 }
