@@ -3540,3 +3540,210 @@ body::after {
     max-width: calc(100vw - 40px);
   }
 }
+
+/* Non-hero warm white recovery */
+main > section:not(.community-hero) {
+  border-top-color: rgba(16, 16, 16, 0.08);
+  background: #ffffff;
+  color: #101010;
+}
+
+main > section:not(.community-hero)::before {
+  background:
+    repeating-linear-gradient(90deg, rgba(16, 16, 16, 0.018) 0 1px, transparent 1px 118px),
+    repeating-linear-gradient(0deg, rgba(16, 16, 16, 0.012) 0 1px, transparent 1px 118px);
+  opacity: 0.36;
+}
+
+.course-section {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(255, 248, 219, 0.86), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #fffefa 52%, #ffffff 100%) !important;
+}
+
+.zhisi-section {
+  background:
+    radial-gradient(circle at 74% 16%, rgba(255, 248, 219, 0.78), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #fffdf7 56%, #ffffff 100%) !important;
+}
+
+.founder-section {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 248, 219, 0.74), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #fffefa 54%, #ffffff 100%) !important;
+}
+
+.contact-section {
+  background:
+    radial-gradient(circle at 20% 76%, rgba(255, 248, 219, 0.72), transparent 30%),
+    #ffffff !important;
+}
+
+.content-section .section-heading .eyebrow,
+.contact-section .eyebrow,
+.detail-grid span,
+.founder-card span,
+.contact-form span,
+.site-footer a {
+  color: #6f681b;
+}
+
+.section-heading h2,
+.contact-copy h2,
+.detail-grid h3,
+.founder-card h3 {
+  color: #101010;
+}
+
+.section-heading p:not(.eyebrow),
+.contact-copy p,
+.detail-grid p,
+.founder-card p,
+.form-note,
+.site-footer {
+  color: rgba(16, 16, 16, 0.62);
+}
+
+.detail-grid article,
+.line-visual,
+.contact-visual,
+.founder-card,
+.lead-founder,
+.contact-form {
+  border-color: rgba(16, 16, 16, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 253, 247, 0.78)),
+    #ffffff;
+  box-shadow: 0 22px 70px rgba(16, 16, 16, 0.055);
+}
+
+.line-visual,
+.contact-visual {
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 248, 219, 0.92), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 253, 247, 0.76)),
+    #ffffff;
+}
+
+.line-visual::before,
+.contact-visual::before {
+  border-color: rgba(111, 104, 27, 0.12);
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 248, 219, 0.78), transparent),
+    repeating-linear-gradient(90deg, rgba(16, 16, 16, 0.014) 0 1px, transparent 1px 44px);
+}
+
+.line-visual img,
+.contact-visual img {
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+.line-art-svg {
+  color: #6f681b;
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+.line-art-svg .bold,
+.line-art-svg .line {
+  stroke: #6f681b !important;
+}
+
+.line-art-svg .thin {
+  stroke: #a8a176 !important;
+}
+
+.line-art-svg .dot,
+.line-art-svg .node,
+.line-art-svg .core,
+.line-art-svg .warm {
+  fill: #fff8db !important;
+  stroke: #6f681b !important;
+}
+
+.founder-card,
+.lead-founder {
+  background:
+    radial-gradient(circle at 50% 74%, rgba(255, 248, 219, 0.7), transparent 46%),
+    rgba(255, 255, 255, 0.88);
+}
+
+.founder-card::before {
+  background:
+    radial-gradient(ellipse at 50% 52%, rgba(255, 248, 219, 0.7) 0%, rgba(111, 104, 27, 0.045) 42%, transparent 72%);
+  filter: blur(8px);
+  opacity: 0.78;
+}
+
+.founder-card::after {
+  background: linear-gradient(90deg, transparent, rgba(111, 104, 27, 0.24), transparent);
+}
+
+.founder-sketch {
+  filter: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-color: rgba(16, 16, 16, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: #101010;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(16, 16, 16, 0.38);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(111, 104, 27, 0.44);
+  box-shadow: 0 0 0 3px rgba(255, 248, 219, 0.86);
+}
+
+.contact-form button {
+  background: #101010;
+  color: #ffffff;
+}
+
+.site-footer {
+  border-top-color: rgba(16, 16, 16, 0.08);
+  background: #ffffff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .detail-grid article:hover,
+  .line-visual:hover,
+  .contact-visual:hover,
+  .contact-form:hover,
+  .founder-card:hover,
+  .section.is-section-focus .line-visual,
+  .section.is-section-focus .contact-visual,
+  .section.is-section-focus .detail-grid article,
+  .section.is-section-focus .founder-card,
+  .section.is-section-focus .contact-form {
+    border-color: rgba(111, 104, 27, 0.24);
+    box-shadow:
+      0 26px 82px rgba(16, 16, 16, 0.07),
+      0 0 0 1px rgba(255, 248, 219, 0.9) inset;
+  }
+
+  .line-visual::after,
+  .contact-visual::after {
+    background: radial-gradient(circle, rgba(255, 228, 162, 0.2), transparent 62%);
+  }
+
+  .founder-card:hover .founder-sketch {
+    filter: drop-shadow(0 12px 20px rgba(16, 16, 16, 0.08));
+    opacity: 1;
+  }
+
+  .section.is-section-focus .line-art-svg .draw-node {
+    filter: drop-shadow(0 0 10px rgba(214, 176, 78, 0.3));
+  }
+}
