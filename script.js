@@ -314,14 +314,21 @@ if (homeFiberField) {
     path.setAttribute("pathLength", "760");
     path.setAttribute("class", className);
     path.setAttribute("stroke", options.stroke || silkStrokes[index % silkStrokes.length]);
+    const driftX = (random(index, 70) - 0.5) * 1.35;
+    const driftY = (random(index, 71) - 0.5) * 1.05;
+    path.style.setProperty("--fiber-dx", `${driftX.toFixed(2)}px`);
+    path.style.setProperty("--fiber-dy", `${driftY.toFixed(2)}px`);
+    path.style.setProperty("--fiber-dx2", `${(-driftX * 0.42).toFixed(2)}px`);
+    path.style.setProperty("--fiber-dy2", `${(driftY * 0.36).toFixed(2)}px`);
+    path.style.setProperty("--fiber-scale", (1 + random(index, 72) * 0.004).toFixed(4));
 
     if (options.opacity) {
       path.style.opacity = options.opacity;
       path.style.setProperty("--fiber-o", options.opacity);
     }
     if (options.width) path.style.strokeWidth = options.width;
-    if (options.delay) path.style.animationDelay = options.delay;
-    if (options.duration) path.style.animationDuration = options.duration;
+    path.style.animationDelay = options.delay || `${-(random(index, 73) * 3.2).toFixed(2)}s`;
+    path.style.animationDuration = options.duration || `${(15 + random(index, 74) * 9).toFixed(2)}s`;
 
     homeFiberField.appendChild(path);
   };
@@ -396,19 +403,21 @@ if (homeFiberField) {
 
   for (let index = 0; index < 6; index += 1) {
     appendFiberPath("home-fiber-lower-flow", index + 1740, {
-      opacity: String(0.3 + random(index, 40) * 0.18),
+      opacity: String(0.16 + random(index, 40) * 0.12),
       width: String(0.42 + random(index, 41) * 0.42),
       stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : "url(#fiberSilkPurple)",
-      delay: `${-(random(index, 42) * 5.8).toFixed(2)}s`,
-      duration: `${(4.6 + random(index, 43) * 2.4).toFixed(2)}s`
+      delay: `${-(random(index, 42) * 18).toFixed(2)}s`,
+      duration: `${(18 + random(index, 43) * 7).toFixed(2)}s`
     }, "lowerSilk");
   }
 
   for (let index = 0; index < 9; index += 1) {
     appendFiberPath("home-fiber-highlight", index + 1220, {
-      opacity: String(0.52 + random(index, 28) * 0.24),
+      opacity: String(0.28 + random(index, 28) * 0.18),
       width: String(0.34 + random(index, 29) * 0.44),
-      stroke: "url(#fiberSilkSilver)"
+      stroke: "url(#fiberSilkSilver)",
+      delay: `${-(random(index, 75) * 19).toFixed(2)}s`,
+      duration: `${(18 + random(index, 76) * 8).toFixed(2)}s`
     }, index % 3 === 0 ? "curtain" : "thread");
   }
 
@@ -435,10 +444,10 @@ if (homeFiberField) {
 
   for (let index = 0; index < 8; index += 1) {
     appendFiberPath("home-fiber-signal", index + 760, {
-      opacity: String(0.52 + random(index, 14) * 0.24),
+      opacity: String(0.24 + random(index, 14) * 0.14),
       width: String(0.62 + random(index, 15) * 0.72),
-      delay: `${-(random(index, 16) * 4.2).toFixed(2)}s`,
-      duration: `${(3.2 + random(index, 17) * 2.2).toFixed(2)}s`
+      delay: `${-(random(index, 16) * 18).toFixed(2)}s`,
+      duration: `${(17 + random(index, 17) * 8).toFixed(2)}s`
     }, "signal");
   }
 
@@ -475,8 +484,8 @@ if (homeFiberField) {
       const y = clamp((event.clientY - rect.top) / rect.height, 0, 1);
       if (frame) cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const shiftX = (x - 0.5) * 18;
-        const shiftY = (y - 0.5) * 12;
+        const shiftX = (x - 0.5) * 3.2;
+        const shiftY = (y - 0.5) * 2.4;
         hero.classList.add("is-fiber-hover");
         hero.style.setProperty("--fiber-x", `${(x * 100).toFixed(1)}%`);
         hero.style.setProperty("--fiber-y", `${(y * 100).toFixed(1)}%`);
