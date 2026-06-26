@@ -152,11 +152,11 @@ const homeFiberField = document.querySelector("#homeFiberField");
 if (homeFiberField) {
   const namespace = "http://www.w3.org/2000/svg";
   const palette = [
-    "rgba(246, 251, 255, 0.88)",
-    "rgba(213, 229, 255, 0.78)",
-    "rgba(203, 190, 255, 0.72)",
-    "rgba(159, 154, 255, 0.62)",
-    "rgba(119, 148, 235, 0.54)"
+    "rgba(28, 33, 40, 0.72)",
+    "rgba(58, 74, 104, 0.56)",
+    "rgba(92, 89, 132, 0.42)",
+    "rgba(41, 123, 145, 0.34)",
+    "rgba(124, 112, 52, 0.3)"
   ];
 
   const random = (index, salt = 0) => {
@@ -210,34 +210,34 @@ if (homeFiberField) {
     circle.setAttribute("cy", cy.toFixed(1));
     circle.setAttribute("r", radius.toFixed(1));
     circle.setAttribute("class", "home-fiber-node");
-    circle.style.opacity = String(0.28 + random(index, 33) * 0.52);
+    circle.style.opacity = String(0.18 + random(index, 33) * 0.34);
     homeFiberField.appendChild(circle);
   };
 
   for (let index = 0; index < 190; index += 1) {
     if (index % 3 === 0) {
       appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.035 + random(index, 10) * 0.055),
-        width: String(1.35 + random(index, 11) * 2.35)
+        opacity: String(0.026 + random(index, 10) * 0.042),
+        width: String(1.05 + random(index, 11) * 1.85)
       });
     }
 
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.28 + random(index, 12) * 0.28),
-      width: String(0.18 + random(index, 13) * 0.58)
+      opacity: String(0.14 + random(index, 12) * 0.16),
+      width: String(0.16 + random(index, 13) * 0.5)
     });
 
     if (index < 30) {
       appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.2 + random(index, 24) * 0.22),
-        width: String(0.72 + random(index, 25) * 1.65)
+        opacity: String(0.14 + random(index, 24) * 0.14),
+        width: String(0.62 + random(index, 25) * 1.38)
       });
     }
 
     if (index % 5 === 0) {
       appendFiberPath("home-fiber-signal", index, {
-        opacity: String(0.3 + random(index, 14) * 0.22),
-        width: String(0.45 + random(index, 15) * 0.75),
+        opacity: String(0.2 + random(index, 14) * 0.16),
+        width: String(0.42 + random(index, 15) * 0.58),
         delay: `${-(random(index, 16) * 12).toFixed(2)}s`,
         duration: `${(12 + random(index, 17) * 9).toFixed(2)}s`
       });
