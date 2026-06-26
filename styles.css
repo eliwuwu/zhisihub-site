@@ -1405,13 +1405,14 @@ body {
   width: 52px;
   height: 52px;
   overflow: hidden;
-  background: #0b1724;
-  color: #ffffff;
+  border: 1px solid rgba(16, 16, 16, 0.14);
+  background: #ffffff;
+  color: #101010;
 }
 
 .brand-mark img {
-  width: 100%;
-  height: 100%;
+  width: 72%;
+  height: 72%;
   object-fit: contain;
 }
 
@@ -1508,7 +1509,7 @@ body {
   overflow: visible;
   pointer-events: none;
   --fiber-base-transform: translateX(3%) scale(1.02);
-  animation: homeFiberFieldBreathe 18s ease-in-out infinite alternate;
+  transform: var(--fiber-base-transform);
   transform-origin: 43% 52%;
 }
 
@@ -1518,6 +1519,10 @@ body {
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
   mix-blend-mode: multiply;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: homeFiberThreadSway var(--sway-duration, 12s) ease-in-out infinite alternate;
+  animation-delay: var(--sway-delay, -1s);
 }
 
 .home-fiber-soft {
@@ -1545,8 +1550,10 @@ body {
   opacity: 0.32;
   stroke-dasharray: 18 742;
   stroke-dashoffset: 768;
-  animation: homeFiberSignal var(--signal-duration, 16s) cubic-bezier(0.42, 0, 0.2, 1) infinite;
-  animation-delay: var(--signal-delay, 0s);
+  animation:
+    homeFiberSignal var(--signal-duration, 16s) cubic-bezier(0.42, 0, 0.2, 1) infinite,
+    homeFiberThreadSway var(--sway-duration, 12s) ease-in-out infinite alternate;
+  animation-delay: var(--signal-delay, 0s), var(--sway-delay, -1s);
 }
 
 .home-fiber-node,
@@ -1644,20 +1651,17 @@ body {
   }
 }
 
-@keyframes homeFiberFieldBreathe {
+@keyframes homeFiberThreadSway {
   0% {
-    opacity: 0.86;
-    transform: var(--fiber-base-transform) translate3d(-0.45%, -0.3%, 0) scale(0.994);
+    transform: translate(calc(var(--sway-x, 1px) * -0.45), calc(var(--sway-y, 1px) * -0.35)) rotate(calc(var(--sway-rotate, 0.08deg) * -0.4));
   }
 
   48% {
-    opacity: 1;
-    transform: var(--fiber-base-transform) translate3d(0.35%, 0.22%, 0) scale(1.006);
+    transform: translate(calc(var(--sway-x, 1px) * 0.18), calc(var(--sway-y, 1px) * 0.42)) rotate(calc(var(--sway-rotate, 0.08deg) * 0.22));
   }
 
   100% {
-    opacity: 0.9;
-    transform: var(--fiber-base-transform) translate3d(0.68%, -0.18%, 0) scale(1.002);
+    transform: translate(var(--sway-x, 1px), var(--sway-y, 1px)) rotate(var(--sway-rotate, 0.08deg));
   }
 }
 
@@ -1674,7 +1678,8 @@ body {
   }
 
   .home-fiber-field {
-    --fiber-base-transform: translateX(-24%) scale(1.22);
+    --fiber-base-transform: translateX(7%) scale(1.04);
+    opacity: 0.52;
     transform-origin: 38% 50%;
   }
 
@@ -1715,5 +1720,39 @@ body {
   .home-fiber-field path,
   .home-fiber-signal {
     animation: none;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  left: var(--cursor-x, 50vw);
+  top: var(--cursor-y, 50vh);
+  z-index: 40;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(40, 126, 148, 0.18) 0%, rgba(40, 126, 148, 0.1) 22%, rgba(16, 16, 16, 0.035) 42%, transparent 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(var(--cursor-glow-scale, 1));
+  transition:
+    opacity 180ms ease,
+    transform 120ms ease;
+}
+
+body.has-cursor-light::before {
+  opacity: var(--cursor-glow-opacity, 0.68);
+}
+
+body.is-pointer-down::before {
+  --cursor-glow-scale: 0.74;
+  --cursor-glow-opacity: 0.84;
+}
+
+@media (hover: none), (pointer: coarse) {
+  body::before {
+    display: none;
   }
 }

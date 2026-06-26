@@ -91,6 +91,15 @@ if (homeFiberField) {
       path.style.setProperty("--signal-duration", options.duration);
     }
 
+    const swayX = ((random(index, 41) - 0.5) * 2.4).toFixed(2);
+    const swayY = ((random(index, 42) - 0.5) * 1.7).toFixed(2);
+    const swayRotate = ((random(index, 43) - 0.5) * 0.16).toFixed(3);
+    path.style.setProperty("--sway-x", `${swayX}px`);
+    path.style.setProperty("--sway-y", `${swayY}px`);
+    path.style.setProperty("--sway-rotate", `${swayRotate}deg`);
+    path.style.setProperty("--sway-duration", `${(9 + random(index, 44) * 8).toFixed(2)}s`);
+    path.style.setProperty("--sway-delay", `${-(random(index, 45) * 9).toFixed(2)}s`);
+
     homeFiberField.appendChild(path);
   };
 
@@ -148,5 +157,42 @@ if (homeFiberField) {
     circle.setAttribute("r", String(index === 2 ? 5.8 : 3.2));
     circle.setAttribute("class", "home-fiber-neck");
     homeFiberField.appendChild(circle);
+  });
+}
+
+const enableCursorLight = !window.matchMedia("(pointer: coarse)").matches;
+
+if (enableCursorLight) {
+  let cursorLightReady = false;
+  let pointerDownTimer;
+
+  const moveCursorLight = (event) => {
+    document.body.style.setProperty("--cursor-x", `${event.clientX}px`);
+    document.body.style.setProperty("--cursor-y", `${event.clientY}px`);
+
+    if (!cursorLightReady) {
+      cursorLightReady = true;
+      document.body.classList.add("has-cursor-light");
+    }
+  };
+
+  window.addEventListener("pointermove", moveCursorLight, { passive: true });
+
+  window.addEventListener("pointerdown", (event) => {
+    moveCursorLight(event);
+    document.body.classList.add("is-pointer-down");
+    window.clearTimeout(pointerDownTimer);
+  }, { passive: true });
+
+  window.addEventListener("pointerup", () => {
+    window.clearTimeout(pointerDownTimer);
+    pointerDownTimer = window.setTimeout(() => {
+      document.body.classList.remove("is-pointer-down");
+    }, 120);
+  }, { passive: true });
+
+  window.addEventListener("pointerleave", () => {
+    document.body.classList.remove("has-cursor-light", "is-pointer-down");
+    cursorLightReady = false;
   });
 }
