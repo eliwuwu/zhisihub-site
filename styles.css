@@ -3349,16 +3349,16 @@ main {
 @keyframes fiberSilkBreathe {
   0% {
     stroke-dashoffset: 0;
-    opacity: 0.44;
+    opacity: calc(var(--fiber-o, 0.52) * 0.82);
   }
 
   48% {
-    opacity: 0.62;
+    opacity: calc(var(--fiber-o, 0.52) * 1.12);
   }
 
   100% {
     stroke-dashoffset: -18;
-    opacity: 0.52;
+    opacity: calc(var(--fiber-o, 0.52) * 0.94);
   }
 }
 
@@ -3449,6 +3449,11 @@ body {
 }
 
 .community-hero {
+  --fiber-hover-a: 0;
+  --fiber-shift-x: 0px;
+  --fiber-shift-y: 0px;
+  --fiber-x: 68%;
+  --fiber-y: 48%;
   width: 100%;
   min-height: min(760px, calc(100svh - 104px));
   margin: 0 0 36px;
@@ -3464,9 +3469,14 @@ body {
 .community-hero::before {
   z-index: 1;
   background:
+    radial-gradient(circle at var(--fiber-x) var(--fiber-y), rgba(255, 255, 255, var(--fiber-hover-a)) 0%, rgba(190, 171, 255, calc(var(--fiber-hover-a) * 0.72)) 5%, rgba(119, 87, 255, calc(var(--fiber-hover-a) * 0.3)) 12%, transparent 24%),
     radial-gradient(ellipse at 11% 50%, rgba(0, 0, 0, 0.18), transparent 26%),
     linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.12) 68%, rgba(0, 0, 0, 0.76) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, transparent 18%, transparent 80%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.community-hero.is-fiber-hover {
+  --fiber-hover-a: 0.34;
 }
 
 .community-hero::after {
@@ -3480,13 +3490,21 @@ body {
 
 .home-fiber-field {
   transform-origin: 8% 56%;
+  translate: var(--fiber-shift-x) var(--fiber-shift-y);
+  scale: 1;
+  rotate: 0deg;
+  animation: homeFiberFieldBreathe 10.8s ease-in-out infinite;
+  transition: translate 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
   -webkit-mask-image: none;
   mask-image: none;
-  will-change: auto;
+  will-change: translate, scale, rotate;
 }
 
 .home-fiber-field path {
   mix-blend-mode: normal;
+  transition:
+    opacity 260ms ease,
+    filter 260ms ease;
 }
 
 .home-fiber-curtain {
@@ -3505,6 +3523,9 @@ body {
   opacity: 0.48;
   stroke-dasharray: 84 676;
   stroke-dashoffset: 760;
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.62))
+    drop-shadow(0 0 10px rgba(155, 120, 255, 0.34));
   animation: homeFiberGlint 6.8s linear infinite;
 }
 
@@ -3534,6 +3555,9 @@ body {
 
 .home-fiber-lower-bright {
   opacity: 0.82;
+  filter:
+    drop-shadow(0 0 1.5px rgba(255, 255, 255, 0.42))
+    drop-shadow(0 0 8px rgba(158, 112, 255, 0.22));
 }
 
 .home-fiber-lower-flow {
@@ -3547,7 +3571,29 @@ body {
 .home-fiber-signal {
   opacity: 0.58;
   stroke-dasharray: 42 718;
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.58))
+    drop-shadow(0 0 10px rgba(163, 121, 255, 0.34));
   animation-duration: 5.6s;
+}
+
+.home-fiber-curtain,
+.home-fiber-spine,
+.home-fiber-core,
+.home-fiber-thread,
+.home-fiber-lower-silk,
+.home-fiber-middle-silk,
+.home-fiber-bridge-silk,
+.home-fiber-center-silk {
+  animation: fiberSilkBreathe 8.8s ease-in-out infinite alternate;
+}
+
+.community-hero.is-fiber-hover .home-fiber-highlight,
+.community-hero.is-fiber-hover .home-fiber-lower-bright,
+.community-hero.is-fiber-hover .home-fiber-signal {
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.76))
+    drop-shadow(0 0 16px rgba(184, 143, 255, 0.52));
 }
 
 .hero-card-brand {
@@ -3621,6 +3667,27 @@ body {
   100% {
     stroke-dashoffset: 0;
     opacity: 0.22;
+  }
+}
+
+@keyframes homeFiberFieldBreathe {
+  0%,
+  100% {
+    scale: 1.004;
+    rotate: -0.14deg;
+    opacity: 0.94;
+  }
+
+  46% {
+    scale: 1.018;
+    rotate: 0.22deg;
+    opacity: 1;
+  }
+
+  72% {
+    scale: 1.01;
+    rotate: -0.04deg;
+    opacity: 0.98;
   }
 }
 

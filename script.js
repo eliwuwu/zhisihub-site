@@ -315,7 +315,10 @@ if (homeFiberField) {
     path.setAttribute("class", className);
     path.setAttribute("stroke", options.stroke || silkStrokes[index % silkStrokes.length]);
 
-    if (options.opacity) path.style.opacity = options.opacity;
+    if (options.opacity) {
+      path.style.opacity = options.opacity;
+      path.style.setProperty("--fiber-o", options.opacity);
+    }
     if (options.width) path.style.strokeWidth = options.width;
     if (options.delay) path.style.animationDelay = options.delay;
     if (options.duration) path.style.animationDuration = options.duration;
@@ -336,62 +339,62 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 132; index += 1) {
+  for (let index = 0; index < 66; index += 1) {
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.34 + random(index, 12) * 0.26),
-      width: String(0.3 + random(index, 13) * 0.44)
+      opacity: String(0.42 + random(index, 12) * 0.28),
+      width: String(0.38 + random(index, 13) * 0.58)
     });
   }
 
-  for (let index = 0; index < 178; index += 1) {
+  for (let index = 0; index < 90; index += 1) {
     appendFiberPath("home-fiber-curtain", index + 980, {
-      opacity: String(0.46 + random(index, 26) * 0.32),
-      width: String(0.34 + random(index, 27) * 0.82),
+      opacity: String(0.56 + random(index, 26) * 0.34),
+      width: String(0.46 + random(index, 27) * 1.04),
       stroke: index % 5 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[index % 3]
     }, "curtain");
   }
 
-  for (let index = 0; index < 94; index += 1) {
+  for (let index = 0; index < 46; index += 1) {
     appendFiberPath(index % 5 === 0 ? "home-fiber-lower-silk home-fiber-lower-bright" : "home-fiber-lower-silk", index + 1460, {
-      opacity: String(0.52 + random(index, 36) * 0.32),
-      width: String(0.34 + random(index, 37) * 0.7),
+      opacity: String(0.62 + random(index, 36) * 0.3),
+      width: String(0.48 + random(index, 37) * 0.88),
       stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
       delay: `${-(random(index, 38) * 7.2).toFixed(2)}s`,
       duration: `${(7.6 + random(index, 39) * 3.4).toFixed(2)}s`
     }, "lowerSilk");
   }
 
-  for (let index = 0; index < 66; index += 1) {
+  for (let index = 0; index < 34; index += 1) {
     appendFiberPath(index % 4 === 0 ? "home-fiber-middle-silk home-fiber-lower-bright" : "home-fiber-middle-silk", index + 1910, {
-      opacity: String(0.56 + random(index, 44) * 0.28),
-      width: String(0.34 + random(index, 45) * 0.66),
+      opacity: String(0.64 + random(index, 44) * 0.3),
+      width: String(0.46 + random(index, 45) * 0.84),
       stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 2) % silkStrokes.length],
       delay: `${-(random(index, 46) * 7.8).toFixed(2)}s`,
       duration: `${(8.2 + random(index, 47) * 3.2).toFixed(2)}s`
     }, "middleSilk");
   }
 
-  for (let index = 0; index < 104; index += 1) {
+  for (let index = 0; index < 52; index += 1) {
     appendFiberPath(index % 6 === 0 ? "home-fiber-bridge-silk home-fiber-lower-bright" : "home-fiber-bridge-silk", index + 2100, {
-      opacity: String(0.58 + random(index, 48) * 0.3),
-      width: String(0.38 + random(index, 49) * 0.72),
+      opacity: String(0.66 + random(index, 48) * 0.28),
+      width: String(0.5 + random(index, 49) * 0.88),
       stroke: index % 3 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 3) % silkStrokes.length],
       delay: `${-(random(index, 50) * 7.4).toFixed(2)}s`,
       duration: `${(7.8 + random(index, 51) * 3.1).toFixed(2)}s`
     }, "bridgeSilk");
   }
 
-  for (let index = 0; index < 52; index += 1) {
+  for (let index = 0; index < 26; index += 1) {
     appendFiberPath(index % 5 === 0 ? "home-fiber-center-silk home-fiber-lower-bright" : "home-fiber-center-silk", index + 2380, {
-      opacity: String(0.58 + random(index, 52) * 0.28),
-      width: String(0.32 + random(index, 53) * 0.62),
+      opacity: String(0.66 + random(index, 52) * 0.28),
+      width: String(0.44 + random(index, 53) * 0.78),
       stroke: index % 4 === 0 ? "url(#fiberSilkSilver)" : silkStrokes[(index + 1) % silkStrokes.length],
       delay: `${-(random(index, 54) * 7.6).toFixed(2)}s`,
       duration: `${(7.4 + random(index, 55) * 3.4).toFixed(2)}s`
     }, "centerSilk");
   }
 
-  for (let index = 0; index < 10; index += 1) {
+  for (let index = 0; index < 6; index += 1) {
     appendFiberPath("home-fiber-lower-flow", index + 1740, {
       opacity: String(0.3 + random(index, 40) * 0.18),
       width: String(0.42 + random(index, 41) * 0.42),
@@ -401,45 +404,45 @@ if (homeFiberField) {
     }, "lowerSilk");
   }
 
-  for (let index = 0; index < 18; index += 1) {
+  for (let index = 0; index < 9; index += 1) {
     appendFiberPath("home-fiber-highlight", index + 1220, {
-      opacity: String(0.46 + random(index, 28) * 0.22),
-      width: String(0.22 + random(index, 29) * 0.36),
+      opacity: String(0.52 + random(index, 28) * 0.24),
+      width: String(0.34 + random(index, 29) * 0.44),
       stroke: "url(#fiberSilkSilver)"
     }, index % 3 === 0 ? "curtain" : "thread");
   }
 
-  for (let index = 0; index < 18; index += 1) {
+  for (let index = 0; index < 9; index += 1) {
     appendFiberPath("home-fiber-ribbon", index + 180, {
-      opacity: String(0.04 + random(index, 18) * 0.05),
-      width: String(2.2 + random(index, 19) * 2.9)
+      opacity: String(0.06 + random(index, 18) * 0.06),
+      width: String(2.8 + random(index, 19) * 3.2)
     }, "ribbon");
   }
 
-  for (let index = 0; index < 24; index += 1) {
+  for (let index = 0; index < 12; index += 1) {
     appendFiberPath("home-fiber-soft", index + 320, {
-      opacity: String(0.04 + random(index, 10) * 0.06),
-      width: String(0.72 + random(index, 11) * 0.98)
-    }, "spine");
-  }
-
-  for (let index = 0; index < 28; index += 1) {
-    appendFiberPath("home-fiber-spine", index + 520, {
-      opacity: String(0.38 + random(index, 24) * 0.22),
-      width: String(0.52 + random(index, 25) * 0.86)
+      opacity: String(0.06 + random(index, 10) * 0.08),
+      width: String(0.92 + random(index, 11) * 1.2)
     }, "spine");
   }
 
   for (let index = 0; index < 14; index += 1) {
+    appendFiberPath("home-fiber-spine", index + 520, {
+      opacity: String(0.46 + random(index, 24) * 0.24),
+      width: String(0.7 + random(index, 25) * 1.02)
+    }, "spine");
+  }
+
+  for (let index = 0; index < 8; index += 1) {
     appendFiberPath("home-fiber-signal", index + 760, {
-      opacity: String(0.46 + random(index, 14) * 0.22),
-      width: String(0.48 + random(index, 15) * 0.62),
+      opacity: String(0.52 + random(index, 14) * 0.24),
+      width: String(0.62 + random(index, 15) * 0.72),
       delay: `${-(random(index, 16) * 4.2).toFixed(2)}s`,
       duration: `${(3.2 + random(index, 17) * 2.2).toFixed(2)}s`
     }, "signal");
   }
 
-  for (let index = 0; index < 12; index += 1) {
+  for (let index = 0; index < 8; index += 1) {
     appendFiberNode(index);
   }
 
@@ -461,4 +464,34 @@ if (homeFiberField) {
     line.style.strokeWidth = index === 1 ? "0.54" : "0.72";
     homeFiberField.appendChild(line);
   });
+
+  const hero = homeFiberField.closest(".community-hero");
+  if (hero && !prefersReducedMotion) {
+    let frame = 0;
+    const applyPointer = (event) => {
+      if (event.pointerType === "touch") return;
+      const rect = hero.getBoundingClientRect();
+      const x = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+      const y = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const shiftX = (x - 0.5) * 18;
+        const shiftY = (y - 0.5) * 12;
+        hero.classList.add("is-fiber-hover");
+        hero.style.setProperty("--fiber-x", `${(x * 100).toFixed(1)}%`);
+        hero.style.setProperty("--fiber-y", `${(y * 100).toFixed(1)}%`);
+        hero.style.setProperty("--fiber-shift-x", `${shiftX.toFixed(2)}px`);
+        hero.style.setProperty("--fiber-shift-y", `${shiftY.toFixed(2)}px`);
+      });
+    };
+
+    hero.addEventListener("pointermove", applyPointer, { passive: true });
+    hero.addEventListener("pointerleave", () => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0;
+      hero.classList.remove("is-fiber-hover");
+      hero.style.setProperty("--fiber-shift-x", "0px");
+      hero.style.setProperty("--fiber-shift-y", "0px");
+    });
+  }
 }
