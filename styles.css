@@ -2426,34 +2426,24 @@ body {
 .home-impact-beams::before {
   content: "";
   position: absolute;
-  left: -18%;
-  top: 27%;
-  width: 72%;
-  height: 42%;
+  left: -14%;
+  top: 30%;
+  width: 56%;
+  height: 36%;
   background:
-    radial-gradient(ellipse at 46% 50%, rgba(255, 255, 255, 0.98), rgba(205, 232, 255, 0.68) 7%, rgba(166, 129, 255, 0.38) 18%, rgba(91, 119, 230, 0.13) 36%, transparent 62%);
-  opacity: 0.9;
+    radial-gradient(ellipse at 46% 50%, rgba(255, 255, 255, 0.62), rgba(205, 232, 255, 0.2) 9%, rgba(166, 129, 255, 0.1) 24%, rgba(91, 119, 230, 0.04) 42%, transparent 68%);
+  opacity: 0.42;
 }
 
 .home-impact-beams span {
-  position: absolute;
-  right: -10%;
-  left: -18%;
-  top: var(--top);
-  height: var(--h);
-  border-radius: 999px;
-  background: linear-gradient(270deg, transparent 0%, rgba(124, 111, 255, calc(var(--a) * 0.34)) 18%, rgba(190, 171, 255, var(--a)) 48%, rgba(255, 255, 255, calc(var(--a) * 0.86)) 72%, transparent 98%);
-  opacity: var(--o);
-  transform: rotate(var(--angle));
-  transform-origin: 12% 50%;
-  animation: homeBeamDrift var(--speed) ease-in-out infinite alternate;
+  display: none;
 }
 
-.home-impact-beams span:nth-child(1) { --top: 31%; --h: 92px; --angle: -8deg; --a: 0.46; --o: 0.64; --speed: 4.6s; }
-.home-impact-beams span:nth-child(2) { --top: 38%; --h: 52px; --angle: -3.4deg; --a: 0.78; --o: 0.86; --speed: 3.8s; }
-.home-impact-beams span:nth-child(3) { --top: 46%; --h: 120px; --angle: 5.8deg; --a: 0.52; --o: 0.76; --speed: 5.4s; }
-.home-impact-beams span:nth-child(4) { --top: 56%; --h: 64px; --angle: 10.2deg; --a: 0.62; --o: 0.78; --speed: 4.2s; }
-.home-impact-beams span:nth-child(5) { --top: 64%; --h: 30px; --angle: 14deg; --a: 0.82; --o: 0.68; --speed: 3.4s; }
+.home-impact-beams span:nth-child(1) { --top: 31%; --h: 22px; --angle: -7deg; --a: 0.36; --o: 0.22; --speed: 14s; }
+.home-impact-beams span:nth-child(2) { --top: 39%; --h: 14px; --angle: -2.8deg; --a: 0.46; --o: 0.26; --speed: 16s; }
+.home-impact-beams span:nth-child(3) { --top: 47%; --h: 28px; --angle: 4.8deg; --a: 0.34; --o: 0.2; --speed: 18s; }
+.home-impact-beams span:nth-child(4) { --top: 56%; --h: 18px; --angle: 9deg; --a: 0.42; --o: 0.22; --speed: 15s; }
+.home-impact-beams span:nth-child(5) { --top: 64%; --h: 10px; --angle: 12deg; --a: 0.48; --o: 0.18; --speed: 17s; }
 
 @keyframes homeBeamDrift {
   from {
@@ -2475,6 +2465,9 @@ body {
   height: 100%;
   overflow: visible;
   pointer-events: none;
+  --fiber-base-transform: translateX(0) scale(1);
+  animation: homeFiberFieldBreathe 18s ease-in-out infinite alternate;
+  transform-origin: 38% 52%;
 }
 
 .home-fiber-field path {
@@ -2486,31 +2479,32 @@ body {
 }
 
 .home-fiber-soft {
-  stroke-width: 10.5;
-  opacity: 0.17;
+  stroke-width: 2.8;
+  opacity: 0.08;
 }
 
 .home-fiber-spine {
-  stroke-width: 3.8;
-  opacity: 0.7;
+  stroke-width: 1.6;
+  opacity: 0.36;
 }
 
 .home-fiber-core {
-  stroke-width: 0.92;
-  opacity: 0.72;
+  stroke-width: 0.62;
+  opacity: 0.5;
 }
 
 .home-fiber-thread {
-  stroke-width: 0.46;
-  opacity: 0.58;
+  stroke-width: 0.32;
+  opacity: 0.42;
 }
 
 .home-fiber-signal {
-  stroke-width: 2.4;
-  opacity: 0.98;
-  stroke-dasharray: 48 720;
+  stroke-width: 0.82;
+  opacity: 0.46;
+  stroke-dasharray: 18 742;
   stroke-dashoffset: 768;
-  animation: homeFiberSignal 3.8s linear infinite;
+  animation: homeFiberSignal var(--signal-duration, 16s) cubic-bezier(0.42, 0, 0.2, 1) infinite;
+  animation-delay: var(--signal-delay, 0s);
 }
 
 .home-fiber-node,
@@ -2531,6 +2525,23 @@ body {
 @keyframes homeFiberSignal {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes homeFiberFieldBreathe {
+  0% {
+    opacity: 0.86;
+    transform: var(--fiber-base-transform) translate3d(-0.45%, -0.3%, 0) scale(0.994);
+  }
+
+  48% {
+    opacity: 1;
+    transform: var(--fiber-base-transform) translate3d(0.35%, 0.22%, 0) scale(1.006);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: var(--fiber-base-transform) translate3d(0.68%, -0.18%, 0) scale(1.002);
   }
 }
 
@@ -2584,6 +2595,7 @@ body {
 
 @media (max-width: 760px) {
   .home-fiber-field {
+    --fiber-base-transform: translateX(-22%) scale(1.22);
     transform: translateX(-22%) scale(1.22);
     transform-origin: 40% 50%;
   }
@@ -2592,10 +2604,19 @@ body {
     transform: translateX(-18%) scale(1.18);
     transform-origin: 35% 50%;
   }
+
+  .community-hero .neural-note {
+    width: min(100%, 340px);
+    max-width: calc(100vw - 40px);
+    line-height: 1.55;
+    white-space: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .home-impact-beams span,
+  .home-fiber-field path,
+  .home-fiber-field,
   .home-fiber-signal {
     animation: none;
   }
