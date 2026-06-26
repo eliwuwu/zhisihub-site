@@ -1399,3 +1399,321 @@ body {
     display: none;
   }
 }
+
+/* Restored first-screen White Matter hero */
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  background: #0b1724;
+  color: #ffffff;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.community-hero {
+  isolation: isolate;
+  align-items: center;
+  min-height: min(820px, calc(100svh - 72px));
+  padding-top: 96px;
+  padding-bottom: 54px;
+  background:
+    radial-gradient(circle at 72% 36%, rgba(120, 142, 188, 0.12), transparent 30%),
+    radial-gradient(circle at 20% 54%, rgba(27, 125, 145, 0.1), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbfb 52%, #f7f8f8 100%);
+  color: #101010;
+}
+
+.community-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 17% 52%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.72) 14%, transparent 32%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.86) 28%, rgba(255, 255, 255, 0.28) 52%, rgba(255, 255, 255, 0.08) 100%);
+}
+
+.community-hero::after {
+  display: block;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(16, 16, 16, 0.026) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(0deg, rgba(16, 16, 16, 0.018) 0 1px, transparent 1px 96px);
+  opacity: 0.42;
+}
+
+.hero-bg,
+.hero-shade,
+.neural-figure {
+  display: none;
+}
+
+.home-impact-beams {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+
+.home-impact-beams::before {
+  content: "";
+  position: absolute;
+  left: 45%;
+  top: 18%;
+  width: 54%;
+  height: 70%;
+  background:
+    radial-gradient(circle at 18% 48%, rgba(27, 125, 145, 0.18), transparent 16%),
+    radial-gradient(circle at 70% 22%, rgba(113, 110, 154, 0.1), transparent 20%),
+    radial-gradient(circle at 78% 72%, rgba(119, 104, 36, 0.08), transparent 18%);
+  opacity: 0.72;
+}
+
+.home-impact-beams::after {
+  content: "";
+  position: absolute;
+  right: 6%;
+  top: 18%;
+  width: min(46vw, 620px);
+  height: 64%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 48%, rgba(16, 16, 16, 0.2) 0 2px, rgba(27, 125, 145, 0.08) 2.5px 8px, transparent 9px),
+    radial-gradient(circle at 34% 30%, rgba(27, 125, 145, 0.34) 0 2px, rgba(27, 125, 145, 0.1) 2.5px 9px, transparent 10px),
+    radial-gradient(circle at 47% 57%, rgba(119, 104, 36, 0.24) 0 1.5px, rgba(119, 104, 36, 0.07) 2px 8px, transparent 9px),
+    radial-gradient(circle at 58% 42%, rgba(16, 16, 16, 0.18) 0 2px, rgba(16, 16, 16, 0.06) 2.5px 8px, transparent 9px),
+    radial-gradient(circle at 72% 66%, rgba(113, 110, 154, 0.28) 0 2px, rgba(113, 110, 154, 0.08) 2.5px 9px, transparent 10px),
+    radial-gradient(circle at 88% 24%, rgba(16, 16, 16, 0.16) 0 1.5px, transparent 3px);
+  opacity: 0.86;
+}
+
+.home-impact-beams span {
+  display: none;
+}
+
+.home-fiber-field {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  --fiber-base-transform: translateX(3%) scale(1.02);
+  animation: homeFiberFieldBreathe 18s ease-in-out infinite alternate;
+  transform-origin: 43% 52%;
+}
+
+.home-fiber-field path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  mix-blend-mode: multiply;
+}
+
+.home-fiber-soft {
+  stroke-width: 2.8;
+  opacity: 0.055;
+}
+
+.home-fiber-spine {
+  stroke-width: 1.6;
+  opacity: 0.28;
+}
+
+.home-fiber-core {
+  stroke-width: 0.62;
+  opacity: 0.26;
+}
+
+.home-fiber-thread {
+  stroke-width: 0.32;
+  opacity: 0.2;
+}
+
+.home-fiber-signal {
+  stroke-width: 0.82;
+  opacity: 0.32;
+  stroke-dasharray: 18 742;
+  stroke-dashoffset: 768;
+  animation: homeFiberSignal var(--signal-duration, 16s) cubic-bezier(0.42, 0, 0.2, 1) infinite;
+  animation-delay: var(--signal-delay, 0s);
+}
+
+.home-fiber-node,
+.home-fiber-neck {
+  fill: rgba(22, 30, 36, 0.56);
+  filter:
+    drop-shadow(0 0 8px rgba(27, 125, 145, 0.22))
+    drop-shadow(0 0 18px rgba(113, 110, 154, 0.12));
+  mix-blend-mode: multiply;
+}
+
+.home-fiber-node {
+  opacity: 0.68;
+}
+
+.home-fiber-neck {
+  opacity: 0.66;
+}
+
+.community-hero .hero-inner {
+  z-index: 5;
+}
+
+.community-hero .eyebrow {
+  color: #101010;
+}
+
+.community-hero h1 {
+  width: min(800px, 100%);
+  margin-bottom: 30px;
+  color: #101010;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: clamp(4.12rem, 5.48vw, 5.35rem);
+  font-weight: 920;
+  line-height: 0.99;
+}
+
+.community-hero h1 span {
+  display: block;
+}
+
+.community-hero h1 span:last-child {
+  margin-left: clamp(10px, 1.05vw, 18px);
+}
+
+.community-hero .neural-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(690px, 100%);
+  margin-bottom: 30px;
+  padding: 0 0 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(16, 16, 16, 0.16);
+  border-radius: 0;
+  background: transparent;
+  color: rgba(16, 16, 16, 0.6);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.community-hero .neural-note::before {
+  content: "";
+  flex: 0 0 30px;
+  height: 1px;
+  background: rgba(16, 16, 16, 0.34);
+}
+
+.community-hero .mission-strip {
+  width: min(720px, 100%);
+}
+
+.community-hero .mission-strip article {
+  min-height: 90px;
+  padding: 16px 18px;
+  border-color: rgba(16, 16, 16, 0.12);
+  background: rgba(255, 255, 255, 0.6);
+  color: #101010;
+  box-shadow: 0 14px 44px rgba(16, 16, 16, 0.04);
+}
+
+.community-hero .mission-strip span,
+.community-hero .mission-strip strong {
+  color: #101010;
+}
+
+.community-hero .scroll-cue {
+  color: rgba(16, 16, 16, 0.56);
+}
+
+@keyframes homeFiberSignal {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes homeFiberFieldBreathe {
+  0% {
+    opacity: 0.86;
+    transform: var(--fiber-base-transform) translate3d(-0.45%, -0.3%, 0) scale(0.994);
+  }
+
+  48% {
+    opacity: 1;
+    transform: var(--fiber-base-transform) translate3d(0.35%, 0.22%, 0) scale(1.006);
+  }
+
+  100% {
+    opacity: 0.9;
+    transform: var(--fiber-base-transform) translate3d(0.68%, -0.18%, 0) scale(1.002);
+  }
+}
+
+@media (max-width: 760px) {
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .community-hero {
+    align-items: end;
+    min-height: auto;
+    padding: 70px 20px 34px;
+  }
+
+  .home-fiber-field {
+    --fiber-base-transform: translateX(-24%) scale(1.22);
+    transform-origin: 38% 50%;
+  }
+
+  .home-impact-beams::before {
+    left: 18%;
+    top: 22%;
+    width: 88%;
+    height: 64%;
+  }
+
+  .home-impact-beams::after {
+    right: 0;
+    top: 17%;
+    width: 92vw;
+    height: 58%;
+  }
+
+  .community-hero::before {
+    background:
+      radial-gradient(circle at 18% 52%, rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.78) 18%, transparent 42%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.74) 42%, rgba(255, 255, 255, 0.16) 100%);
+  }
+
+  .community-hero h1 {
+    font-size: 3.35rem;
+  }
+
+  .community-hero .neural-note {
+    width: min(100%, 340px);
+    max-width: calc(100vw - 40px);
+    line-height: 1.55;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-fiber-field,
+  .home-fiber-field path,
+  .home-fiber-signal {
+    animation: none;
+  }
+}
