@@ -2521,3 +2521,66 @@ body::after {
     white-space: normal;
   }
 }
+
+/* ============================================================
+   活体神经场 · 思维交互增强 (alive-neural-20260630)
+   信号流动 / 节点激活 / 放电涟漪 / slogan 散落→聚拢
+   ============================================================ */
+
+/* 节点:激活 / 放电态 —— 冷青发光,覆盖 JS 内联 fill 与 opacity */
+.home-fiber-node,
+.home-fiber-neck {
+  transition: opacity .35s ease, filter .35s ease;
+}
+.home-fiber-node.is-active,
+.home-fiber-node.is-firing,
+.home-fiber-neck.is-active {
+  fill: #1fd0e6 !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 6px rgba(70, 226, 244, .95))
+          drop-shadow(0 0 15px rgba(31, 208, 230, .5));
+}
+
+/* 信号粒子:沿纤维流动的思维亮点 */
+.fiber-signal {
+  fill: #e8fdff;
+  filter: drop-shadow(0 0 4px rgba(90, 232, 250, .95))
+          drop-shadow(0 0 11px rgba(31, 208, 230, .55));
+  pointer-events: none;
+}
+
+/* 节点放电涟漪环 */
+.fiber-ripple {
+  fill: none;
+  stroke: rgba(70, 226, 244, .55);
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+/* 主干缓慢背景流光(只给 spine,保持轻量) */
+.home-fiber-spine {
+  stroke-dasharray: 1 28;
+  animation: zm-spine-flow 9s linear infinite;
+}
+@keyframes zm-spine-flow {
+  to { stroke-dashoffset: -560; }
+}
+
+/* slogan 文字解构:散落 → 聚拢(把“散落思绪变成连续路径”演出来) */
+.community-hero h1 .zm-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate(var(--zm-x, 0), var(--zm-y, 30px)) rotate(var(--zm-r, 0deg));
+  transition: opacity .85s cubic-bezier(.2, .7, .2, 1),
+              transform 1s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--zm-d, 0ms);
+}
+.community-hero h1.is-assembled .zm-char {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-fiber-spine { animation: none; stroke-dasharray: none; }
+  .community-hero h1 .zm-char { opacity: 1; transform: none; transition: none; }
+}
