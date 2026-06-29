@@ -114,29 +114,36 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 118; index += 1) {
-    if (index % 4 === 0) {
-      appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.04 + random(index, 10) * 0.045),
-        width: String(0.9 + random(index, 11) * 1.6)
-      });
+  const fiberCount = 50;
+  const previousFiberCount = 118;
+
+  for (let index = 0; index < fiberCount; index += 1) {
+    const fiberIndex = Math.round(index * (previousFiberCount - 1) / (fiberCount - 1));
+    const isSoftFiber = index % 8 === 0;
+    let fiberClass = index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread";
+
+    if (isSoftFiber) {
+      fiberClass = "home-fiber-soft";
     }
 
-    appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.2 + random(index, 12) * 0.17),
-      width: String(0.2 + random(index, 13) * 0.5)
+    appendFiberPath(fiberClass, fiberIndex, {
+      opacity: isSoftFiber
+        ? String(0.035 + random(fiberIndex, 10) * 0.035)
+        : String(0.18 + random(fiberIndex, 12) * 0.15),
+      width: isSoftFiber
+        ? String(0.8 + random(fiberIndex, 11) * 1.25)
+        : String(0.18 + random(fiberIndex, 13) * 0.42)
     });
 
-    if (index < 16) {
-      appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.24 + random(index, 24) * 0.16),
-        width: String(0.66 + random(index, 25) * 1.08)
+    if (index < 4) {
+      appendFiberPath("home-fiber-spine", fiberIndex + 540, {
+        opacity: String(0.2 + random(fiberIndex, 24) * 0.12),
+        width: String(0.58 + random(fiberIndex, 25) * 0.82)
       });
     }
-
   }
 
-  for (let index = 0; index < 18; index += 1) {
+  for (let index = 0; index < 10; index += 1) {
     appendFiberNode(index);
   }
 
