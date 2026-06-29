@@ -1516,7 +1516,7 @@ body {
   --fiber-base-transform: translateX(3%) scale(1.02);
   transform: var(--fiber-base-transform);
   transform-origin: 43% 52%;
-  animation: homeFiberFieldBreath 13s ease-in-out infinite;
+  opacity: 0.9;
 }
 
 .home-fiber-field path {
@@ -1527,8 +1527,6 @@ body {
   mix-blend-mode: multiply;
   transform-box: fill-box;
   transform-origin: center;
-  animation: homeFiberThreadSway var(--sway-duration, 28s) ease-in-out infinite alternate;
-  animation-delay: var(--sway-delay, -1s);
 }
 
 .home-fiber-soft {
@@ -1549,10 +1547,6 @@ body {
 .home-fiber-thread {
   stroke-width: 0.32;
   opacity: 0.38;
-}
-
-.home-fiber-field .home-fiber-signal {
-  display: none;
 }
 
 .home-fiber-node,
@@ -1642,32 +1636,6 @@ body {
   color: rgba(16, 16, 16, 0.56);
 }
 
-@keyframes homeFiberFieldBreath {
-  0%, 100% {
-    opacity: 0.82;
-    transform: var(--fiber-base-transform) scale(1);
-  }
-
-  50% {
-    opacity: 0.96;
-    transform: var(--fiber-base-transform) scale(1.014);
-  }
-}
-
-@keyframes homeFiberThreadSway {
-  0% {
-    transform: translate(calc(var(--sway-x, 1px) * -0.45), calc(var(--sway-y, 1px) * -0.35)) rotate(calc(var(--sway-rotate, 0.08deg) * -0.4));
-  }
-
-  48% {
-    transform: translate(calc(var(--sway-x, 1px) * 0.18), calc(var(--sway-y, 1px) * 0.42)) rotate(calc(var(--sway-rotate, 0.08deg) * 0.22));
-  }
-
-  100% {
-    transform: translate(var(--sway-x, 1px), var(--sway-y, 1px)) rotate(var(--sway-rotate, 0.08deg));
-  }
-}
-
 @media (max-width: 760px) {
   .brand-mark {
     width: 36px;
@@ -1715,65 +1683,5 @@ body {
     max-width: calc(100vw - 40px);
     line-height: 1.55;
     white-space: normal;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-fiber-field,
-  .home-fiber-field path,
-  .home-fiber-signal {
-    animation: none;
-  }
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  left: var(--cursor-x, 50vw);
-  top: var(--cursor-y, 50vh);
-  z-index: 40;
-  width: 190px;
-  height: 190px;
-  pointer-events: none;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.72) 0 10%, transparent 11%),
-    repeating-radial-gradient(circle, rgba(126, 114, 54, 0.18) 0 1px, rgba(126, 114, 54, 0.08) 2px, transparent 6px, transparent 24px),
-    radial-gradient(circle, rgba(16, 16, 16, 0.045) 0%, rgba(126, 114, 54, 0.05) 38%, transparent 72%);
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(var(--cursor-glow-scale, 1));
-  mix-blend-mode: multiply;
-  transition:
-    opacity 220ms ease,
-    transform 180ms ease;
-  animation: cursorWaterRipple 2.8s ease-out infinite;
-}
-
-body.has-cursor-light::before {
-  opacity: var(--cursor-glow-opacity, 0.48);
-}
-
-body.is-pointer-down::before {
-  --cursor-glow-scale: 0.82;
-  --cursor-glow-opacity: 0.6;
-}
-
-@keyframes cursorWaterRipple {
-  0% {
-    background-size: 100% 100%, 82% 82%, 100% 100%;
-  }
-
-  50% {
-    background-size: 100% 100%, 104% 104%, 100% 100%;
-  }
-
-  100% {
-    background-size: 100% 100%, 126% 126%, 100% 100%;
-  }
-}
-
-@media (hover: none), (pointer: coarse) {
-  body::before {
-    display: none;
   }
 }
