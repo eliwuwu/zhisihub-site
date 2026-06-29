@@ -46,11 +46,11 @@ const homeFiberField = document.querySelector("#homeFiberField");
 if (homeFiberField) {
   const namespace = "http://www.w3.org/2000/svg";
   const palette = [
-    "rgba(22, 24, 25, 0.9)",
-    "rgba(70, 70, 62, 0.8)",
-    "rgba(103, 96, 61, 0.68)",
-    "rgba(143, 128, 74, 0.58)",
-    "rgba(16, 16, 16, 0.54)"
+    "rgba(48, 49, 47, 0.62)",
+    "rgba(90, 88, 72, 0.52)",
+    "rgba(122, 111, 67, 0.42)",
+    "rgba(154, 138, 82, 0.34)",
+    "rgba(42, 42, 39, 0.3)"
   ];
 
   const random = (index, salt = 0) => {
@@ -114,29 +114,29 @@ if (homeFiberField) {
     homeFiberField.appendChild(circle);
   };
 
-  for (let index = 0; index < 190; index += 1) {
-    if (index % 3 === 0) {
+  for (let index = 0; index < 118; index += 1) {
+    if (index % 4 === 0) {
       appendFiberPath("home-fiber-soft", index, {
-        opacity: String(0.06 + random(index, 10) * 0.07),
-        width: String(1.2 + random(index, 11) * 2.1)
+        opacity: String(0.04 + random(index, 10) * 0.045),
+        width: String(0.9 + random(index, 11) * 1.6)
       });
     }
 
     appendFiberPath(index % 2 === 0 ? "home-fiber-core" : "home-fiber-thread", index, {
-      opacity: String(0.34 + random(index, 12) * 0.22),
-      width: String(0.32 + random(index, 13) * 0.72)
+      opacity: String(0.2 + random(index, 12) * 0.17),
+      width: String(0.2 + random(index, 13) * 0.5)
     });
 
-    if (index < 30) {
+    if (index < 16) {
       appendFiberPath("home-fiber-spine", index + 540, {
-        opacity: String(0.34 + random(index, 24) * 0.22),
-        width: String(0.88 + random(index, 25) * 1.44)
+        opacity: String(0.24 + random(index, 24) * 0.16),
+        width: String(0.66 + random(index, 25) * 1.08)
       });
     }
 
   }
 
-  for (let index = 0; index < 28; index += 1) {
+  for (let index = 0; index < 18; index += 1) {
     appendFiberNode(index);
   }
 

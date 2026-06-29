@@ -2334,7 +2334,7 @@ body::after {
     radial-gradient(circle at 58% 42%, rgba(16, 16, 16, 0.13) 0 2px, rgba(16, 16, 16, 0.045) 2.5px 8px, transparent 9px),
     radial-gradient(circle at 72% 66%, rgba(94, 86, 52, 0.18) 0 2px, rgba(94, 86, 52, 0.055) 2.5px 9px, transparent 10px),
     radial-gradient(circle at 88% 24%, rgba(16, 16, 16, 0.16) 0 1.5px, transparent 3px);
-  opacity: 0.58;
+  opacity: 0.42;
 }
 
 .home-impact-beams span {
@@ -2352,7 +2352,7 @@ body::after {
   --fiber-base-transform: translateX(3%) scale(1.02);
   transform: var(--fiber-base-transform);
   transform-origin: 43% 52%;
-  opacity: 0.9;
+  opacity: 0.82;
 }
 
 .home-fiber-field path {
@@ -2367,22 +2367,22 @@ body::after {
 
 .home-fiber-soft {
   stroke-width: 2.8;
-  opacity: 0.13;
+  opacity: 0.08;
 }
 
 .home-fiber-spine {
   stroke-width: 1.6;
-  opacity: 0.5;
+  opacity: 0.32;
 }
 
 .home-fiber-core {
   stroke-width: 0.62;
-  opacity: 0.46;
+  opacity: 0.28;
 }
 
 .home-fiber-thread {
   stroke-width: 0.32;
-  opacity: 0.38;
+  opacity: 0.22;
 }
 
 .home-fiber-node,
@@ -2393,7 +2393,7 @@ body::after {
 }
 
 .home-fiber-node {
-  opacity: 0.42;
+  opacity: 0.3;
 }
 
 .home-fiber-neck {
