@@ -2524,7 +2524,7 @@ body::after {
 
 /* ============================================================
    活体神经场 · 思维交互增强 (alive-neural-20260630)
-   信号流动 / 节点激活 / 放电涟漪 / slogan 散落→聚拢
+   信号流动 / 节点激活 / 放电涟漪
    ============================================================ */
 
 /* 节点:激活 / 放电态 —— 冷青发光,覆盖 JS 内联 fill 与 opacity */
@@ -2566,21 +2566,6 @@ body::after {
   to { stroke-dashoffset: -560; }
 }
 
-/* slogan 文字解构:散落 → 聚拢(把“散落思绪变成连续路径”演出来) */
-.community-hero h1 .zm-char {
-  display: inline-block;
-  opacity: 0;
-  transform: translate(var(--zm-x, 0), var(--zm-y, 30px)) rotate(var(--zm-r, 0deg));
-  transition: opacity .85s cubic-bezier(.2, .7, .2, 1),
-              transform 1s cubic-bezier(.2, .7, .2, 1);
-  transition-delay: var(--zm-d, 0ms);
-}
-.community-hero h1.is-assembled .zm-char {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .home-fiber-spine { animation: none; stroke-dasharray: none; }
-  .community-hero h1 .zm-char { opacity: 1; transform: none; transition: none; }
 }

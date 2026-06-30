@@ -421,33 +421,3 @@ const inlineLineArt = async () => {
 if (!prefersReducedMotion) {
   inlineLineArt();
 }
-
-/* ---- slogan 文字解构:散落 → 聚拢(把“散落思绪变成连续路径”演出来)---- */
-const heroHeading = document.querySelector(".community-hero h1");
-if (heroHeading && !prefersReducedMotion) {
-  const spans = heroHeading.querySelectorAll("span");
-  let charIndex = 0;
-  spans.forEach((span) => {
-    const text = span.textContent;
-    span.textContent = "";
-    Array.from(text).forEach((ch) => {
-      const wrap = document.createElement("span");
-      wrap.className = "zm-char";
-      wrap.textContent = ch;
-      const dx = (Math.random() - 0.5) * 70;
-      const dy = (Math.random() - 0.5) * 90 + 20;
-      const rot = (Math.random() - 0.5) * 26;
-      const delay = charIndex * 80 + Math.random() * 50;
-      wrap.style.setProperty("--zm-x", dx.toFixed(1) + "px");
-      wrap.style.setProperty("--zm-y", dy.toFixed(1) + "px");
-      wrap.style.setProperty("--zm-r", rot.toFixed(1) + "deg");
-      wrap.style.setProperty("--zm-d", delay.toFixed(0) + "ms");
-      span.appendChild(wrap);
-      charIndex += 1;
-    });
-  });
-  // 下一帧触发聚拢,让“散落 → 连续”被看见
-  window.requestAnimationFrame(() => {
-    window.setTimeout(() => heroHeading.classList.add("is-assembled"), 180);
-  });
-}
