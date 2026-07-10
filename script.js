@@ -38,6 +38,10 @@ if (form && note) {
       submitButton.textContent = "正在连接你的问题";
       submitButton.disabled = true;
     }
+
+    window.setTimeout(() => {
+      window.location.href = new URL("thinking.html", window.location.href).href;
+    }, 850);
   });
 }
 
@@ -147,20 +151,11 @@ if (homeFiberField) {
     appendFiberNode(index);
   }
 
-  [266, 302, 336, 372, 408, 444].forEach((cy, index) => {
-    const circle = document.createElementNS(namespace, "circle");
-    circle.setAttribute("cx", String(248 + index * 2.4));
-    circle.setAttribute("cy", String(cy));
-    circle.setAttribute("r", String(index === 2 ? 5.8 : 3.2));
-    circle.setAttribute("class", "home-fiber-neck");
-    homeFiberField.appendChild(circle);
-  });
-
   /* ---- 活体神经场:思维信号 + 自发放电 + 鼠标激活 ---- */
   if (!prefersReducedMotion) {
     const fiberPaths = Array.from(homeFiberField.querySelectorAll("path"));
     const fiberNodes = Array.from(
-      homeFiberField.querySelectorAll(".home-fiber-node, .home-fiber-neck")
+      homeFiberField.querySelectorAll(".home-fiber-node")
     );
 
     // 缓存可取长度的纤维,避免每帧重复 getTotalLength
@@ -173,7 +168,7 @@ if (homeFiberField) {
     });
 
     const isMobile = window.matchMedia("(max-width: 760px)").matches;
-    const SIGNAL_COUNT = isMobile ? 6 : 11;
+    const SIGNAL_COUNT = isMobile ? 3 : 5;
 
     // 信号粒子:沿随机纤维流动,到达后跳到另一条(思维在不同神经间跳跃)
     const spawnSignal = () => {
@@ -186,7 +181,7 @@ if (homeFiberField) {
         el: circle,
         seg,
         t: Math.random(),
-        speed: 0.0045 + Math.random() * 0.0075,
+        speed: 0.0011 + Math.random() * 0.0018,
         dir: Math.random() < 0.5 ? 1 : -1
       };
     };
@@ -209,7 +204,7 @@ if (homeFiberField) {
           s.seg = usablePaths[Math.floor(Math.random() * usablePaths.length)];
           s.t = 0;
           s.dir = Math.random() < 0.5 ? 1 : -1;
-          s.speed = 0.0045 + Math.random() * 0.0075;
+          s.speed = 0.0011 + Math.random() * 0.0018;
         }
         try {
           const pos = s.dir > 0 ? s.t * s.seg.length : (1 - s.t) * s.seg.length;
@@ -287,7 +282,7 @@ if (homeFiberField) {
         const now = performance.now();
         if (now - lastMove < 45) return;
         lastMove = now;
-        boostTarget = 2.6;
+        boostTarget = 1.25;
         const p = toSvgPoint(event.clientX, event.clientY);
         if (!p) return;
         const next = new Set();
@@ -396,13 +391,48 @@ const inlineLineArt = async () => {
       strokeElements.forEach((element, index) => {
         if (typeof element.getTotalLength !== "function") return;
         const length = Math.ceil(element.getTotalLength());
+        const energyWindow = Math.round(Math.max(34, Math.min(length * 0.22, 120)));
         element.classList.add("draw-path");
         element.style.setProperty("--path-length", length);
+        element.style.setProperty("--energy-index", index);
         element.style.transitionDelay = `${Math.min(index * 70, 560)}ms`;
+
+        const energyPath = element.cloneNode(false);
+        energyPath.classList.remove("draw-path");
+        energyPath.classList.add("energy-path");
+        energyPath.setAttribute("aria-hidden", "true");
+        energyPath.style.setProperty("--energy-length", `${length}px`);
+        energyPath.style.setProperty("--energy-window", `${energyWindow}px`);
+        energyPath.style.setProperty("--energy-delay", `${(index * 0.46).toFixed(2)}s`);
+        element.insertAdjacentElement("afterend", energyPath);
       });
 
-      svg.querySelectorAll("circle, ellipse").forEach((element, index) => {
+      const nodes = [...svg.querySelectorAll("circle, ellipse")];
+      const hasCenterNode = nodes.some((element) => /\b(core|warm)\b/.test(element.getAttribute("class") || ""));
+      const orderedNodes = [...nodes].sort((a, b) => {
+        const classA = a.getAttribute("class") || "";
+        const classB = b.getAttribute("class") || "";
+        const aCenter = /\b(core|warm)\b/.test(classA) ? -1 : 0;
+        const bCenter = /\b(core|warm)\b/.test(classB) ? -1 : 0;
+        if (aCenter !== bCenter) return aCenter - bCenter;
+
+        const ax = Number(a.getAttribute("cx") || 0);
+        const ay = Number(a.getAttribute("cy") || 0);
+        const bx = Number(b.getAttribute("cx") || 0);
+        const by = Number(b.getAttribute("cy") || 0);
+
+        if (hasCenterNode) {
+          const angleA = Math.atan2(ay - 350, ax - 450);
+          const angleB = Math.atan2(by - 350, bx - 450);
+          return angleA - angleB;
+        }
+
+        return ax === bx ? ay - by : ax - bx;
+      });
+
+      orderedNodes.forEach((element, index) => {
         element.classList.add("draw-node");
+        element.style.setProperty("--node-delay", `${(0.72 + index * 0.34).toFixed(2)}s`);
         element.style.transitionDelay = `${360 + Math.min(index * 85, 680)}ms`;
       });
 
@@ -420,4 +450,125 @@ const inlineLineArt = async () => {
 
 if (!prefersReducedMotion) {
   inlineLineArt();
+}
+
+document.querySelectorAll(".mission-strip article, .detail-grid article, .line-visual, .contact-visual").forEach((item) => {
+  item.addEventListener("click", () => {
+    item.classList.remove("is-active");
+    void item.offsetWidth;
+    item.classList.add("is-active");
+    window.setTimeout(() => item.classList.remove("is-active"), 520);
+  });
+
+  item.addEventListener("pointermove", (event) => {
+    const rect = item.getBoundingClientRect();
+    item.style.setProperty("--focus-x", `${((event.clientX - rect.left) / rect.width * 100).toFixed(1)}%`);
+    item.style.setProperty("--focus-y", `${((event.clientY - rect.top) / rect.height * 100).toFixed(1)}%`);
+  });
+});
+
+const socialPanel = document.querySelector("[data-social-panel]");
+
+if (socialPanel) {
+  const socialSection = socialPanel.closest(".social-loop-section");
+  const socialLoop = socialSection?.querySelector("[data-social-loop]");
+  const socialTrack = socialSection?.querySelector("[data-social-loop-track]");
+  const socialSequence = socialSection?.querySelector("[data-social-loop-sequence]");
+  const socialStatus = socialSection?.querySelector("[data-social-loop-status]");
+  const socialChannels = {
+    wechat: {
+      label: "微信群",
+      title: "扫码加入微信群",
+      note: "把真实微信群二维码替换到这里后，访客可以在电脑端扫码，手机端长按保存。"
+    },
+    official: {
+      label: "公众号",
+      title: "扫码关注公众号",
+      note: "公众号二维码放在这里，适合承接文章、活动通知和长期内容沉淀。"
+    },
+    scan: {
+      label: "扫码",
+      title: "扫码进入白质社区",
+      note: "这个入口可以放综合二维码，统一承接微信群、公众号或报名表。"
+    }
+  };
+
+  const socialTitle = socialPanel.querySelector("[data-social-title]");
+  const socialNote = socialPanel.querySelector("[data-social-note]");
+  const socialQrLabel = socialPanel.querySelector("[data-social-qr-label]");
+  let activeChannel = null;
+
+  const updateSocialButtons = (channel = null, expanded = false) => {
+    socialSection?.querySelectorAll("[data-social-channel]").forEach((button) => {
+      const isActive = expanded && button.dataset.socialChannel === channel;
+      button.classList.toggle("is-active", isActive);
+      if (button.tagName !== "A") button.setAttribute("aria-expanded", String(isActive));
+    });
+  };
+
+  const collapseSocialPanel = () => {
+    activeChannel = null;
+    socialSection?.classList.remove("is-expanded", "is-paused");
+    socialPanel.hidden = true;
+    updateSocialButtons();
+    if (socialStatus) socialStatus.textContent = "点击入口展开";
+  };
+
+  const setSocialChannel = (channel) => {
+    const config = socialChannels[channel];
+    if (!config) return;
+
+    if (activeChannel === channel && socialSection?.classList.contains("is-expanded")) {
+      collapseSocialPanel();
+      return;
+    }
+
+    activeChannel = channel;
+    if (socialTitle) socialTitle.textContent = config.title;
+    if (socialNote) socialNote.textContent = config.note;
+    if (socialQrLabel) socialQrLabel.textContent = config.label;
+    socialPanel.hidden = false;
+    socialSection?.classList.add("is-expanded", "is-paused");
+    updateSocialButtons(channel, true);
+    if (socialStatus) socialStatus.textContent = "已暂停，再点一次收起";
+  };
+
+  const rebuildSocialLoop = () => {
+    if (!socialLoop || !socialTrack || !socialSequence) return;
+
+    socialTrack.querySelectorAll("[data-social-loop-clone]").forEach((clone) => clone.remove());
+    const sequenceWidth = Math.ceil(socialSequence.getBoundingClientRect().width);
+    if (!sequenceWidth) return;
+
+    const copies = Math.max(2, Math.ceil(socialLoop.clientWidth / sequenceWidth) + 2);
+    for (let index = 1; index < copies; index += 1) {
+      const clone = socialSequence.cloneNode(true);
+      clone.removeAttribute("data-social-loop-sequence");
+      clone.setAttribute("data-social-loop-clone", "");
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("button, a").forEach((item) => item.setAttribute("tabindex", "-1"));
+      socialTrack.appendChild(clone);
+    }
+
+    socialTrack.style.setProperty("--social-loop-distance", `${sequenceWidth}px`);
+    socialTrack.style.setProperty("--social-loop-duration", `${Math.max(16, sequenceWidth / 30).toFixed(2)}s`);
+    updateSocialButtons(activeChannel, Boolean(activeChannel));
+  };
+
+  socialSection?.addEventListener("click", (event) => {
+    const closeButton = event.target.closest("[data-social-close]");
+    if (closeButton) {
+      collapseSocialPanel();
+      return;
+    }
+
+    const button = event.target.closest("[data-social-channel]");
+    if (!button || button.tagName === "A") return;
+    setSocialChannel(button.dataset.socialChannel);
+  });
+
+  if (socialLoop && socialTrack && socialSequence) {
+    new ResizeObserver(rebuildSocialLoop).observe(socialLoop);
+    rebuildSocialLoop();
+  }
 }

@@ -8,15 +8,17 @@
     <meta property="og:description" content="让思考长出链接，把散落思绪变成连续路径。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zhisihub.com/">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#090d19">
     <title>White Matter 白质工作室 | 认知连接社区</title>
     <link rel="icon" href="./favicon.png?v=stroke-write-20260623" type="image/png">
-    <link rel="stylesheet" href="./styles.css?v=hero-layout-restore-20260630">
+    <link rel="stylesheet" href="./styles.css?v=galaxy-splash-gesture-v3">
   </head>
   <body>
     <header class="site-header" aria-label="主导航">
       <a class="brand" href="#mission" aria-label="White Matter 首页">
-        <span class="brand-mark"><img src="./assets/white-matter-logo-write.gif?v=stroke-loop-bold-20260626" alt=""></span>
+        <span class="brand-mark" aria-hidden="true">
+          <img class="brand-logo-write" src="./assets/white-matter-logo-write.gif?v=logo-write-sync-20260710-1542" alt="">
+        </span>
         <span>
           <strong>White Matter</strong>
           <small>白质工作室</small>
@@ -31,30 +33,29 @@
       <a class="nav-cta" href="#contact">加入</a>
     </header>
 
+    <div class="site-galaxy" id="siteGalaxy" aria-hidden="true"></div>
+    <div class="splash-cursor-layer" aria-hidden="true">
+      <canvas id="splashCursorCanvas"></canvas>
+    </div>
+
     <main>
       <section id="mission" class="community-hero" aria-label="White Matter 使命愿景">
-        <div class="home-impact-beams" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <div class="hero-prism" id="heroPrism" aria-hidden="true"></div>
         <svg class="home-fiber-field" id="homeFiberField" viewBox="0 0 1200 680" preserveAspectRatio="none" aria-hidden="true"></svg>
         <div class="hero-inner">
           <p class="eyebrow">White Matter Community</p>
           <h1><span>让思考</span><span>长出链接</span></h1>
           <p class="neural-note">织思：把散落思绪变成连续路径，让人每次抵达都看见更深一点。</p>
           <div class="mission-strip" aria-label="使命愿景">
-            <article>
+            <article tabindex="0">
               <span>Mission</span>
               <strong>看见问题的结构</strong>
             </article>
-            <article>
+            <article tabindex="0">
               <span>Vision</span>
               <strong>重构认知连接</strong>
             </article>
-            <article>
+            <article tabindex="0">
               <span>Method</span>
               <strong>训练 · 工具 · 共创</strong>
             </article>
@@ -70,14 +71,14 @@
           <p>信息理解、结构表达、AI 协作、项目交付，拆成可练习动作</p>
         </div>
         <div class="content-layout">
-          <figure class="line-visual">
+          <figure class="line-visual" tabindex="0">
             <img src="./assets/course-structure.svg" alt="课程结构线稿图">
           </figure>
           <div class="detail-grid">
-            <article><span>01</span><h3>认知训练</h3><p>信息理解、问题拆解、结构表达。</p></article>
-            <article><span>02</span><h3>AI 协作</h3><p>从提问、判断到共创工作流。</p></article>
-            <article><span>03</span><h3>导师小课</h3><p>一对一讲解、实操反馈和复盘。</p></article>
-            <article><span>04</span><h3>项目交付</h3><p>独立开发 App、公开演讲、项目计划书、发布会。</p></article>
+            <article tabindex="0"><span>01</span><h3>认知训练</h3><p>信息理解、问题拆解、结构表达。</p></article>
+            <article tabindex="0"><span>02</span><h3>AI 协作</h3><p>从提问、判断到共创工作流。</p></article>
+            <article tabindex="0"><span>03</span><h3>导师小课</h3><p>一对一讲解、实操反馈和复盘。</p></article>
+            <article tabindex="0"><span>04</span><h3>项目交付</h3><p>独立开发 App、公开演讲、项目计划书、发布会。</p></article>
           </div>
         </div>
       </section>
@@ -88,14 +89,14 @@
           <p>把节点、关系和对象变成可继续生长的结构</p>
         </div>
         <div class="content-layout reversed">
-          <figure class="line-visual">
+          <figure class="line-visual" tabindex="0">
             <img src="./assets/zhisi-map.svg" alt="织思结构线稿图">
           </figure>
           <div class="detail-grid">
-            <article><span>Node</span><h3>节点</h3><p>把想法拆成可移动、可组合的对象。</p></article>
-            <article><span>Link</span><h3>关系</h3><p>显示因果、层级、证据和反例。</p></article>
-            <article><span>Cloud</span><h3>对象云</h3><p>让课程、资料和项目沉淀为知识网络。</p></article>
-            <article><span>AI</span><h3>协作</h3><p>让 AI 参与整理，而不是替代判断。</p></article>
+            <article tabindex="0"><span>Node</span><h3>节点</h3><p>把想法拆成可移动、可组合的对象。</p></article>
+            <article tabindex="0"><span>Link</span><h3>关系</h3><p>显示因果、层级、证据和反例。</p></article>
+            <article tabindex="0"><span>Cloud</span><h3>对象云</h3><p>让课程、资料和项目沉淀为知识网络。</p></article>
+            <article tabindex="0"><span>AI</span><h3>协作</h3><p>让 AI 参与整理，而不是替代判断。</p></article>
           </div>
         </div>
       </section>
@@ -103,38 +104,113 @@
       <section id="founders" class="section founder-section">
         <div class="section-heading">
           <h2>Founders</h2>
+          <div class="founder-gesture-controls">
+            <div class="gesture-actions">
+              <button class="gesture-toggle" id="founderGestureToggle" type="button" aria-pressed="false">
+                <span class="gesture-toggle-icon" aria-hidden="true">✋</span>
+                <span class="gesture-toggle-label">开启手势翻牌</span>
+              </button>
+              <button class="gesture-reset" id="founderGestureReset" type="button">重新盖牌</button>
+            </div>
+            <p class="gesture-status" id="founderGestureStatus" role="status" aria-live="polite">
+              摄像头画面只在本机识别，不会上传
+            </p>
+          </div>
         </div>
         <div class="founder-layout">
-          <article class="founder-card lead-founder">
-            <div class="founder-copy">
-              <h3>夏洛克</h3>
+          <article class="founder-card lead-founder" data-founder-key="xialuoke" role="button" aria-pressed="false" aria-label="夏洛克，逻辑推理" tabindex="0">
+            <div class="founder-card-inner">
+              <div class="founder-face founder-symbol-face" aria-hidden="true">
+                <span class="tarot-index tarot-index-top">I</span>
+                <span class="tarot-symbol">◉</span>
+                <span class="tarot-index tarot-index-bottom">I</span>
+              </div>
+              <div class="founder-face founder-portrait-face">
+                <span class="founder-seal" aria-hidden="true">◉</span>
+                <img class="founder-sketch founder-avatar" src="./assets/member-xialuoke.png" alt="夏洛克简笔画形象">
+                <div class="founder-copy">
+                  <h3>夏洛克</h3>
+                  <p class="founder-role">逻辑推理</p>
+                </div>
+              </div>
             </div>
-            <img class="founder-sketch founder-avatar" src="./assets/member-xialuoke.png" alt="夏洛克简笔画形象">
           </article>
-          <article class="founder-card">
-            <div class="founder-copy">
-              <h3>陆贰</h3>
+          <article class="founder-card" data-founder-key="luer" role="button" aria-pressed="false" aria-label="陆贰，软件开发" tabindex="0">
+            <div class="founder-card-inner">
+              <div class="founder-face founder-symbol-face" aria-hidden="true">
+                <span class="tarot-index tarot-index-top">II</span>
+                <span class="tarot-symbol">⌘</span>
+                <span class="tarot-index tarot-index-bottom">II</span>
+              </div>
+              <div class="founder-face founder-portrait-face">
+                <span class="founder-seal" aria-hidden="true">⌘</span>
+                <img class="founder-sketch founder-avatar" src="./assets/member-luer.png" alt="陆贰简笔画形象">
+                <div class="founder-copy">
+                  <h3>陆贰</h3>
+                  <p class="founder-role">软件开发</p>
+                </div>
+              </div>
             </div>
-            <img class="founder-sketch founder-avatar" src="./assets/member-luer.png" alt="陆贰简笔画形象">
           </article>
-          <article class="founder-card">
-            <div class="founder-copy">
-              <h3>wuwu</h3>
+          <article class="founder-card" data-founder-key="wuwu" role="button" aria-pressed="false" aria-label="wuwu，市场营销" tabindex="0">
+            <div class="founder-card-inner">
+              <div class="founder-face founder-symbol-face" aria-hidden="true">
+                <span class="tarot-index tarot-index-top">III</span>
+                <span class="tarot-symbol">✦</span>
+                <span class="tarot-index tarot-index-bottom">III</span>
+              </div>
+              <div class="founder-face founder-portrait-face">
+                <span class="founder-seal" aria-hidden="true">✦</span>
+                <img class="founder-sketch founder-avatar" src="./assets/member-wuwu.png" alt="wuwu 简笔画形象">
+                <div class="founder-copy">
+                  <h3>wuwu</h3>
+                  <p class="founder-role">市场营销</p>
+                </div>
+              </div>
             </div>
-            <img class="founder-sketch founder-avatar" src="./assets/member-wuwu.png" alt="wuwu 简笔画形象">
           </article>
-          <article class="founder-card">
-            <div class="founder-copy">
-              <h3>九皮</h3>
+          <article class="founder-card" data-founder-key="jiupi" role="button" aria-pressed="false" aria-label="九皮，沟通交流" tabindex="0">
+            <div class="founder-card-inner">
+              <div class="founder-face founder-symbol-face" aria-hidden="true">
+                <span class="tarot-index tarot-index-top">IV</span>
+                <span class="tarot-symbol">☿</span>
+                <span class="tarot-index tarot-index-bottom">IV</span>
+              </div>
+              <div class="founder-face founder-portrait-face">
+                <span class="founder-seal" aria-hidden="true">☿</span>
+                <img class="founder-sketch founder-avatar" src="./assets/member-jiupi.png" alt="九皮简笔画形象">
+                <div class="founder-copy">
+                  <h3>九皮</h3>
+                  <p class="founder-role">沟通交流</p>
+                </div>
+              </div>
             </div>
-            <img class="founder-sketch founder-avatar" src="./assets/member-jiupi.png" alt="九皮简笔画形象">
           </article>
-          <article class="founder-card">
-            <div class="founder-copy">
-              <h3>Blanche</h3>
+          <article class="founder-card" data-founder-key="blanche" role="button" aria-pressed="false" aria-label="Blanche，口播文案" tabindex="0">
+            <div class="founder-card-inner">
+              <div class="founder-face founder-symbol-face" aria-hidden="true">
+                <span class="tarot-index tarot-index-top">V</span>
+                <span class="tarot-symbol">☾</span>
+                <span class="tarot-index tarot-index-bottom">V</span>
+              </div>
+              <div class="founder-face founder-portrait-face">
+                <span class="founder-seal" aria-hidden="true">☾</span>
+                <img class="founder-sketch founder-avatar" src="./assets/member-blanche.png" alt="Blanche 简笔画形象">
+                <div class="founder-copy">
+                  <h3>Blanche</h3>
+                  <p class="founder-role">口播文案</p>
+                </div>
+              </div>
             </div>
-            <img class="founder-sketch founder-avatar" src="./assets/member-blanche.png" alt="Blanche 简笔画形象">
           </article>
+        </div>
+        <aside class="founder-gesture-panel" id="founderGesturePanel" aria-label="手势控制预览" hidden>
+          <video id="founderGestureVideo" autoplay muted playsinline></video>
+          <div class="gesture-panel-overlay" aria-hidden="true"></div>
+          <p>张开手移动光标<br>捏合或停留即可翻牌</p>
+        </aside>
+        <div class="gesture-cursor" id="founderGestureCursor" aria-hidden="true" hidden>
+          <span></span>
         </div>
       </section>
 
@@ -147,7 +223,8 @@
             <img src="./assets/collab-signal.svg" alt="加入我们连接线稿图">
           </figure>
         </div>
-        <form class="contact-form" id="betaForm" action="https://formsubmit.co/2357731089@qq.com" method="POST">
+        <iframe class="form-submit-frame" name="formSubmitFrame" title="表单提交通道" aria-hidden="true"></iframe>
+        <form class="contact-form" id="betaForm" action="https://formsubmit.co/2357731089@qq.com" method="POST" target="formSubmitFrame">
           <input type="hidden" name="_subject" value="白质工作室新的加入申请">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -168,7 +245,59 @@
           <button type="submit">申请加入</button>
           <p class="form-note" id="formNote">提交后会发送到白质工作室邮箱。</p>
         </form>
+
+        <div id="community" class="mini-social social-section social-loop-section" aria-label="白质社区入口">
+          <div class="social-bar-heading">
+            <div>
+              <p class="eyebrow">Community</p>
+              <p class="mini-social-title">从超级个体到超级社区</p>
+            </div>
+            <span class="social-loop-status" data-social-loop-status aria-live="polite">点击入口展开</span>
+          </div>
+
+          <div class="social-loop-shell" data-social-loop aria-label="社区平台循环入口">
+            <div class="social-loop-track" data-social-loop-track>
+              <div class="social-loop-list" data-social-loop-sequence>
+                <button class="social-action" type="button" data-social-channel="wechat" aria-controls="community-panel" aria-expanded="false">
+                  <span class="social-icon" aria-hidden="true">微</span>
+                  <span>微信群</span>
+                </button>
+                <a class="social-action" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener noreferrer" data-social-channel="xhs">
+                  <span class="social-icon" aria-hidden="true">小</span>
+                  <span>小红书</span>
+                </a>
+                <button class="social-action" type="button" data-social-channel="official" aria-controls="community-panel" aria-expanded="false">
+                  <span class="social-icon" aria-hidden="true">公</span>
+                  <span>公众号</span>
+                </button>
+                <button class="social-action" type="button" data-social-channel="scan" aria-controls="community-panel" aria-expanded="false">
+                  <span class="social-icon" aria-hidden="true">码</span>
+                  <span>扫码</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="social-qr-panel" id="community-panel" data-social-panel aria-live="polite" hidden>
+            <button class="social-panel-close" type="button" data-social-close aria-label="收起二维码" title="收起二维码">×</button>
+            <div class="social-qr" aria-hidden="true">
+              <svg class="social-qr-svg" viewBox="0 0 120 120" role="img">
+                <rect width="120" height="120" rx="10" fill="#fbf8ef"/>
+                <path d="M10 10h28v28H10zM82 10h28v28H82zM10 82h28v28H10z" fill="#101112"/>
+                <path d="M17 17h14v14H17zM89 17h14v14H89zM17 89h14v14H17z" fill="#fbf8ef"/>
+                <path d="M47 12h8v8h-8zM63 12h8v8h-8zM47 28h16v8H47zM72 44h8v8h-8zM90 46h12v8H90zM48 48h8v8h-8zM60 48h8v8h-8zM18 48h12v8H18zM36 48h8v8h-8zM82 60h8v8h-8zM96 60h8v8h-8zM48 64h8v8h-8zM64 64h8v8h-8zM74 76h8v8h-8zM90 78h20v8H90zM48 88h8v8h-8zM60 88h8v8h-8zM72 96h8v8h-8zM88 96h8v8h-8zM104 96h6v14h-6zM46 104h16v6H46z" fill="#101112"/>
+                <circle cx="60" cy="60" r="14" fill="#101112"/>
+                <text x="60" y="64" text-anchor="middle" font-size="8" font-weight="800" fill="#e5c68e" data-social-qr-label>微信群</text>
+              </svg>
+            </div>
+            <div class="social-qr-copy">
+              <h3 data-social-title>扫码加入微信群</h3>
+              <p data-social-note>把真实微信群二维码替换到这里后，访客可以在电脑端扫码，手机端长按保存。</p>
+            </div>
+          </aside>
+        </div>
       </section>
+
     </main>
 
     <footer class="site-footer">
@@ -177,6 +306,9 @@
       <span><a href="./privacy.html">隐私政策</a> · <a href="./terms.html">服务条款</a></span>
     </footer>
 
-    <script src="./script.js?v=hero-layout-restore-20260630"></script>
+    <script src="./galaxy-exact.js?v=galaxy-splash-gesture-v3"></script>
+    <script src="./visual-effects.js?v=galaxy-splash-gesture-v3"></script>
+    <script src="./splash-cursor.js?v=galaxy-splash-gesture-v3"></script>
+    <script src="./script.js?v=galaxy-splash-gesture-v3"></script>
   </body>
 </html>
