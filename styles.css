@@ -5515,12 +5515,26 @@ body {
   pointer-events: none;
   opacity: 0.72;
   mix-blend-mode: screen;
+  transition: opacity 180ms ease;
+}
+
+html.gesture-performance-mode .splash-cursor-layer {
+  opacity: 0;
+}
+
+html.gesture-performance-mode .site-galaxy {
+  opacity: 0.32;
+}
+
+html.gesture-performance-mode .founder-rays-canvas {
+  visibility: hidden;
 }
 
 .splash-cursor-layer canvas {
   display: block;
   width: 100vw;
   height: 100vh;
+  transition: opacity 160ms ease;
 }
 
 main {

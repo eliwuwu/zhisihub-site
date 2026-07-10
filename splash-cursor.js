@@ -3,18 +3,18 @@ const initSplashCursor = () => {
   if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const animationFrameId = { current: null };
-  const SIM_RESOLUTION = 96;
-  const DYE_RESOLUTION = 720;
+  const SIM_RESOLUTION = 64;
+  const DYE_RESOLUTION = 360;
   const CAPTURE_RESOLUTION = 512;
-  const DENSITY_DISSIPATION = 3.2;
-  const VELOCITY_DISSIPATION = 2.2;
+  const DENSITY_DISSIPATION = 4.2;
+  const VELOCITY_DISSIPATION = 2.8;
   const PRESSURE = 0.1;
-  const PRESSURE_ITERATIONS = 16;
-  const CURL = 2.4;
+  const PRESSURE_ITERATIONS = 8;
+  const CURL = 2;
   const SPLAT_RADIUS = 0.17;
   const SPLAT_FORCE = 3600;
   const SHADING = true;
-  const COLOR_UPDATE_SPEED = 6;
+  const COLOR_UPDATE_SPEED = 4;
   const BACK_COLOR = { r: 0.035, g: 0.028, b: 0.06 };
   const TRANSPARENT = true;
   const RAINBOW_MODE = false;
@@ -671,22 +671,57 @@ updateKeywords();
 initFramebuffers();
 let lastUpdateTime = Date.now();
 let colorUpdateTimer = 0.0;
+let lastFrameAt = 0;
+let gesturePaused = false;
+let lastInteractionAt = performance.now();
+const frameInterval = 1000 / 30;
+const idleTimeout = 2600;
 
-function updateFrame() {
-  if (!isActive) return;
+function updateFrame(now = performance.now()) {
+  animationFrameId.current = null;
+  if (!isActive || gesturePaused) {
+    return;
+  }
+  if (now - lastFrameAt < frameInterval) {
+    animationFrameId.current = requestAnimationFrame(updateFrame);
+    return;
+  }
+  lastFrameAt = now;
   const dt = calcDeltaTime();
   if (resizeCanvas()) initFramebuffers();
   updateColors(dt);
   applyInputs();
   step(dt);
   render(null);
-  animationFrameId.current = requestAnimationFrame(updateFrame);
+  if (now - lastInteractionAt < idleTimeout) {
+    animationFrameId.current = requestAnimationFrame(updateFrame);
+  } else {
+    clearProgram.bind();
+    gl.uniform1i(clearProgram.uniforms.uTexture, dye.read.attach(0));
+    gl.uniform1f(clearProgram.uniforms.value, 0);
+    blit(dye.write);
+    dye.swap();
+    gl.uniform1i(clearProgram.uniforms.uTexture, velocity.read.attach(0));
+    blit(velocity.write);
+    velocity.swap();
+    render(null);
+    canvas.style.opacity = "0";
+  }
+}
+
+function wakeFluid() {
+  lastInteractionAt = performance.now();
+  lastUpdateTime = Date.now();
+  canvas.style.opacity = "1";
+  if (!gesturePaused && !animationFrameId.current) {
+    animationFrameId.current = requestAnimationFrame(updateFrame);
+  }
 }
 
 function calcDeltaTime() {
   let now = Date.now();
   let dt = (now - lastUpdateTime) / 1000;
-  dt = Math.min(dt, 0.016666);
+  dt = Math.min(dt, 0.033333);
   lastUpdateTime = now;
   return dt;
 }
@@ -958,7 +993,7 @@ function getResolution(resolution) {
 }
 
 function scaleByPixelRatio(input) {
-  const pixelRatio = window.devicePixelRatio || 1;
+  const pixelRatio = 0.75;
   return Math.floor(input * pixelRatio);
 }
 
@@ -979,6 +1014,7 @@ function handleMouseDown(e) {
   let posY = scaleByPixelRatio(e.clientY);
   updatePointerDownData(pointer, -1, posX, posY);
   clickSplat(pointer);
+  wakeFluid();
 }
 
 let firstMouseMoveHandled = false;
@@ -993,6 +1029,7 @@ function handleMouseMove(e) {
   } else {
     updatePointerMoveData(pointer, posX, posY, pointer.color);
   }
+  wakeFluid();
 }
 
 function handleTouchStart(e) {
@@ -1003,6 +1040,7 @@ function handleTouchStart(e) {
     let posY = scaleByPixelRatio(touches[i].clientY);
     updatePointerDownData(pointer, touches[i].identifier, posX, posY);
   }
+  wakeFluid();
 }
 
 function handleTouchMove(e) {
@@ -1013,6 +1051,7 @@ function handleTouchMove(e) {
     let posY = scaleByPixelRatio(touches[i].clientY);
     updatePointerMoveData(pointer, posX, posY, pointer.color);
   }
+  wakeFluid();
 }
 
 function handleTouchEnd(e) {
@@ -1029,8 +1068,18 @@ window.addEventListener('mousemove', handleMouseMove);
 window.addEventListener('touchstart', handleTouchStart);
 window.addEventListener('touchmove', handleTouchMove, false);
 window.addEventListener('touchend', handleTouchEnd);
+window.addEventListener('founder:gesture-performance', (event) => {
+  gesturePaused = Boolean(event.detail?.active);
+  if (gesturePaused) {
+    if (animationFrameId.current) cancelAnimationFrame(animationFrameId.current);
+    animationFrameId.current = null;
+  } else if (isActive && !animationFrameId.current) {
+    lastFrameAt = 0;
+    wakeFluid();
+  }
+});
 
-updateFrame();
+wakeFluid();
 
 };
 

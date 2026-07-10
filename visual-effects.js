@@ -157,11 +157,12 @@ const initHeroPrism = () => {
   let dpr = 1;
   let raf = 0;
   let visible = true;
+  let lastRenderAt = 0;
   const startTime = performance.now();
 
   const resize = () => {
     const rect = container.getBoundingClientRect();
-    dpr = Math.min(1.5, window.devicePixelRatio || 1);
+    dpr = 0.6;
     width = Math.max(1, Math.round(rect.width * dpr));
     height = Math.max(1, Math.round(rect.height * dpr));
     if (canvas.width !== width || canvas.height !== height) {
@@ -173,6 +174,11 @@ const initHeroPrism = () => {
 
   const render = (now) => {
     raf = 0;
+    if (!motionQuery.matches && now - lastRenderAt < 42) {
+      if (visible && !document.hidden) raf = requestAnimationFrame(render);
+      return;
+    }
+    lastRenderAt = now;
     resize();
     const mobile = container.clientWidth < 760;
     const elapsed = motionQuery.matches ? 0.7 : (now - startTime) * 0.001;
@@ -278,11 +284,12 @@ const initFounderLightRays = () => {
 
   let visible = false;
   let raf = 0;
+  let lastRenderAt = 0;
   const startTime = performance.now();
 
   const resizeState = (state) => {
     const rect = state.card.getBoundingClientRect();
-    state.dpr = Math.min(1.5, window.devicePixelRatio || 1);
+    state.dpr = 0.75;
     state.width = Math.max(1, Math.round(rect.width * state.dpr));
     state.height = Math.max(1, Math.round(rect.height * state.dpr));
     if (state.canvas.width !== state.width || state.canvas.height !== state.height) {
@@ -352,6 +359,14 @@ const initFounderLightRays = () => {
 
   const render = (now) => {
     raf = 0;
+    if (document.documentElement.classList.contains("gesture-performance-mode")) return;
+    const hasActiveCard = states.some((state) => state.active);
+    const frameInterval = hasActiveCard ? 33 : 100;
+    if (!motionQuery.matches && now - lastRenderAt < frameInterval) {
+      if (visible && !document.hidden) raf = requestAnimationFrame(render);
+      return;
+    }
+    lastRenderAt = now;
     states.forEach((state) => {
       resizeState(state);
       drawRays(state, now);
@@ -377,6 +392,14 @@ const initFounderLightRays = () => {
   observer.observe(section);
   new ResizeObserver(start).observe(section);
   document.addEventListener("visibilitychange", start);
+  window.addEventListener("founder:gesture-performance", (event) => {
+    if (event.detail?.active) {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    } else if (visible) {
+      start();
+    }
+  });
   start();
 };
 
@@ -643,15 +666,25 @@ const initFounderTarot = () => {
     persist();
   };
 
+  const hoverTimers = new WeakMap();
+
   cards.forEach((card) => {
     if (revealed.has(card.dataset.founderKey)) {
       card.classList.add("is-flipped");
       card.setAttribute("aria-pressed", "true");
     }
 
-    card.addEventListener("pointerenter", () => reveal(card));
+    card.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch" || card.classList.contains("is-flipped")) return;
+      const timer = window.setTimeout(() => reveal(card), 420);
+      hoverTimers.set(card, timer);
+    });
+    card.addEventListener("pointerleave", () => {
+      const timer = hoverTimers.get(card);
+      if (timer) window.clearTimeout(timer);
+      hoverTimers.delete(card);
+    });
     card.addEventListener("pointerdown", () => reveal(card));
-    card.addEventListener("focusin", () => reveal(card));
     card.addEventListener("founder:gesture-reveal", () => reveal(card));
     card.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
@@ -689,8 +722,9 @@ const initFounderGestureControl = () => {
   const visionModuleUrl = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/+esm";
   const wasmRoot = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm";
   const modelUrl = "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task";
-  const dwellDuration = 720;
-  const detectionInterval = 1000 / 18;
+  const dwellDuration = 900;
+  const targetLockDuration = 180;
+  const detectionInterval = 1000 / 15;
 
   let stream = null;
   let handLandmarker = null;
@@ -699,9 +733,20 @@ const initFounderGestureControl = () => {
   let lastDetectionAt = 0;
   let lastVideoTime = -1;
   let activeCard = null;
+  let candidateCard = null;
+  let candidateStartedAt = 0;
   let dwellStartedAt = 0;
   let wasPinching = false;
   let sectionVisible = true;
+  let smoothedX = null;
+  let smoothedY = null;
+
+  const setPerformanceMode = (active) => {
+    document.documentElement.classList.toggle("gesture-performance-mode", active);
+    window.dispatchEvent(new CustomEvent("founder:gesture-performance", {
+      detail: { active }
+    }));
+  };
 
   const setStatus = (message, state = "") => {
     status.textContent = message;
@@ -712,7 +757,11 @@ const initFounderGestureControl = () => {
   const clearTarget = () => {
     cards.forEach((card) => card.classList.remove("is-gesture-target"));
     activeCard = null;
+    candidateCard = null;
+    candidateStartedAt = 0;
     dwellStartedAt = 0;
+    smoothedX = null;
+    smoothedY = null;
     cursor.style.setProperty("--gesture-progress", "0deg");
   };
 
@@ -736,6 +785,7 @@ const initFounderGestureControl = () => {
     toggle.disabled = false;
     toggle.setAttribute("aria-pressed", "false");
     toggleLabel.textContent = "开启手势翻牌";
+    setPerformanceMode(false);
     setStatus("摄像头画面只在本机识别，不会上传");
   };
 
@@ -759,28 +809,46 @@ const initFounderGestureControl = () => {
     const indexTip = hand[8];
     const thumbTip = hand[4];
     const rect = layout.getBoundingClientRect();
-    const x = rect.left + (1 - indexTip.x) * rect.width;
-    const y = rect.top + indexTip.y * rect.height;
-    const pinchDistance = Math.hypot(
-      indexTip.x - thumbTip.x,
-      indexTip.y - thumbTip.y,
-      (indexTip.z || 0) - (thumbTip.z || 0)
-    );
-    const isPinching = pinchDistance < 0.065;
+    const normalizedX = clamp(((1 - indexTip.x) - 0.06) / 0.88, 0, 1);
+    const normalizedY = clamp((indexTip.y - 0.08) / 0.84, 0, 1);
+    const rawX = rect.left + normalizedX * rect.width;
+    const rawY = rect.top + normalizedY * rect.height;
+    smoothedX = smoothedX === null ? rawX : mix(smoothedX, rawX, 0.34);
+    smoothedY = smoothedY === null ? rawY : mix(smoothedY, rawY, 0.34);
+
+    const pinchDistance = Math.hypot(indexTip.x - thumbTip.x, indexTip.y - thumbTip.y);
+    const isPinching = wasPinching ? pinchDistance < 0.078 : pinchDistance < 0.052;
 
     cursor.hidden = !sectionVisible;
     cursor.classList.toggle("is-visible", sectionVisible);
     cursor.classList.toggle("is-pinching", isPinching);
-    cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    cursor.style.transform = `translate3d(${smoothedX}px, ${smoothedY}px, 0)`;
 
-    const hit = document.elementFromPoint(x, y)?.closest(".founder-card[data-founder-key]");
-    const nextCard = hit && section.contains(hit) ? hit : null;
+    const nextCard = cards.reduce((best, card) => {
+      if (card.classList.contains("is-flipped")) return best;
+      const cardRect = card.getBoundingClientRect();
+      const centerX = cardRect.left + cardRect.width * 0.5;
+      const centerY = cardRect.top + cardRect.height * 0.5;
+      const dx = (smoothedX - centerX) / Math.max(1, cardRect.width * 0.72);
+      const dy = (smoothedY - centerY) / Math.max(1, cardRect.height * 0.78);
+      const score = dx * dx + dy * dy;
+      if (score > 1.18 || (best && best.score <= score)) return best;
+      return { card, score };
+    }, null)?.card || null;
 
-    if (nextCard !== activeCard) {
-      clearTarget();
-      activeCard = nextCard;
-      dwellStartedAt = nextCard ? now : 0;
-      nextCard?.classList.add("is-gesture-target");
+    if (nextCard !== candidateCard) {
+      cards.forEach((card) => card.classList.remove("is-gesture-target"));
+      activeCard = null;
+      dwellStartedAt = 0;
+      candidateCard = nextCard;
+      candidateStartedAt = now;
+      cursor.style.setProperty("--gesture-progress", "0deg");
+    }
+
+    if (!activeCard && candidateCard && now - candidateStartedAt >= targetLockDuration) {
+      activeCard = candidateCard;
+      dwellStartedAt = now;
+      activeCard.classList.add("is-gesture-target");
     }
 
     if (!activeCard || activeCard.classList.contains("is-flipped")) {
@@ -795,7 +863,7 @@ const initFounderGestureControl = () => {
     if ((isPinching && !wasPinching) || dwellProgress >= 1) {
       revealCard(activeCard);
     } else {
-      setStatus("移动食指选择牌；捏合或停留即可翻开", "active");
+      setStatus("移动食指选择牌；稳定停留或捏合即可翻开", "active");
     }
     wasPinching = isPinching;
   };
@@ -856,6 +924,7 @@ const initFounderGestureControl = () => {
 
     toggle.disabled = true;
     toggleLabel.textContent = "正在启动…";
+    setPerformanceMode(true);
     setStatus("正在请求摄像头并加载手势模型（首次约 20MB）");
 
     try {
@@ -878,7 +947,7 @@ const initFounderGestureControl = () => {
       toggle.setAttribute("aria-pressed", "true");
       toggleLabel.textContent = "关闭手势翻牌";
       cursor.hidden = false;
-      setStatus("移动食指选择牌；捏合或停留即可翻开", "active");
+      setStatus("移动食指选择牌；稳定停留或捏合即可翻开", "active");
       animationFrame = requestAnimationFrame(detectLoop);
     } catch (error) {
       if (stream) stream.getTracks().forEach((track) => track.stop());
@@ -889,6 +958,7 @@ const initFounderGestureControl = () => {
       toggle.disabled = false;
       toggle.setAttribute("aria-pressed", "false");
       toggleLabel.textContent = "重新开启手势翻牌";
+      setPerformanceMode(false);
 
       const denied = error?.name === "NotAllowedError" || error?.name === "PermissionDeniedError";
       setStatus(

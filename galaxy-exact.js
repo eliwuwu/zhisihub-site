@@ -265,14 +265,17 @@ void main() {
   let mouseY = 0.5;
   let targetMouseActive = 0;
   let mouseActive = 0;
+  let lastDrawAt = 0;
+  let gesturePaused = false;
+  const frameInterval = 1000 / 30;
   const startedAt = performance.now();
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const resize = () => {
     const rect = container.getBoundingClientRect();
-    const dpr = Math.min(rect.width < 760 ? 1 : 1.25, window.devicePixelRatio || 1);
-    const nextWidth = Math.max(1, Math.round(rect.width * dpr));
-    const nextHeight = Math.max(1, Math.round(rect.height * dpr));
+    const renderScale = rect.width < 760 ? 0.5 : 0.62;
+    const nextWidth = Math.max(1, Math.round(rect.width * renderScale));
+    const nextHeight = Math.max(1, Math.round(rect.height * renderScale));
     if (nextWidth !== width || nextHeight !== height) {
       width = nextWidth;
       height = nextHeight;
@@ -284,6 +287,12 @@ void main() {
 
   const draw = (now) => {
     raf = 0;
+    if (gesturePaused) return;
+    if (now - lastDrawAt < frameInterval) {
+      raf = requestAnimationFrame(draw);
+      return;
+    }
+    lastDrawAt = now;
     resize();
     mouseX += (targetMouseX - mouseX) * 0.05;
     mouseY += (targetMouseY - mouseY) * 0.05;
@@ -297,12 +306,12 @@ void main() {
     gl.uniform2f(uniforms.focal, 0.5, 0.5);
     gl.uniform2f(uniforms.rotation, 1.0, 0.0);
     gl.uniform1f(uniforms.starSpeed, elapsed * 0.05);
-    gl.uniform1f(uniforms.density, 1.5);
+    gl.uniform1f(uniforms.density, 1.28);
     gl.uniform1f(uniforms.hueShift, 240);
     gl.uniform1f(uniforms.speed, 0.65);
     gl.uniform2f(uniforms.mouse, mouseX, mouseY);
-    gl.uniform1f(uniforms.glowIntensity, 0.5);
-    gl.uniform1f(uniforms.saturation, 0.72);
+    gl.uniform1f(uniforms.glowIntensity, 0.42);
+    gl.uniform1f(uniforms.saturation, 0.66);
     gl.uniform1i(uniforms.mouseRepulsion, 1);
     gl.uniform1f(uniforms.twinkleIntensity, 0.3);
     gl.uniform1f(uniforms.rotationSpeed, 0.055);
@@ -335,6 +344,16 @@ void main() {
 
   document.addEventListener("pointerleave", () => {
     targetMouseActive = 0;
+  });
+  window.addEventListener("founder:gesture-performance", (event) => {
+    gesturePaused = Boolean(event.detail?.active);
+    if (gesturePaused) {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    } else {
+      lastDrawAt = 0;
+      start();
+    }
   });
   window.addEventListener("resize", start);
   document.addEventListener("visibilitychange", start);
