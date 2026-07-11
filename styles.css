@@ -5457,7 +5457,7 @@ body {
 
 .site-galaxy {
   top: 76px;
-  opacity: 0.88;
+  opacity: 0.58;
   mix-blend-mode: normal;
 }
 
@@ -5539,7 +5539,7 @@ main > .section::before {
 @media (max-width: 760px) {
   .site-galaxy {
     top: 118px;
-    opacity: 0.72;
+    opacity: 0.4;
   }
 
   .splash-cursor-layer {

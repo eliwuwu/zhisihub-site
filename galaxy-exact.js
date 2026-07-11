@@ -53,7 +53,7 @@ uniform bool uTransparent;
 
 varying vec2 vUv;
 
-#define NUM_LAYER 4.0
+#define NUM_LAYER 2.0
 #define STAR_COLOR_CUTOFF 0.2
 #define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
 #define PERIOD 3.0
@@ -271,14 +271,13 @@ void main() {
   let lastDrawAt = 0;
   let lastPointerAt = 0;
   let gesturePaused = false;
-  const activeFrameInterval = 1000 / 60;
-  const idleFrameInterval = 1000 / 18;
+  const frameInterval = 1000 / 60;
   const startedAt = performance.now();
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const resize = () => {
     const rect = container.getBoundingClientRect();
-    const renderScale = rect.width < 760 ? 0.38 : 0.48;
+    const renderScale = rect.width < 760 ? 0.3 : 0.36;
     const nextWidth = Math.max(1, Math.round(rect.width * renderScale));
     const nextHeight = Math.max(1, Math.round(rect.height * renderScale));
     if (nextWidth !== width || nextHeight !== height) {
@@ -294,7 +293,6 @@ void main() {
     raf = 0;
     if (gesturePaused) return;
     const pointerIsMoving = now - lastPointerAt < 220;
-    const frameInterval = pointerIsMoving ? activeFrameInterval : idleFrameInterval;
     if (now - lastDrawAt < frameInterval) {
       raf = requestAnimationFrame(draw);
       return;
@@ -315,16 +313,16 @@ void main() {
     gl.uniform2f(uniforms.focal, 0.5, 0.5);
     gl.uniform2f(uniforms.rotation, 1.0, 0.0);
     gl.uniform1f(uniforms.starSpeed, elapsed * 0.05);
-    gl.uniform1f(uniforms.density, 1.3);
+    gl.uniform1f(uniforms.density, 0.62);
     gl.uniform1f(uniforms.hueShift, 240);
-    gl.uniform1f(uniforms.speed, 0.65);
+    gl.uniform1f(uniforms.speed, 0.5);
     gl.uniform2f(uniforms.mouse, mouseX, mouseY);
-    gl.uniform1f(uniforms.glowIntensity, 0.4);
-    gl.uniform1f(uniforms.saturation, 0.04);
+    gl.uniform1f(uniforms.glowIntensity, 0.26);
+    gl.uniform1f(uniforms.saturation, 0.02);
     gl.uniform1i(uniforms.mouseRepulsion, 1);
-    gl.uniform1f(uniforms.twinkleIntensity, 0.3);
-    gl.uniform1f(uniforms.rotationSpeed, 0.055);
-    gl.uniform1f(uniforms.repulsionStrength, 3.2);
+    gl.uniform1f(uniforms.twinkleIntensity, 0.16);
+    gl.uniform1f(uniforms.rotationSpeed, 0.035);
+    gl.uniform1f(uniforms.repulsionStrength, 2.8);
     gl.uniform1f(uniforms.mouseActive, mouseActive);
     gl.uniform1f(uniforms.autoCenterRepulsion, 0);
     gl.uniform1i(uniforms.transparent, 1);
