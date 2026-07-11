@@ -53,7 +53,7 @@ uniform bool uTransparent;
 
 varying vec2 vUv;
 
-#define NUM_LAYER 3.0
+#define NUM_LAYER 4.0
 #define STAR_COLOR_CUTOFF 0.2
 #define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
 #define PERIOD 3.0
@@ -175,7 +175,7 @@ void main() {
   }
 
   float luminance = dot(col, vec3(0.2126, 0.7152, 0.0722));
-  col = luminance * vec3(0.92, 0.84, 0.70);
+  col = luminance * vec3(0.94, 0.90, 0.82);
 
   if (uTransparent) {
     float alpha = length(col);
@@ -269,14 +269,16 @@ void main() {
   let targetMouseActive = 0;
   let mouseActive = 0;
   let lastDrawAt = 0;
+  let lastPointerAt = 0;
   let gesturePaused = false;
-  const frameInterval = 1000 / 24;
+  const activeFrameInterval = 1000 / 60;
+  const idleFrameInterval = 1000 / 18;
   const startedAt = performance.now();
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const resize = () => {
     const rect = container.getBoundingClientRect();
-    const renderScale = rect.width < 760 ? 0.34 : 0.42;
+    const renderScale = rect.width < 760 ? 0.38 : 0.48;
     const nextWidth = Math.max(1, Math.round(rect.width * renderScale));
     const nextHeight = Math.max(1, Math.round(rect.height * renderScale));
     if (nextWidth !== width || nextHeight !== height) {
@@ -291,15 +293,19 @@ void main() {
   const draw = (now) => {
     raf = 0;
     if (gesturePaused) return;
+    const pointerIsMoving = now - lastPointerAt < 220;
+    const frameInterval = pointerIsMoving ? activeFrameInterval : idleFrameInterval;
     if (now - lastDrawAt < frameInterval) {
       raf = requestAnimationFrame(draw);
       return;
     }
     lastDrawAt = now;
     resize();
-    mouseX += (targetMouseX - mouseX) * 0.05;
-    mouseY += (targetMouseY - mouseY) * 0.05;
-    mouseActive += (targetMouseActive - mouseActive) * 0.05;
+    if (!pointerIsMoving) targetMouseActive = 0;
+    const mouseEase = pointerIsMoving ? 0.12 : 0.06;
+    mouseX += (targetMouseX - mouseX) * mouseEase;
+    mouseY += (targetMouseY - mouseY) * mouseEase;
+    mouseActive += (targetMouseActive - mouseActive) * (pointerIsMoving ? 0.14 : 0.08);
 
     const elapsed = reduceMotion.matches ? 5 : (now - startedAt) * 0.001;
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -309,16 +315,16 @@ void main() {
     gl.uniform2f(uniforms.focal, 0.5, 0.5);
     gl.uniform2f(uniforms.rotation, 1.0, 0.0);
     gl.uniform1f(uniforms.starSpeed, elapsed * 0.05);
-    gl.uniform1f(uniforms.density, 1.16);
+    gl.uniform1f(uniforms.density, 1.3);
     gl.uniform1f(uniforms.hueShift, 240);
     gl.uniform1f(uniforms.speed, 0.65);
     gl.uniform2f(uniforms.mouse, mouseX, mouseY);
-    gl.uniform1f(uniforms.glowIntensity, 0.34);
-    gl.uniform1f(uniforms.saturation, 0.08);
+    gl.uniform1f(uniforms.glowIntensity, 0.4);
+    gl.uniform1f(uniforms.saturation, 0.04);
     gl.uniform1i(uniforms.mouseRepulsion, 1);
     gl.uniform1f(uniforms.twinkleIntensity, 0.3);
     gl.uniform1f(uniforms.rotationSpeed, 0.055);
-    gl.uniform1f(uniforms.repulsionStrength, 2);
+    gl.uniform1f(uniforms.repulsionStrength, 3.2);
     gl.uniform1f(uniforms.mouseActive, mouseActive);
     gl.uniform1f(uniforms.autoCenterRepulsion, 0);
     gl.uniform1i(uniforms.transparent, 1);
@@ -342,6 +348,7 @@ void main() {
     targetMouseX = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
     targetMouseY = Math.min(1, Math.max(0, 1 - (event.clientY - rect.top) / rect.height));
     targetMouseActive = 1;
+    lastPointerAt = performance.now();
     start();
   }, { passive: true });
 
