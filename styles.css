@@ -5742,3 +5742,15 @@ body {
   width: 0;
   height: 0;
 }
+
+/* Keep native scrolling, but remove browser scrollbar overlays from the visual surface. */
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
