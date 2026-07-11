@@ -5502,7 +5502,7 @@ body {
 }
 
 .site-galaxy canvas {
-  filter: saturate(0.82) brightness(1.06);
+  filter: saturate(0.18) brightness(0.96);
 }
 
 .splash-cursor-layer {
@@ -5513,7 +5513,7 @@ body {
   height: 100vh;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.54;
   mix-blend-mode: screen;
   transition: opacity 180ms ease;
 }
@@ -5583,7 +5583,7 @@ main > .section::before {
   }
 
   .splash-cursor-layer {
-    opacity: 0.56;
+    display: none;
   }
 }
 

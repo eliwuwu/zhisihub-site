@@ -53,7 +53,7 @@ uniform bool uTransparent;
 
 varying vec2 vUv;
 
-#define NUM_LAYER 4.0
+#define NUM_LAYER 3.0
 #define STAR_COLOR_CUTOFF 0.2
 #define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
 #define PERIOD 3.0
@@ -174,6 +174,9 @@ void main() {
     col += StarLayer(uv * scale + i * 453.32) * fade;
   }
 
+  float luminance = dot(col, vec3(0.2126, 0.7152, 0.0722));
+  col = luminance * vec3(0.92, 0.84, 0.70);
+
   if (uTransparent) {
     float alpha = length(col);
     alpha = smoothstep(0.0, 0.3, alpha);
@@ -267,13 +270,13 @@ void main() {
   let mouseActive = 0;
   let lastDrawAt = 0;
   let gesturePaused = false;
-  const frameInterval = 1000 / 30;
+  const frameInterval = 1000 / 24;
   const startedAt = performance.now();
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const resize = () => {
     const rect = container.getBoundingClientRect();
-    const renderScale = rect.width < 760 ? 0.5 : 0.62;
+    const renderScale = rect.width < 760 ? 0.34 : 0.42;
     const nextWidth = Math.max(1, Math.round(rect.width * renderScale));
     const nextHeight = Math.max(1, Math.round(rect.height * renderScale));
     if (nextWidth !== width || nextHeight !== height) {
@@ -306,12 +309,12 @@ void main() {
     gl.uniform2f(uniforms.focal, 0.5, 0.5);
     gl.uniform2f(uniforms.rotation, 1.0, 0.0);
     gl.uniform1f(uniforms.starSpeed, elapsed * 0.05);
-    gl.uniform1f(uniforms.density, 1.28);
+    gl.uniform1f(uniforms.density, 1.16);
     gl.uniform1f(uniforms.hueShift, 240);
     gl.uniform1f(uniforms.speed, 0.65);
     gl.uniform2f(uniforms.mouse, mouseX, mouseY);
-    gl.uniform1f(uniforms.glowIntensity, 0.42);
-    gl.uniform1f(uniforms.saturation, 0.66);
+    gl.uniform1f(uniforms.glowIntensity, 0.34);
+    gl.uniform1f(uniforms.saturation, 0.08);
     gl.uniform1i(uniforms.mouseRepulsion, 1);
     gl.uniform1f(uniforms.twinkleIntensity, 0.3);
     gl.uniform1f(uniforms.rotationSpeed, 0.055);
