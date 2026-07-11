@@ -5641,6 +5641,40 @@ html.hyperspeed-is-ready .hyperspeed-transition {
   color: rgba(228, 226, 235, 0.68);
 }
 
+.thinking-hero.is-hyperspeed .thinking-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: rgba(235, 239, 244, 0.76);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.thinking-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 26px;
+}
+
+.thinking-dots > span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #b8d5e5;
+  opacity: 0.24;
+  animation: thinking-dot-pulse 900ms ease-in-out infinite;
+}
+
+.thinking-dots > span:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.thinking-dots > span:nth-child(3) {
+  animation-delay: 300ms;
+}
+
 .thinking-hero.is-hyperspeed .thinking-route {
   position: absolute;
   right: clamp(28px, 7vw, 104px);
@@ -5669,6 +5703,18 @@ html.thinking-is-leaving .thinking-copy,
 html.thinking-is-leaving .thinking-route {
   opacity: 0;
   transition: opacity 480ms ease;
+}
+
+@keyframes thinking-dot-pulse {
+  0%, 60%, 100% {
+    opacity: 0.24;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
 }
 
 @media (max-width: 760px) {
@@ -5713,6 +5759,11 @@ html.thinking-is-leaving .thinking-route {
 
   .hyperspeed-transition {
     opacity: 0.7;
+  }
+
+  .thinking-dots > span {
+    animation: none;
+    opacity: 0.72;
   }
 }
 
