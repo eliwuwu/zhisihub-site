@@ -4814,7 +4814,25 @@ main,
 .founder-portrait-face {
   display: flex;
   flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 108%, rgba(246, 239, 220, 0.3), transparent 58%),
+    radial-gradient(ellipse at 50% 30%, rgba(var(--founder-rgb), 0.2), transparent 48%),
+    linear-gradient(165deg, rgba(31, 34, 51, 0.96), rgba(8, 12, 24, 0.98));
   transform: rotateY(180deg);
+}
+
+.founder-portrait-face::before {
+  content: "";
+  position: absolute;
+  right: -12%;
+  bottom: -10%;
+  left: -12%;
+  z-index: 1;
+  height: 64%;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255, 249, 232, 0.42), rgba(var(--founder-rgb), 0.2) 36%, transparent 70%);
+  filter: blur(12px);
+  pointer-events: none;
 }
 
 .founder-portrait-face .founder-sketch,
@@ -4871,8 +4889,11 @@ main,
 
 .founder-card.is-flipped .founder-sketch,
 .founder-card.is-flipped .founder-avatar {
-  opacity: 0.84;
-  filter: brightness(0.94) contrast(1.03);
+  opacity: 1;
+  filter:
+    brightness(1.14)
+    contrast(1.08)
+    drop-shadow(0 16px 32px rgba(247, 237, 211, 0.18));
 }
 
 .founder-card.is-flipped.is-ray-active .founder-sketch,
