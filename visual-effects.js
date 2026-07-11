@@ -639,41 +639,31 @@ const initFounderTarot = () => {
   const resetButton = document.querySelector("#founderGestureReset");
   if (!cards.length) return;
 
-  const storageKey = "whiteMatterRevealedFounders";
-  let revealed = new Set();
+  const coverAll = () => {
+    cards.forEach((card) => {
+      card.classList.remove("is-flipped", "is-gesture-target");
+      card.setAttribute("aria-pressed", "false");
+    });
+  };
 
   try {
-    const stored = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
-    if (Array.isArray(stored)) revealed = new Set(stored);
+    window.localStorage.removeItem("whiteMatterRevealedFounders");
   } catch (error) {
-    revealed = new Set();
+    // Storage may be unavailable in private browsing; cards still start covered.
   }
 
-  const persist = () => {
-    try {
-      window.localStorage.setItem(storageKey, JSON.stringify(Array.from(revealed)));
-    } catch (error) {
-      // The flip still works for the current visit when storage is unavailable.
-    }
-  };
+  coverAll();
 
   const reveal = (card) => {
     const key = card.dataset.founderKey;
     if (!key || card.classList.contains("is-flipped")) return;
     card.classList.add("is-flipped");
     card.setAttribute("aria-pressed", "true");
-    revealed.add(key);
-    persist();
   };
 
   const hoverTimers = new WeakMap();
 
   cards.forEach((card) => {
-    if (revealed.has(card.dataset.founderKey)) {
-      card.classList.add("is-flipped");
-      card.setAttribute("aria-pressed", "true");
-    }
-
     card.addEventListener("pointerenter", (event) => {
       if (event.pointerType === "touch" || card.classList.contains("is-flipped")) return;
       const timer = window.setTimeout(() => reveal(card), 420);
@@ -695,12 +685,11 @@ const initFounderTarot = () => {
   });
 
   resetButton?.addEventListener("click", () => {
-    revealed.clear();
-    persist();
-    cards.forEach((card) => {
-      card.classList.remove("is-flipped", "is-gesture-target");
-      card.setAttribute("aria-pressed", "false");
-    });
+    coverAll();
+  });
+
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) coverAll();
   });
 };
 

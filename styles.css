@@ -5555,6 +5555,8 @@ main > .section::before {
 
 /* Five-second submission transition: a lightweight White Matter hyperspeed scene. */
 .thinking-page:has(.is-hyperspeed) {
+  height: calc(100svh - 77px);
+  min-height: 0;
   overflow: hidden;
   background: #05060b;
 }
@@ -5562,11 +5564,11 @@ main > .section::before {
 .thinking-hero.is-hyperspeed {
   position: relative;
   display: grid;
-  place-items: center start;
-  min-height: calc(100svh - 76px);
+  place-items: center;
+  min-height: 100%;
   padding: clamp(72px, 10vh, 112px) clamp(28px, 7vw, 104px);
   overflow: hidden;
-  text-align: left;
+  text-align: center;
   background: #05060b;
   isolation: isolate;
 }
@@ -5589,15 +5591,28 @@ main > .section::before {
   opacity: 0;
   transform: scale(1);
   transition: opacity 360ms ease, transform 700ms ease;
-  animation: hyperspeed-scene-in 480ms ease forwards;
+}
+
+.hyperspeed-transition #lights,
+.hyperspeed-transition canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+html.hyperspeed-is-ready .hyperspeed-transition {
+  opacity: 1;
 }
 
 .hyperspeed-shade {
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(4, 6, 12, 0.94) 0%, rgba(4, 6, 12, 0.72) 34%, rgba(4, 6, 12, 0.14) 68%, rgba(4, 6, 12, 0.38) 100%),
-    linear-gradient(180deg, rgba(5, 7, 13, 0.28), transparent 48%, rgba(3, 4, 9, 0.48));
+    radial-gradient(circle at 50% 48%, rgba(0, 0, 0, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 46%, rgba(0, 0, 0, 0.3));
 }
 
 .thinking-hero.is-hyperspeed .thinking-copy {
@@ -5605,7 +5620,7 @@ main > .section::before {
   z-index: 2;
   width: min(100%, 650px);
   max-width: 650px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .thinking-hero.is-hyperspeed .thinking-copy h1 {
@@ -5622,7 +5637,7 @@ main > .section::before {
 
 .thinking-hero.is-hyperspeed .thinking-copy p:not(.eyebrow) {
   max-width: 520px;
-  margin: 0;
+  margin: 0 auto;
   color: rgba(228, 226, 235, 0.68);
 }
 
@@ -5637,6 +5652,7 @@ main > .section::before {
   margin: 0;
   color: rgba(222, 218, 231, 0.56);
   letter-spacing: 0;
+  text-align: left;
 }
 
 .thinking-hero.is-hyperspeed .thinking-route::after {
@@ -5660,18 +5676,18 @@ html.thinking-is-leaving .thinking-route {
   transition: opacity 480ms ease;
 }
 
-@keyframes hyperspeed-scene-in {
-  to { opacity: 1; }
-}
-
 @keyframes thinking-route-progress {
   to { transform: scaleX(1); }
 }
 
 @media (max-width: 760px) {
+  .thinking-page:has(.is-hyperspeed) {
+    height: calc(100svh - 129px);
+  }
+
   .thinking-hero.is-hyperspeed {
     place-items: center;
-    min-height: calc(100svh - 129px);
+    min-height: 100%;
     padding: 64px 22px 92px;
     text-align: center;
   }
@@ -5707,4 +5723,22 @@ html.thinking-is-leaving .thinking-route {
   .hyperspeed-transition {
     opacity: 0.7;
   }
+}
+
+/* The community logo loop is visual motion, never a horizontal page scroller. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.social-loop-shell {
+  overflow-x: clip;
+  scrollbar-width: none;
+}
+
+.social-loop-shell::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
