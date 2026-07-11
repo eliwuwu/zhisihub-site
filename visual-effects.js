@@ -786,7 +786,7 @@ const initFounderGestureControl = () => {
     toggle.setAttribute("aria-pressed", "false");
     toggleLabel.textContent = "开启手势翻牌";
     setPerformanceMode(false);
-    setStatus("摄像头画面只在本机识别，不会上传");
+    setStatus("摄像头仅在本机识别，不展示画面，不会上传");
   };
 
   const revealCard = (card) => {
@@ -947,7 +947,7 @@ const initFounderGestureControl = () => {
       toggle.setAttribute("aria-pressed", "true");
       toggleLabel.textContent = "关闭手势翻牌";
       cursor.hidden = false;
-      setStatus("移动食指选择牌；稳定停留或捏合即可翻开", "active");
+      setStatus("识别已开启：直接在牌面上移动食指，停留或捏合翻牌", "active");
       animationFrame = requestAnimationFrame(detectLoop);
     } catch (error) {
       if (stream) stream.getTracks().forEach((track) => track.stop());
