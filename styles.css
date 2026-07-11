@@ -5662,7 +5662,7 @@ html.hyperspeed-is-ready .hyperspeed-transition {
   background: linear-gradient(90deg, #dfc995, rgba(190, 179, 207, 0.72));
   transform: scaleX(0);
   transform-origin: left;
-  animation: thinking-route-progress 3s linear forwards;
+  animation: thinking-route-progress 2s linear forwards;
 }
 
 html.thinking-is-leaving .hyperspeed-transition {
