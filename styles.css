@@ -3010,6 +3010,8 @@ body::after {
 }
 
 .content-layout {
+  --layout-focus-x: 50%;
+  --layout-focus-y: 50%;
   grid-template-columns: minmax(340px, 0.72fr) minmax(520px, 1fr);
   gap: 56px;
   align-items: center;
@@ -3027,6 +3029,22 @@ body::after {
     radial-gradient(ellipse at 24% 52%, rgba(155, 139, 197, 0.12), transparent 36%),
     radial-gradient(ellipse at 74% 42%, rgba(141, 184, 201, 0.08), transparent 34%),
     linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.035) 48%, transparent 100%);
+  pointer-events: none;
+}
+
+.section-pointer-light {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle 230px at var(--layout-focus-x) var(--layout-focus-y), rgba(255, 236, 178, 0.24), rgba(155, 139, 197, 0.09) 46%, transparent 72%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.content-layout.is-pointer-lit .section-pointer-light {
+  opacity: 1;
 }
 
 .content-layout::after {

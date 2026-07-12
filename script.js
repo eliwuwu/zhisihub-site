@@ -452,6 +452,29 @@ if (!prefersReducedMotion) {
   inlineLineArt();
 }
 
+document.querySelectorAll(".content-section .content-layout").forEach((layout) => {
+  const pointerLight = document.createElement("span");
+  pointerLight.className = "section-pointer-light";
+  pointerLight.setAttribute("aria-hidden", "true");
+  layout.prepend(pointerLight);
+
+  const updateSectionLight = (event) => {
+    if (event.pointerType === "touch") return;
+
+    const rect = layout.getBoundingClientRect();
+    const focusX = Math.min(100, Math.max(0, (event.clientX - rect.left) / rect.width * 100));
+    const focusY = Math.min(100, Math.max(0, (event.clientY - rect.top) / rect.height * 100));
+
+    layout.style.setProperty("--layout-focus-x", `${focusX.toFixed(1)}%`);
+    layout.style.setProperty("--layout-focus-y", `${focusY.toFixed(1)}%`);
+    layout.classList.add("is-pointer-lit");
+  };
+
+  layout.addEventListener("pointerenter", updateSectionLight, { passive: true });
+  layout.addEventListener("pointermove", updateSectionLight, { passive: true });
+  layout.addEventListener("pointerleave", () => layout.classList.remove("is-pointer-lit"));
+});
+
 document.querySelectorAll(".mission-strip article, .detail-grid article, .line-visual, .contact-visual").forEach((item) => {
   item.addEventListener("click", () => {
     item.classList.remove("is-active");
