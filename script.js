@@ -471,9 +471,6 @@ const socialPanel = document.querySelector("[data-social-panel]");
 
 if (socialPanel) {
   const socialSection = socialPanel.closest(".social-loop-section");
-  const socialLoop = socialSection?.querySelector("[data-social-loop]");
-  const socialTrack = socialSection?.querySelector("[data-social-loop-track]");
-  const socialSequence = socialSection?.querySelector("[data-social-loop-sequence]");
   const socialStatus = socialSection?.querySelector("[data-social-loop-status]");
   const socialChannels = {
     wechat: {
@@ -508,7 +505,7 @@ if (socialPanel) {
 
   const collapseSocialPanel = () => {
     activeChannel = null;
-    socialSection?.classList.remove("is-expanded", "is-paused");
+    socialSection?.classList.remove("is-expanded");
     socialPanel.hidden = true;
     updateSocialButtons();
     if (socialStatus) socialStatus.textContent = "点击入口展开";
@@ -528,31 +525,9 @@ if (socialPanel) {
     if (socialNote) socialNote.textContent = config.note;
     if (socialQrLabel) socialQrLabel.textContent = config.label;
     socialPanel.hidden = false;
-    socialSection?.classList.add("is-expanded", "is-paused");
+    socialSection?.classList.add("is-expanded");
     updateSocialButtons(channel, true);
-    if (socialStatus) socialStatus.textContent = "已暂停，再点一次收起";
-  };
-
-  const rebuildSocialLoop = () => {
-    if (!socialLoop || !socialTrack || !socialSequence) return;
-
-    socialTrack.querySelectorAll("[data-social-loop-clone]").forEach((clone) => clone.remove());
-    const sequenceWidth = Math.ceil(socialSequence.getBoundingClientRect().width);
-    if (!sequenceWidth) return;
-
-    const copies = Math.max(2, Math.ceil(socialLoop.clientWidth / sequenceWidth) + 2);
-    for (let index = 1; index < copies; index += 1) {
-      const clone = socialSequence.cloneNode(true);
-      clone.removeAttribute("data-social-loop-sequence");
-      clone.setAttribute("data-social-loop-clone", "");
-      clone.setAttribute("aria-hidden", "true");
-      clone.querySelectorAll("button, a").forEach((item) => item.setAttribute("tabindex", "-1"));
-      socialTrack.appendChild(clone);
-    }
-
-    socialTrack.style.setProperty("--social-loop-distance", `${sequenceWidth}px`);
-    socialTrack.style.setProperty("--social-loop-duration", `${Math.max(16, sequenceWidth / 30).toFixed(2)}s`);
-    updateSocialButtons(activeChannel, Boolean(activeChannel));
+    if (socialStatus) socialStatus.textContent = "已展开，再点一次收起";
   };
 
   socialSection?.addEventListener("click", (event) => {
@@ -566,9 +541,4 @@ if (socialPanel) {
     if (!button || button.tagName === "A") return;
     setSocialChannel(button.dataset.socialChannel);
   });
-
-  if (socialLoop && socialTrack && socialSequence) {
-    new ResizeObserver(rebuildSocialLoop).observe(socialLoop);
-    rebuildSocialLoop();
-  }
 }

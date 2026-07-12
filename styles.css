@@ -5035,33 +5035,25 @@ main,
   grid-area: social-loop;
   position: relative;
   min-width: 0;
-  overflow: hidden;
   padding: 4px 0;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .social-loop-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: social-logo-loop var(--social-loop-duration, 20s) linear infinite;
-}
-
-.social-loop-section.is-paused .social-loop-track {
-  animation-play-state: paused;
+  display: block;
+  width: 100%;
 }
 
 .social-loop-list {
-  display: flex;
-  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
   gap: 12px;
-  padding-right: 12px;
+  width: 100%;
 }
 
 .social-loop-section .social-action {
-  flex: 0 0 auto;
+  justify-content: center;
+  width: 100%;
   min-height: 42px;
   gap: 8px;
   padding: 0 14px 0 7px;
@@ -5148,15 +5140,6 @@ main,
   background: rgba(201, 170, 120, 0.12);
 }
 
-@keyframes social-logo-loop {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(calc(-1 * var(--social-loop-distance, 420px)), 0, 0);
-  }
-}
-
 @keyframes social-panel-open {
   from {
     opacity: 0;
@@ -5227,8 +5210,12 @@ main,
   }
 
   .social-loop-shell {
-    width: calc(100% + 4px);
-    margin-left: -2px;
+    width: 100%;
+  }
+
+  .social-loop-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .social-loop-section .social-qr-panel {
@@ -5242,12 +5229,6 @@ main,
 
   .site-galaxy {
     opacity: 0.54;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .social-loop-track {
-    animation-play-state: paused !important;
   }
 }
 
