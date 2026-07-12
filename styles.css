@@ -5816,3 +5816,46 @@ body {
   height: 0 !important;
   background: transparent !important;
 }
+
+/* Keep the neural interaction in the site's pearl-gold palette. */
+.community-hero .home-fiber-node.is-active,
+.community-hero .home-fiber-node.is-firing,
+.community-hero .home-fiber-neck.is-active {
+  fill: #eee7d4 !important;
+  filter:
+    drop-shadow(0 0 5px rgba(246, 239, 220, 0.72))
+    drop-shadow(0 0 14px rgba(201, 170, 120, 0.28));
+}
+
+.community-hero .fiber-signal {
+  fill: #f2eddf !important;
+  filter:
+    drop-shadow(0 0 4px rgba(246, 239, 220, 0.68))
+    drop-shadow(0 0 10px rgba(201, 170, 120, 0.22));
+}
+
+.community-hero .fiber-ripple {
+  stroke: rgba(222, 210, 181, 0.34) !important;
+}
+
+/* Preserve the information rhythm without reading as boxed cards. */
+.course-section .detail-grid article,
+.zhisi-section .detail-grid article {
+  border-bottom-color: rgba(205, 211, 236, 0.075);
+}
+
+.course-section .detail-grid article::before,
+.zhisi-section .detail-grid article::before {
+  background: linear-gradient(90deg, rgba(155, 139, 197, 0.34), rgba(201, 170, 120, 0.4), transparent);
+  opacity: 0.72;
+}
+
+.course-section .detail-grid article:hover,
+.course-section .detail-grid article:focus-visible,
+.course-section .detail-grid article.is-active,
+.zhisi-section .detail-grid article:hover,
+.zhisi-section .detail-grid article:focus-visible,
+.zhisi-section .detail-grid article.is-active {
+  border-bottom-color: rgba(201, 170, 120, 0.18);
+  filter: brightness(1.07);
+}
