@@ -7,7 +7,7 @@ if (form && note) {
   const submitted = new URLSearchParams(window.location.search).get("submitted");
 
   if (submitted === "1") {
-    note.textContent = "申请已提交，我们会尽快联系你。";
+    note.textContent = "申请已提交，我们会尽快联系您。";
     note.classList.add("is-success");
     form.classList.add("has-sent");
   }
@@ -30,12 +30,12 @@ if (form && note) {
       return;
     }
 
-    note.textContent = "正在连接你的问题，请稍等。";
+    note.textContent = "正在连接您的问题，请稍等。";
     note.classList.add("is-success");
     form.classList.add("has-sent", "is-submitting");
 
     if (submitButton) {
-      submitButton.textContent = "正在连接你的问题";
+      submitButton.textContent = "正在连接您的问题";
       submitButton.disabled = true;
     }
 
