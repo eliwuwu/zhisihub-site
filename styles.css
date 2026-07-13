@@ -6046,3 +6046,18 @@ main {
     opacity: 0.52;
   }
 }
+
+/* Give the homepage Prism a clearer light-and-shadow presence. */
+.hero-prism {
+  opacity: 0.84;
+}
+
+.hero-prism canvas {
+  filter: saturate(0.86) contrast(1.12) brightness(1.12);
+}
+
+@media (max-width: 760px) {
+  .hero-prism {
+    opacity: 0.76;
+  }
+}
