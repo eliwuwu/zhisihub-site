@@ -6024,3 +6024,25 @@ main > .section::before {
     translate: 0 0;
   }
 }
+
+/* Restore the sparse white starlight while keeping one continuous page canvas. */
+.site-galaxy {
+  opacity: 0.72;
+}
+
+.site-galaxy canvas {
+  filter: saturate(0) brightness(1.16);
+}
+
+main {
+  background:
+    radial-gradient(ellipse at 78% 7%, rgba(155, 139, 197, 0.06), transparent 30%),
+    radial-gradient(ellipse at 18% 48%, rgba(201, 170, 120, 0.028), transparent 38%),
+    linear-gradient(180deg, rgba(7, 10, 22, 0.5), rgba(8, 12, 24, 0.32) 34%, rgba(9, 13, 25, 0.28) 66%, rgba(6, 9, 18, 0.48));
+}
+
+@media (max-width: 760px) {
+  .site-galaxy {
+    opacity: 0.52;
+  }
+}

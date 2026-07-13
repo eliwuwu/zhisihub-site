@@ -175,7 +175,7 @@ void main() {
   }
 
   float luminance = dot(col, vec3(0.2126, 0.7152, 0.0722));
-  col = luminance * vec3(0.94, 0.90, 0.82);
+  col = luminance * vec3(0.96, 0.975, 1.0);
 
   if (uTransparent) {
     float alpha = length(col);
@@ -317,7 +317,7 @@ void main() {
     gl.uniform1f(uniforms.hueShift, 240);
     gl.uniform1f(uniforms.speed, 0.5);
     gl.uniform2f(uniforms.mouse, mouseX, mouseY);
-    gl.uniform1f(uniforms.glowIntensity, 0.26);
+    gl.uniform1f(uniforms.glowIntensity, 0.31);
     gl.uniform1f(uniforms.saturation, 0.02);
     gl.uniform1i(uniforms.mouseRepulsion, 1);
     gl.uniform1f(uniforms.twinkleIntensity, 0.16);
