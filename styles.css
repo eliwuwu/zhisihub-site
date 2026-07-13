@@ -5861,3 +5861,166 @@ body {
   border-bottom-color: rgba(201, 170, 120, 0.18);
   filter: brightness(1.07);
 }
+
+/* Neural points should read as breathing fireflies, not solid bubbles. */
+.community-hero .home-fiber-node.is-active,
+.community-hero .home-fiber-node.is-firing,
+.community-hero .home-fiber-neck.is-active {
+  fill: rgba(242, 235, 216, 0.7) !important;
+  opacity: 0.78 !important;
+  filter:
+    blur(0.35px)
+    drop-shadow(0 0 7px rgba(246, 239, 220, 0.58))
+    drop-shadow(0 0 22px rgba(201, 170, 120, 0.2));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: home-firefly-breathe 2.6s ease-in-out infinite;
+}
+
+.community-hero .fiber-signal {
+  fill: rgba(244, 239, 225, 0.8) !important;
+  opacity: 0.72;
+  filter:
+    blur(0.3px)
+    drop-shadow(0 0 6px rgba(246, 239, 220, 0.52))
+    drop-shadow(0 0 16px rgba(201, 170, 120, 0.16));
+}
+
+.community-hero .fiber-ripple {
+  fill: rgba(235, 225, 201, 0.045) !important;
+  stroke: none !important;
+  filter: blur(7px);
+}
+
+@keyframes home-firefly-breathe {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.78);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+/* A compact free-positioned glow avoids revealing the content panel edge. */
+.section-pointer-light {
+  inset: auto;
+  left: var(--layout-focus-x);
+  top: var(--layout-focus-y);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 239, 200, 0.16) 0%, rgba(201, 170, 120, 0.07) 34%, rgba(155, 139, 197, 0.025) 62%, transparent 100%);
+  filter: blur(9px);
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 760px) {
+  .section-pointer-light {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .community-hero .home-fiber-node.is-active,
+  .community-hero .home-fiber-node.is-firing,
+  .community-hero .home-fiber-neck.is-active {
+    animation: none;
+  }
+}
+
+/* One continuous canvas: section-local bands no longer restart the background. */
+main {
+  background:
+    radial-gradient(ellipse at 78% 7%, rgba(155, 139, 197, 0.075), transparent 30%),
+    radial-gradient(ellipse at 18% 48%, rgba(201, 170, 120, 0.04), transparent 38%),
+    linear-gradient(180deg, rgba(7, 10, 22, 0.64), rgba(8, 12, 24, 0.46) 34%, rgba(9, 13, 25, 0.4) 66%, rgba(6, 9, 18, 0.58));
+}
+
+main > .community-hero,
+main > .section {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+main > .section::before {
+  content: none !important;
+  display: none !important;
+}
+
+.course-section .content-layout::before,
+.zhisi-section .content-layout::before {
+  background: none !important;
+}
+
+.course-section .content-layout::after,
+.zhisi-section .content-layout::after {
+  opacity: 0.3;
+}
+
+/* Restore the earlier loose, asynchronous drift without rebuilding cards. */
+.course-section .detail-grid article,
+.zhisi-section .detail-grid article {
+  --detail-drift-x: 4px;
+  --detail-drift-y: -9px;
+  border-bottom: 0;
+  animation: detail-drift 7.8s ease-in-out infinite;
+  will-change: translate;
+}
+
+.course-section .detail-grid article:nth-child(2),
+.zhisi-section .detail-grid article:nth-child(2) {
+  --detail-drift-x: -5px;
+  --detail-drift-y: -7px;
+  animation-delay: -1.8s;
+  animation-duration: 8.6s;
+}
+
+.course-section .detail-grid article:nth-child(3),
+.zhisi-section .detail-grid article:nth-child(3) {
+  --detail-drift-x: 3px;
+  --detail-drift-y: -10px;
+  animation-delay: -3.5s;
+  animation-duration: 9.2s;
+}
+
+.course-section .detail-grid article:nth-child(4),
+.zhisi-section .detail-grid article:nth-child(4) {
+  --detail-drift-x: -4px;
+  --detail-drift-y: -8px;
+  animation-delay: -5.2s;
+  animation-duration: 8.1s;
+}
+
+.course-section .detail-grid article::before,
+.zhisi-section .detail-grid article::before {
+  width: 44px;
+  opacity: 0.44;
+}
+
+@keyframes detail-drift {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  46% {
+    translate: var(--detail-drift-x) var(--detail-drift-y);
+  }
+
+  72% {
+    translate: -2px 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-section .detail-grid article,
+  .zhisi-section .detail-grid article {
+    animation: none;
+    translate: 0 0;
+  }
+}
