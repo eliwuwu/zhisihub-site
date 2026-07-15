@@ -104,6 +104,14 @@ const initHeroPrism = () => {
       alpha *= mix(1.0, 0.55, whiteBase);
       alpha *= mix(1.0, 0.68, floorEnergy);
 
+      vec2 screenUv = gl_FragCoord.xy / uResolution.xy;
+      float shoulderDistance = abs(screenUv.x - 0.68);
+      float upperShoulders = smoothstep(0.055, 0.14, shoulderDistance)
+        * (1.0 - smoothstep(0.36, 0.48, shoulderDistance))
+        * smoothstep(0.42, 0.72, screenUv.y);
+      color *= 1.0 + upperShoulders * 0.2;
+      alpha *= 1.0 + upperShoulders * 0.124;
+
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), alpha);
     }
   `;
