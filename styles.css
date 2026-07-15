@@ -5608,10 +5608,11 @@ main > .section::before {
 }
 
 .hyperspeed-transition {
+  --hyperspeed-lift: clamp(-44px, -4vh, -28px);
   z-index: 0;
   display: block;
   opacity: 0;
-  transform: scale(1);
+  transform: translateY(var(--hyperspeed-lift)) scale(1);
   transition: opacity 360ms ease, transform 700ms ease;
 }
 
@@ -5639,6 +5640,7 @@ html.hyperspeed-is-ready .hyperspeed-transition {
 
 .thinking-hero.is-hyperspeed .thinking-copy {
   position: relative;
+  top: clamp(-136px, -13.5vh, -104px);
   z-index: 2;
   width: min(100%, 650px);
   max-width: 650px;
@@ -5718,7 +5720,7 @@ html.hyperspeed-is-ready .hyperspeed-transition {
 
 html.thinking-is-leaving .hyperspeed-transition {
   opacity: 0;
-  transform: scale(1.035);
+  transform: translateY(var(--hyperspeed-lift)) scale(1.035);
 }
 
 html.thinking-is-leaving .thinking-copy,
@@ -5749,6 +5751,14 @@ html.thinking-is-leaving .thinking-route {
     min-height: 100%;
     padding: 64px 22px 92px;
     text-align: center;
+  }
+
+  .hyperspeed-transition {
+    --hyperspeed-lift: -24px;
+  }
+
+  .thinking-hero.is-hyperspeed .thinking-copy {
+    top: clamp(-72px, -7vh, -48px);
   }
 
   .hyperspeed-shade {
