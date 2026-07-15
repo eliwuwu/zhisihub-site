@@ -65,7 +65,7 @@ const initHeroPrism = () => {
       float z = 5.0;
       vec4 light = vec4(0.0);
       vec3 point = vec3(0.0);
-      float time = uTime * 0.24;
+      float time = uTime * 0.5;
       mat2 wobble = mat2(
         cos(time), cos(time + 33.0),
         cos(time + 11.0), cos(time)
@@ -79,23 +79,19 @@ const initHeroPrism = () => {
         shifted.y += 0.875;
         float distanceStep = 0.1 + 0.2 * abs(prismDistance(shifted));
         z -= distanceStep;
-        light += (sin((point.y + z) * 0.92 + vec4(0.0, 1.0, 2.0, 3.0)) + 1.0)
+        light += (sin((point.y + z) + vec4(0.0, 1.0, 2.0, 3.0)) + 1.0)
           / distanceStep;
       }
 
       light = tanh4(light * light * 0.0000095);
       float energy = clamp(max(light.r, max(light.g, light.b)), 0.0, 1.0);
-      float warmth = clamp(light.r * 0.68 + light.g * 0.32, 0.0, 1.0);
-
-      vec3 violet = vec3(0.48, 0.40, 0.68);
-      vec3 gold = vec3(0.88, 0.70, 0.43);
-      vec3 pearl = vec3(0.84, 0.86, 0.95);
-      vec3 color = mix(violet, gold, smoothstep(0.2, 0.84, warmth));
-      color = mix(color, pearl, smoothstep(0.68, 1.0, light.b) * 0.34);
-      color *= energy * mix(0.92, 1.12, energy);
+      float luminance = dot(light.rgb, vec3(0.2126, 0.7152, 0.0722));
+      vec3 color = mix(vec3(luminance), light.rgb, 1.28);
+      color *= vec3(0.94, 1.0, 1.08);
+      color *= energy * mix(0.92, 1.08, energy);
 
       float grain = hash(gl_FragCoord.xy + vec2(uTime * 0.07));
-      color += (grain - 0.5) * 0.018 * energy;
+      color += (grain - 0.5) * 0.014 * energy;
       float alpha = smoothstep(0.025, 0.48, energy) * 0.9;
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), alpha);

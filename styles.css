@@ -6053,11 +6053,44 @@ main {
 }
 
 .hero-prism canvas {
-  filter: saturate(0.86) contrast(1.12) brightness(1.12);
+  filter: saturate(1.16) contrast(1.1) brightness(1.08);
 }
 
 @media (max-width: 760px) {
   .hero-prism {
     opacity: 0.76;
   }
+}
+
+/* Rational International: Futura for Latin, Hiragino Sans GB for Chinese. */
+:root {
+  --font-rational-international: Futura, "Hiragino Sans GB", "Hiragino Kaku Gothic ProN", "Avenir Next", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select,
+body *,
+svg text {
+  font-family: var(--font-rational-international) !important;
+  letter-spacing: 0 !important;
+}
+
+body :where(h1) {
+  font-weight: 700 !important;
+}
+
+body :where(h2, h3, h4, strong) {
+  font-weight: 600 !important;
+}
+
+body :where(button, input, textarea, select, .nav-links a, .nav-cta, .primary-button, .secondary-button) {
+  font-weight: 500 !important;
+}
+
+body :where(.eyebrow, .mission-strip span, .detail-grid article > span, .founder-role, .scroll-cue) {
+  font-weight: 500 !important;
 }
