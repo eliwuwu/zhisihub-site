@@ -83,16 +83,26 @@ const initHeroPrism = () => {
           / distanceStep;
       }
 
-      light = tanh4(light * light * 0.0000095);
+      light = tanh4(light * light * 0.0000072);
       float energy = clamp(max(light.r, max(light.g, light.b)), 0.0, 1.0);
       float luminance = dot(light.rgb, vec3(0.2126, 0.7152, 0.0722));
-      vec3 color = mix(vec3(luminance), light.rgb, 1.28);
-      color *= vec3(0.94, 1.0, 1.08);
-      color *= energy * mix(0.92, 1.08, energy);
+      vec3 color = mix(vec3(luminance), light.rgb, 0.96);
+      color *= vec3(0.96, 1.0, 1.04);
+      color *= energy * mix(0.72, 0.92, energy);
+
+      float neutralLight = min(light.r, min(light.g, light.b));
+      float bottomZone = 1.0 - smoothstep(0.08, 0.38, gl_FragCoord.y / uResolution.y);
+      float whiteBase = smoothstep(0.52, 0.9, neutralLight) * bottomZone;
+      float floorEnergy = smoothstep(0.22, 0.86, energy) * bottomZone;
+      color = mix(color, color * vec3(0.78, 0.94, 1.06), whiteBase * 0.6);
+      color *= mix(1.0, 0.55, whiteBase);
+      color *= mix(1.0, 0.72, floorEnergy);
 
       float grain = hash(gl_FragCoord.xy + vec2(uTime * 0.07));
       color += (grain - 0.5) * 0.014 * energy;
-      float alpha = smoothstep(0.025, 0.48, energy) * 0.9;
+      float alpha = smoothstep(0.04, 0.55, energy) * 0.72;
+      alpha *= mix(1.0, 0.55, whiteBase);
+      alpha *= mix(1.0, 0.68, floorEnergy);
 
       gl_FragColor = vec4(clamp(color, 0.0, 1.0), alpha);
     }
@@ -244,7 +254,7 @@ const initFounderLightRays = () => {
       pointerY: 0.42,
       smoothX: 0.5,
       smoothY: 0.42,
-      intensity: 0.16,
+      intensity: 0.22,
       active: false
     };
 
@@ -300,7 +310,8 @@ const initFounderLightRays = () => {
 
     state.smoothX = mix(state.smoothX, state.pointerX, state.active ? 0.12 : 0.045);
     state.smoothY = mix(state.smoothY, state.pointerY, state.active ? 0.12 : 0.045);
-    state.intensity = mix(state.intensity, state.active ? 1 : 0.16, 0.08);
+    const activeIntensity = 0.92 + state.pointerY * 0.48;
+    state.intensity = mix(state.intensity, state.active ? activeIntensity : 0.22, 0.08);
 
     ctx.clearRect(0, 0, width, height);
     ctx.save();
@@ -308,22 +319,22 @@ const initFounderLightRays = () => {
     ctx.filter = `blur(${Math.max(5, width * 0.025)}px)`;
 
     const anchorX = state.smoothX * width;
-    const anchorY = -height * 0.14;
+    const anchorY = height * 1.1;
     const targetX = state.smoothX * width;
-    const targetY = state.smoothY * height;
+    const targetY = height * 0.36;
     const baseAngle = Math.atan2(targetY - anchorY, targetX - anchorX);
     const time = motionQuery.matches ? 0.8 : (now - startTime) * 0.00032;
 
     for (let ray = 0; ray < 5; ray += 1) {
       const spread = (ray - 2) * 0.095 + Math.sin(time + ray * 1.7) * 0.016;
       const angle = baseAngle + spread;
-      const length = height * (1.05 + ray * 0.035);
+      const length = height * (1.08 + ray * 0.035);
       const endX = anchorX + Math.cos(angle) * length;
       const endY = anchorY + Math.sin(angle) * length;
       const halfWidth = width * (0.08 + ray * 0.012);
       const normalX = Math.cos(angle + Math.PI * 0.5) * halfWidth;
       const normalY = Math.sin(angle + Math.PI * 0.5) * halfWidth;
-      const alpha = (0.022 + ray * 0.006) * state.intensity;
+      const alpha = (0.028 + ray * 0.007) * state.intensity;
       const gradient = ctx.createLinearGradient(anchorX, anchorY, endX, endY);
       gradient.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha * 1.8})`);
       gradient.addColorStop(0.48, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`);
@@ -345,8 +356,8 @@ const initFounderLightRays = () => {
       targetY,
       Math.max(width, height) * 0.62
     );
-    spotlight.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.2 * state.intensity})`);
-    spotlight.addColorStop(0.42, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.07 * state.intensity})`);
+    spotlight.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.28 * state.intensity})`);
+    spotlight.addColorStop(0.42, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.09 * state.intensity})`);
     spotlight.addColorStop(1, `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`);
     ctx.fillStyle = spotlight;
     ctx.fillRect(0, 0, width, height);

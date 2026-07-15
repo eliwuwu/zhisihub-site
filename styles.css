@@ -6047,19 +6047,69 @@ main {
   }
 }
 
-/* Give the homepage Prism a clearer light-and-shadow presence. */
+/* Keep the Prism as a restrained beam inside a dark field. */
 .hero-prism {
-  opacity: 0.84;
+  opacity: 0.62;
 }
 
 .hero-prism canvas {
-  filter: saturate(1.16) contrast(1.1) brightness(1.08);
+  filter: saturate(0.88) contrast(1.02) brightness(0.9);
 }
 
 @media (max-width: 760px) {
   .hero-prism {
-    opacity: 0.76;
+    opacity: 0.54;
   }
+}
+
+/* Portraits stay legible, then receive a stronger bottom-up light on hover. */
+.founder-card.is-flipped .founder-rays-canvas {
+  opacity: 0.18;
+  transition: opacity 300ms ease;
+}
+
+.founder-card.is-flipped.is-ray-active .founder-rays-canvas,
+.founder-card.is-flipped:hover .founder-rays-canvas,
+.founder-card.is-flipped:focus-visible .founder-rays-canvas {
+  opacity: 1;
+}
+
+.founder-portrait-face::before {
+  opacity: 0.58;
+  transition: opacity 320ms ease, filter 320ms ease;
+}
+
+.founder-card.is-flipped.is-ray-active .founder-portrait-face::before,
+.founder-card.is-flipped:hover .founder-portrait-face::before,
+.founder-card.is-flipped:focus-visible .founder-portrait-face::before {
+  opacity: 0.96;
+  filter: blur(9px) brightness(1.16);
+}
+
+.founder-card.is-flipped .founder-sketch,
+.founder-card.is-flipped .founder-avatar {
+  opacity: 0.88;
+  filter:
+    invert(0.9)
+    sepia(0.12)
+    saturate(0.72)
+    brightness(1.02)
+    drop-shadow(0 12px 26px rgba(247, 237, 211, 0.13));
+}
+
+.founder-card.is-flipped.is-ray-active .founder-sketch,
+.founder-card.is-flipped.is-ray-active .founder-avatar,
+.founder-card.is-flipped:hover .founder-sketch,
+.founder-card.is-flipped:hover .founder-avatar,
+.founder-card.is-flipped:focus-visible .founder-sketch,
+.founder-card.is-flipped:focus-visible .founder-avatar {
+  opacity: 1;
+  filter:
+    invert(0.98)
+    sepia(0.1)
+    saturate(0.76)
+    brightness(1.14)
+    drop-shadow(0 14px 30px rgba(var(--founder-rgb), 0.22));
 }
 
 /* Rational International: Futura for Latin, Hiragino Sans GB for Chinese. */
