@@ -262,7 +262,7 @@ const initFounderLightRays = () => {
       pointerY: 0.42,
       smoothX: 0.5,
       smoothY: 0.42,
-      intensity: 0.22,
+      intensity: 0.16,
       active: false
     };
 
@@ -318,8 +318,7 @@ const initFounderLightRays = () => {
 
     state.smoothX = mix(state.smoothX, state.pointerX, state.active ? 0.12 : 0.045);
     state.smoothY = mix(state.smoothY, state.pointerY, state.active ? 0.12 : 0.045);
-    const activeIntensity = 0.92 + state.pointerY * 0.48;
-    state.intensity = mix(state.intensity, state.active ? activeIntensity : 0.22, 0.08);
+    state.intensity = mix(state.intensity, state.active ? 1 : 0.16, 0.08);
 
     ctx.clearRect(0, 0, width, height);
     ctx.save();
@@ -327,22 +326,22 @@ const initFounderLightRays = () => {
     ctx.filter = `blur(${Math.max(5, width * 0.025)}px)`;
 
     const anchorX = state.smoothX * width;
-    const anchorY = height * 1.1;
+    const anchorY = -height * 0.14;
     const targetX = state.smoothX * width;
-    const targetY = height * 0.36;
+    const targetY = state.smoothY * height;
     const baseAngle = Math.atan2(targetY - anchorY, targetX - anchorX);
     const time = motionQuery.matches ? 0.8 : (now - startTime) * 0.00032;
 
     for (let ray = 0; ray < 5; ray += 1) {
       const spread = (ray - 2) * 0.095 + Math.sin(time + ray * 1.7) * 0.016;
       const angle = baseAngle + spread;
-      const length = height * (1.08 + ray * 0.035);
+      const length = height * (1.05 + ray * 0.035);
       const endX = anchorX + Math.cos(angle) * length;
       const endY = anchorY + Math.sin(angle) * length;
       const halfWidth = width * (0.08 + ray * 0.012);
       const normalX = Math.cos(angle + Math.PI * 0.5) * halfWidth;
       const normalY = Math.sin(angle + Math.PI * 0.5) * halfWidth;
-      const alpha = (0.028 + ray * 0.007) * state.intensity;
+      const alpha = (0.022 + ray * 0.006) * state.intensity;
       const gradient = ctx.createLinearGradient(anchorX, anchorY, endX, endY);
       gradient.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha * 1.8})`);
       gradient.addColorStop(0.48, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`);
@@ -364,8 +363,8 @@ const initFounderLightRays = () => {
       targetY,
       Math.max(width, height) * 0.62
     );
-    spotlight.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.28 * state.intensity})`);
-    spotlight.addColorStop(0.42, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.09 * state.intensity})`);
+    spotlight.addColorStop(0, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.2 * state.intensity})`);
+    spotlight.addColorStop(0.42, `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${0.07 * state.intensity})`);
     spotlight.addColorStop(1, `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0)`);
     ctx.fillStyle = spotlight;
     ctx.fillRect(0, 0, width, height);
