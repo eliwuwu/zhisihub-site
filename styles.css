@@ -6104,3 +6104,94 @@ body :where(button, input, textarea, select, .nav-links a, .nav-cta, .primary-bu
 body :where(.eyebrow, .mission-strip span, .detail-grid article > span, .founder-role, .scroll-cue) {
   font-weight: 500 !important;
 }
+
+/* Seam-free pointer lighting: one viewport layer cannot be clipped by local panels. */
+.section-pointer-light {
+  --section-light-x: 50vw;
+  --section-light-y: 50vh;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background:
+    radial-gradient(circle 190px at var(--section-light-x) var(--section-light-y),
+      rgba(255, 239, 200, 0.14) 0%,
+      rgba(201, 170, 120, 0.055) 36%,
+      rgba(155, 139, 197, 0.018) 64%,
+      transparent 100%);
+  filter: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: none;
+  transition: opacity 180ms ease;
+  mix-blend-mode: screen;
+}
+
+.section-pointer-light.is-visible {
+  opacity: 1;
+}
+
+/* Let blurred artwork halos breathe beyond their boxes instead of cutting at an edge. */
+.line-visual,
+.contact-visual {
+  overflow: visible;
+}
+
+.line-visual:hover,
+.line-visual:focus-visible,
+.line-visual.is-active,
+.contact-visual:hover,
+.contact-visual:focus-visible,
+.contact-visual.is-active {
+  filter: none;
+}
+
+.contact-visual:hover::before,
+.contact-visual:focus-visible::before,
+.contact-visual.is-active::before {
+  opacity: 1;
+  filter: blur(14px);
+  transform: scale(1.04);
+}
+
+.contact-visual:hover .line-art-svg,
+.contact-visual:focus-visible .line-art-svg,
+.contact-visual.is-active .line-art-svg,
+.contact-visual:hover img,
+.contact-visual:focus-visible img,
+.contact-visual.is-active img {
+  filter:
+    drop-shadow(0 0 18px rgba(255, 236, 178, 0.16))
+    drop-shadow(0 0 34px rgba(155, 139, 197, 0.28));
+}
+
+/* Brighten content rather than compositing the whole rectangular container. */
+.community-hero .mission-strip article:hover,
+.community-hero .mission-strip article:focus-visible,
+.community-hero .mission-strip article.is-active,
+.course-section .detail-grid article:hover,
+.course-section .detail-grid article:focus-visible,
+.course-section .detail-grid article.is-active,
+.zhisi-section .detail-grid article:hover,
+.zhisi-section .detail-grid article:focus-visible,
+.zhisi-section .detail-grid article.is-active {
+  filter: none;
+}
+
+.community-hero .mission-strip article:hover strong,
+.community-hero .mission-strip article:focus-visible strong,
+.community-hero .mission-strip article.is-active strong,
+.detail-grid article:hover h3,
+.detail-grid article:focus-visible h3,
+.detail-grid article.is-active h3 {
+  color: #fff;
+  text-shadow: 0 0 20px rgba(229, 218, 179, 0.18);
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 760px) {
+  .section-pointer-light {
+    display: none;
+  }
+}

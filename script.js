@@ -452,27 +452,23 @@ if (!prefersReducedMotion) {
   inlineLineArt();
 }
 
-document.querySelectorAll(".content-section .content-layout").forEach((layout) => {
-  const pointerLight = document.createElement("span");
-  pointerLight.className = "section-pointer-light";
-  pointerLight.setAttribute("aria-hidden", "true");
-  layout.prepend(pointerLight);
+const sectionPointerLight = document.createElement("span");
+sectionPointerLight.className = "section-pointer-light";
+sectionPointerLight.setAttribute("aria-hidden", "true");
+document.body.append(sectionPointerLight);
 
+document.querySelectorAll(".content-section .content-layout").forEach((layout) => {
   const updateSectionLight = (event) => {
     if (event.pointerType === "touch") return;
 
-    const rect = layout.getBoundingClientRect();
-    const focusX = Math.min(100, Math.max(0, (event.clientX - rect.left) / rect.width * 100));
-    const focusY = Math.min(100, Math.max(0, (event.clientY - rect.top) / rect.height * 100));
-
-    layout.style.setProperty("--layout-focus-x", `${focusX.toFixed(1)}%`);
-    layout.style.setProperty("--layout-focus-y", `${focusY.toFixed(1)}%`);
-    layout.classList.add("is-pointer-lit");
+    sectionPointerLight.style.setProperty("--section-light-x", `${event.clientX}px`);
+    sectionPointerLight.style.setProperty("--section-light-y", `${event.clientY}px`);
+    sectionPointerLight.classList.add("is-visible");
   };
 
   layout.addEventListener("pointerenter", updateSectionLight, { passive: true });
   layout.addEventListener("pointermove", updateSectionLight, { passive: true });
-  layout.addEventListener("pointerleave", () => layout.classList.remove("is-pointer-lit"));
+  layout.addEventListener("pointerleave", () => sectionPointerLight.classList.remove("is-visible"));
 });
 
 document.querySelectorAll(".mission-strip article, .detail-grid article, .line-visual, .contact-visual").forEach((item) => {
